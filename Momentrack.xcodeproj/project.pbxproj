@@ -45,6 +45,7 @@
 		1AB0757B2C3FF3E700199164 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0757A2C3FF3E700199164 /* HomeView.swift */; };
 		1AB0757D2C3FF41700199164 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0757C2C3FF41700199164 /* MapView.swift */; };
 		1AB075842C3FF4B600199164 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB075832C3FF4B600199164 /* CalendarView.swift */; };
+		1AD90FA12C4033E900445D6E /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD90FA02C4033E900445D6E /* AppController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		1AB0757A2C3FF3E700199164 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1AB0757C2C3FF41700199164 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1AB075832C3FF4B600199164 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		1AD90FA02C4033E900445D6E /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		1AB075302C3FC4C000199164 /* Applications */ = {
 			isa = PBXGroup;
 			children = (
+				1AD90FA02C4033E900445D6E /* AppController.swift */,
 				1AB0751B2C3FC46100199164 /* AppDelegate.swift */,
 				1AB0751D2C3FC46100199164 /* SceneDelegate.swift */,
 			);
@@ -343,6 +346,7 @@
 				1AB075842C3FF4B600199164 /* CalendarView.swift in Sources */,
 				1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
+				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				1AB0757B2C3FF3E700199164 /* HomeView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,

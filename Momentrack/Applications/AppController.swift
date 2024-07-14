@@ -8,6 +8,7 @@ import Foundation
 import UIKit
 import Firebase
 
+/*
 final class AppController {
     static let shared = AppController()
     private init() {
@@ -16,22 +17,22 @@ final class AppController {
     }
     
     private var window: UIWindow!
-    private var rootViewController: UIViewController? {
-        didSet {
-            window.rootViewController = rootViewController
-        }
-    }
+//    private var rootViewController: UIViewController? {
+//        didSet {
+//            window.rootViewController = rootViewController
+//        }
+//    }
     
-    func show(in window: UIWindow) {
-        self.window = window
-        window.backgroundColor = .systemBackground
-        window.makeKeyAndVisible()
-        
-        
-        if Auth.auth().currentUser == nil {
-            routeToLogin()
-        }
-    }
+//    func show(in window: UIWindow) {
+//        self.window = window
+//        window.backgroundColor = .systemBackground
+//        window.makeKeyAndVisible()
+//        
+//        
+//        if Auth.auth().currentUser == nil {
+//            routeToLogin()
+//        }
+//    }
     
     private func registerAuthStateDidChangeEvent() {
         NotificationCenter.default.addObserver(
@@ -60,3 +61,4 @@ final class AppController {
     }
     
 }
+*/

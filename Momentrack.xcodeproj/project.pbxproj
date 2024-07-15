@@ -25,6 +25,8 @@
 		10F7DCD62C45318700C69573 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCD52C45318700C69573 /* FirebaseStorageCombine-Community */; };
 		10F7DCD82C45325C00C69573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */; };
 		10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */; };
+		10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCE12C455D7E00C69573 /* FriendListView.swift */; };
+		10F7DCE52C455F1800C69573 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCE42C455F1800C69573 /* FriendCell.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarItemConfiguration.swift; sourceTree = "<group>"; };
+		10F7DCE12C455D7E00C69573 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendListView.swift; path = Momentrack/Extension/FriendListView.swift; sourceTree = SOURCE_ROOT; };
+		10F7DCE42C455F1800C69573 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		10F7DCE32C455F0100C69573 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				10F7DCE42C455F1800C69573 /* FriendCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		1AB0750F2C3FC46100199164 = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +142,8 @@
 		1AB075322C3FC70600199164 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1AB075372C3FC82100199164 /* HomeViewController.swift */,
 				1AB075782C3FF10D00199164 /* LoginViewController.swift */,
+				1AB075372C3FC82100199164 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +181,8 @@
 		1AB0757F2C3FF42500199164 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				10F7DCE32C455F0100C69573 /* Cell */,
+				10F7DCE12C455D7E00C69573 /* FriendListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -282,10 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10F7DCE52C455F1800C69573 /* FriendCell.swift in Sources */,
 				1AB0757D2C3FF41700199164 /* MapView.swift in Sources */,
 				1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */,
 				1AB075842C3FF4B600199164 /* CalendarView.swift in Sources */,
 				1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */,
+				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,

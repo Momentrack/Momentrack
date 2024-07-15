@@ -9,6 +9,9 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
+    private let friendListView = FriendListView()
+    private var todayDate: String = "2024년 7월 8일 월요일" // Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,5 +49,12 @@ final class HomeViewController: UIViewController {
     
     private func setupView() {
         self.view.backgroundColor = .white
+        self.view.addSubview(friendListView)
+        
+        friendListView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(15)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(50)
+        }
     }
 }

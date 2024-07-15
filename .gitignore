@@ -75,3 +75,6 @@ xcuserdata/
 
 # End
 .DS_Store
+
+# Secure
+GoogleService-Info.plist

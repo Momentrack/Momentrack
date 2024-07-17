@@ -20,16 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // MARK: 로그인이 되어 있을 시에 홈 화면을, 로그인이 되어있지 않을 시에 로그인 화면을 보여주기
 //        if true {
-//            let initVC = LoginViewController()
-//            
-//            window.rootViewController = initVC
-//            window.makeKeyAndVisible()
-//        } else {
-            let initVC = HomeViewController()
-            let mainNavigationController = UINavigationController(rootViewController: initVC)
+            let initVC = LoginViewController()
             
-            window.rootViewController = mainNavigationController
+            window.rootViewController = initVC
             window.makeKeyAndVisible()
+//        } else {
+//            let initVC = HomeViewController()
+//            let mainNavigationController = UINavigationController(rootViewController: initVC)
+//            
+//            window.rootViewController = mainNavigationController
+//            window.makeKeyAndVisible()
 //        }
         
     }

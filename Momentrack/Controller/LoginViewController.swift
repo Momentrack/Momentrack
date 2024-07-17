@@ -10,15 +10,19 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private let loginView = LoginView()
+    
+    override func loadView() {
+        view = loginView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.yellow
-        self.view.addSubview(loginView)
+        self.view.backgroundColor = UIColor.white
+        //self.view.addSubview(loginView)
     }
     
 
     func setTargetAction() {
-        loginView.emailButton.addTarget(self, action: #selector(moveHomeVC), for: .touchUpInside)
+        loginView.loginButton.addTarget(self, action: #selector(moveHomeVC), for: .touchUpInside)
     }
     
     @objc func moveHomeVC() {

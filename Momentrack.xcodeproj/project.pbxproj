@@ -69,6 +69,7 @@
 		10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentFriendCell.swift; sourceTree = "<group>"; };
 		10F7DCF02C479F8300C69573 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1A1061E72C483B79004D0396 /* Momentrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Momentrack.entitlements; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +163,7 @@
 		1AB0751A2C3FC46100199164 /* Momentrack */ = {
 			isa = PBXGroup;
 			children = (
+				1A1061E72C483B79004D0396 /* Momentrack.entitlements */,
 				1AB075302C3FC4C000199164 /* Applications */,
 				1AB075322C3FC70600199164 /* Controller */,
 				1AB075332C3FC74200199164 /* View */,
@@ -514,6 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -544,6 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";

@@ -32,6 +32,7 @@
 		10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCEA2C4660E700C69573 /* TodayDateView.swift */; };
 		10F7DCED2C46649F00C69573 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */; };
 		10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */; };
+		10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCF02C479F8300C69573 /* Extensions.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		10F7DCEA2C4660E700C69573 /* TodayDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDateView.swift; sourceTree = "<group>"; };
 		10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentFriendCell.swift; sourceTree = "<group>"; };
+		10F7DCF02C479F8300C69573 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		10F7DCDE2C4557CE00C69573 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				10F7DCF02C479F8300C69573 /* Extensions.swift */,
 				10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */,
 				10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */,
 			);
@@ -321,6 +324,7 @@
 				10F7DCE92C456BC200C69573 /* MomentCell.swift in Sources */,
 				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
 				10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */,
+				10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,

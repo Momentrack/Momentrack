@@ -70,11 +70,22 @@ class LoginView: UIView {
         return button
     }()
     
+    lazy var authButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("이메일로 인증하기", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.setUnderline()
+        return button
+    }()
+    
     private func setupUI() {
         self.addSubview(logo)
         self.addSubview(maillabel)
         self.addSubview(emailTextField)
         self.addSubview(loginButton)
+        self.addSubview(authButton)
+        
         logo.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(60)
             $0.left.right.equalToSuperview().inset(54)
@@ -98,6 +109,12 @@ class LoginView: UIView {
             $0.left.right.equalToSuperview().inset(24)
             $0.height.equalTo(48)
         }
+        
+        authButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(loginButton.snp.bottom).offset(42)
+        }
+        
     }
 }
 
@@ -122,3 +139,19 @@ struct LoginView_Previews: PreviewProvider {
     }
 }
 #endif
+
+extension UIButton {
+    func setUnderline() {
+        guard let title = title(for: .normal) else { return }
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: NSRange(
+                                        location: 0,
+                                        length: title.count
+                                      )
+        )
+        setAttributedTitle(attributedString, for: .normal)
+    }
+}
+

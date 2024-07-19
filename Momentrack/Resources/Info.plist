@@ -9,6 +9,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>Momentrack</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.app.Momentrack</string>
+			</array>
 		</dict>
 	</array>
 	<key>UIApplicationSceneManifest</key>

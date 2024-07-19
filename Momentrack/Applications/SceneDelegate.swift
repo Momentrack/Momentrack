@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,20 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        // MARK: 로그인이 되어 있을 시에 홈 화면을, 로그인이 되어있지 않을 시에 로그인 화면을 보여주기
-//        if true {
-            let initVC = LoginViewController()
-            
-            window.rootViewController = initVC
-            window.makeKeyAndVisible()
-//        } else {
-//            let initVC = HomeViewController()
-//            let mainNavigationController = UINavigationController(rootViewController: initVC)
-//            
-//            window.rootViewController = mainNavigationController
-//            window.makeKeyAndVisible()
-//        }
+        AppController.shared.show(in: window)
         
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let webpageURL = userActivity.webpageURL else { return }
+        let link = webpageURL.absoluteString
+        if Auth.auth().isSignIn(withEmailLink: link) {
+            UserDefaults.standard.set(link, forKey: "Link")
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

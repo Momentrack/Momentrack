@@ -46,6 +46,7 @@
 		1A1061E12C47F519004D0396 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E02C47F519004D0396 /* FirebaseRemoteConfigSwift */; };
 		1A1061E32C47F519004D0396 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E22C47F519004D0396 /* FirebaseVertexAI-Preview */; };
 		1A1061E62C47F68F004D0396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E52C47F68F004D0396 /* FSCalendar */; };
+		1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentFriendCell.swift; sourceTree = "<group>"; };
 		10F7DCF02C479F8300C69573 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentView.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				10F7DCE12C455D7E00C69573 /* FriendListView.swift */,
 				10F7DCE62C456AA600C69573 /* MomentListView.swift */,
 				10F7DCEA2C4660E700C69573 /* TodayDateView.swift */,
+				1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
+				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,
 			);

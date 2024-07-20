@@ -77,7 +77,7 @@ final class HomeViewController: UIViewController {
         self.view.addSubview(friendListView)
         self.view.addSubview(todayDateView)
         self.view.addSubview(momentListView)
-//        self.view.addSubview(floattingButton)
+        self.view.addSubview(floattingButton)
         view.addSubview(floattingButton)
         view.addSubview(blurView)
         view.bringSubviewToFront(floattingButton)
@@ -100,13 +100,13 @@ final class HomeViewController: UIViewController {
 
         floattingButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(16)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
         blurView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(view.snp.width)
-            $0.top.equalToSuperview().inset(700)
+            $0.top.equalToSuperview().inset(800)
         }
         
     }

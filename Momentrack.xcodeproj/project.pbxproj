@@ -143,6 +143,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		1A1062082C4E44C6004D0396 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1AB0750F2C3FC46100199164 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB075302C3FC4C000199164 /* Applications */,
+				1A1062082C4E44C6004D0396 /* Model */,
 				1AB075322C3FC70600199164 /* Controller */,
 				1AB075332C3FC74200199164 /* View */,
 				10F7DCDE2C4557CE00C69573 /* Extension */,

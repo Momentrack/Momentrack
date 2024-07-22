@@ -57,7 +57,7 @@ final class HomeViewController: UIViewController {
     
     lazy var blurView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.05)
         return view
     }()
     

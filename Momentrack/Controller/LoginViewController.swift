@@ -69,13 +69,30 @@ class LoginViewController: UIViewController {
     @objc func didTappedLoginBtn() {
         guard let email = loginView.emailTextField.text,
               let link = UserDefaults.standard.string(forKey: "Link") else { return }
-        Auth.auth().signIn(withEmail: email, link: link) { [weak self] Result, error in
+        Auth.auth().signIn(withEmail: email, link: link) { Result, error in
             if let error = error {
                 print("✉️ email auth error \"\(error.localizedDescription)\"")
                 return
             }
-            let homeVC = HomeViewController()
-            self?.navigationController?.pushViewController(homeVC, animated: true)
+            //let homeVC = HomeViewController()
+            //self?.navigationController?.pushViewController(homeVC, animated: true)
+            DispatchQueue.main.async {
+                let homeVC = HomeViewController()
+                let navigationController = UINavigationController(rootViewController: homeVC)
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first {
+                    window.rootViewController = navigationController
+                    window.makeKeyAndVisible()
+                    
+                    
+                    UIView.transition(with: window,
+                                      duration: 0.3,
+                                      options: .transitionCrossDissolve,
+                                      animations: nil,
+                                      completion: nil)
+                }
+            }
         }
         
     }

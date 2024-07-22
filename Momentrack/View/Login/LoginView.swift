@@ -36,7 +36,6 @@ class LoginView: UIView {
     }()
     
     lazy var emailTextField: UITextField = {
-        //let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 300, height: 48))
         let textField = UITextField()
         
         let leftInsetView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 48))
@@ -83,8 +82,8 @@ class LoginView: UIView {
         self.addSubview(logo)
         self.addSubview(maillabel)
         self.addSubview(emailTextField)
-        self.addSubview(loginButton)
         self.addSubview(authButton)
+        self.addSubview(loginButton)
         
         logo.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(60)
@@ -98,21 +97,22 @@ class LoginView: UIView {
         }
         
         emailTextField.snp.makeConstraints {
-            $0.bottom.equalTo(loginButton.snp.top).offset(-42)
+            $0.top.equalTo(logo.snp.bottom).offset(80)
             $0.height.equalTo(48)
             $0.left.right.equalToSuperview().inset(24)
-        }
-        
-        loginButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(320)
-            $0.left.right.equalToSuperview().inset(24)
-            $0.height.equalTo(48)
         }
         
         authButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(loginButton.snp.bottom).offset(42)
+            $0.top.equalTo(emailTextField.snp.bottom).offset(16)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(280)
+            $0.left.right.equalToSuperview().inset(24)
+            $0.height.equalTo(48)
+            
         }
         
     }

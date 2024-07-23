@@ -47,12 +47,7 @@
 		1A1061E32C47F519004D0396 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E22C47F519004D0396 /* FirebaseVertexAI-Preview */; };
 		1A1061E62C47F68F004D0396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E52C47F68F004D0396 /* FSCalendar */; };
 		1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */; };
-		1A1061EF2C4B8097004D0396 /* PostingMomentViewController+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061EE2C4B8097004D0396 /* PostingMomentViewController+Row.swift */; };
-		1A1061F62C4C22B7004D0396 /* PostingMomentViewController+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061F52C4C22B7004D0396 /* PostingMomentViewController+Section.swift */; };
 		1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */; };
-		1A1061FC2C4C2579004D0396 /* PostingMomentViewController+CellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061FB2C4C2579004D0396 /* PostingMomentViewController+CellConfiguration.swift */; };
-		1A1061FE2C4C2E2E004D0396 /* ImageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061FD2C4C2E2E004D0396 /* ImageContentView.swift */; };
-		1A1062002C4D566D004D0396 /* UIView+PinnedSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061FF2C4D566D004D0396 /* UIView+PinnedSubview.swift */; };
 		1A1062042C4D7DD9004D0396 /* MomentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1062032C4D7DD9004D0396 /* MomentInfo.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
@@ -78,12 +73,7 @@
 		10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentFriendCell.swift; sourceTree = "<group>"; };
 		10F7DCF02C479F8300C69573 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentView.swift; sourceTree = "<group>"; };
-		1A1061EE2C4B8097004D0396 /* PostingMomentViewController+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostingMomentViewController+Row.swift"; sourceTree = "<group>"; };
-		1A1061F52C4C22B7004D0396 /* PostingMomentViewController+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostingMomentViewController+Section.swift"; sourceTree = "<group>"; };
 		1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentViewController.swift; sourceTree = "<group>"; };
-		1A1061FB2C4C2579004D0396 /* PostingMomentViewController+CellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostingMomentViewController+CellConfiguration.swift"; sourceTree = "<group>"; };
-		1A1061FD2C4C2E2E004D0396 /* ImageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContentView.swift; sourceTree = "<group>"; };
-		1A1061FF2C4D566D004D0396 /* UIView+PinnedSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinnedSubview.swift"; sourceTree = "<group>"; };
 		1A1062032C4D7DD9004D0396 /* MomentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentInfo.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,11 +132,9 @@
 		10F7DCDE2C4557CE00C69573 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1A1061ED2C4B8067004D0396 /* PostingMomentView */,
 				10F7DCF02C479F8300C69573 /* Extensions.swift */,
 				10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */,
 				10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */,
-				1A1061FD2C4C2E2E004D0396 /* ImageContentView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -159,17 +147,6 @@
 				10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		1A1061ED2C4B8067004D0396 /* PostingMomentView */ = {
-			isa = PBXGroup;
-			children = (
-				1A1061EE2C4B8097004D0396 /* PostingMomentViewController+Row.swift */,
-				1A1061F52C4C22B7004D0396 /* PostingMomentViewController+Section.swift */,
-				1A1061FB2C4C2579004D0396 /* PostingMomentViewController+CellConfiguration.swift */,
-				1A1061FF2C4D566D004D0396 /* UIView+PinnedSubview.swift */,
-			);
-			path = PostingMomentView;
 			sourceTree = "<group>";
 		};
 		1A1062022C4D7DAF004D0396 /* Model */ = {
@@ -394,7 +371,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A1061FC2C4C2579004D0396 /* PostingMomentViewController+CellConfiguration.swift in Sources */,
 				10F7DCE52C455F1800C69573 /* FriendCell.swift in Sources */,
 				1AB0757D2C3FF41700199164 /* MapView.swift in Sources */,
 				10F7DCED2C46649F00C69573 /* ImageCacheManager.swift in Sources */,
@@ -404,18 +380,14 @@
 				1AB075842C3FF4B600199164 /* CalendarView.swift in Sources */,
 				1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */,
 				10F7DCE92C456BC200C69573 /* MomentCell.swift in Sources */,
-				1A1061FE2C4C2E2E004D0396 /* ImageContentView.swift in Sources */,
 				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
 				10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */,
-				1A1062002C4D566D004D0396 /* UIView+PinnedSubview.swift in Sources */,
 				1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */,
 				10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */,
-				1A1061F62C4C22B7004D0396 /* PostingMomentViewController+Section.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
-				1A1061EF2C4B8097004D0396 /* PostingMomentViewController+Row.swift in Sources */,
 				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,

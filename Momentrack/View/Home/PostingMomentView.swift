@@ -26,6 +26,24 @@ class PostingMomentView: UIView {
         return label
     }()
     
+    lazy var currentLocationBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "location.fill"), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 32, weight: .regular, scale: .default), forImageIn: .normal)
+        button.tintColor = .black
+        
+        return button
+    }()
+    
+    lazy var addressLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+    
     lazy var photoLabel: UILabel = {
         let label = UILabel()
         label.text = "사진 등록"
@@ -36,8 +54,9 @@ class PostingMomentView: UIView {
     
     lazy var uploadPhoto: UIImageView = {
         let photo = UIImageView()
-        
-        
+        photo.backgroundColor = .systemGray5
+        photo.contentMode = .scaleAspectFill
+
         return photo
     }()
     

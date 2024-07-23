@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseCore
 
 class LoginViewController: UIViewController {
     
@@ -51,52 +49,42 @@ class LoginViewController: UIViewController {
     
     @objc func didTapAuthButton() {
         guard let email = loginView.emailTextField.text else { return }
-        let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "https://momentrack-8ab67.firebaseapp.com/?email=\(email)")
-        actionCodeSettings.handleCodeInApp = true
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
         
-        Auth.auth().sendSignInLink(
-            toEmail: email,
-            actionCodeSettings: actionCodeSettings) { error in
-                if let error = error {
-                    print("email not sent \(error.localizedDescription)")
-                } else {
-                    print("email sent")
-                }
-            }
-    }
-    @objc func didTappedLoginBtn() {
-        guard let email = loginView.emailTextField.text,
-              let link = UserDefaults.standard.string(forKey: "Link") else { return }
-        Auth.auth().signIn(withEmail: email, link: link) { Result, error in
-            if let error = error {
-                print("✉️ email auth error \"\(error.localizedDescription)\"")
-                return
-            }
-            //let homeVC = HomeViewController()
-            //self?.navigationController?.pushViewController(homeVC, animated: true)
-            DispatchQueue.main.async {
-                let homeVC = HomeViewController()
-                let navigationController = UINavigationController(rootViewController: homeVC)
-                
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let window = windowScene.windows.first {
-                    window.rootViewController = navigationController
-                    window.makeKeyAndVisible()
-                    
-                    
-                    UIView.transition(with: window,
-                                      duration: 0.3,
-                                      options: .transitionCrossDissolve,
-                                      animations: nil,
-                                      completion: nil)
-                }
-            }
+        Network.shared.createNewUser(email: email) { result in
+            print(result)
         }
-        
     }
     
+    @objc func didTappedLoginBtn() {
+        guard let email = loginView.emailTextField.text else { return }
+        
+        Network.shared.signInApp(email: email) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                DispatchQueue.main.async {
+                    let homeVC = HomeViewController()
+                    let navigationController = UINavigationController(rootViewController: homeVC)
+                    
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let window = windowScene.windows.first {
+                        window.rootViewController = navigationController
+                        window.makeKeyAndVisible()
+                        
+                        
+                        UIView.transition(with: window,
+                                          duration: 0.3,
+                                          options: .transitionCrossDissolve,
+                                          animations: nil,
+                                          completion: nil)
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 extension LoginViewController: UITextFieldDelegate {

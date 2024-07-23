@@ -16,6 +16,19 @@ extension PostingMomentViewController {
     }
     
     func imageConfiguration(for cell: UICollectionViewListCell, with image: String?) -> ImageContentView.Configuration {
-        let gesture = UITapGestureRecognizer(target: self, action: didTappedImageButton)
+        let gesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTappedImageButton)
+        )
+        
+        cell.addGestureRecognizer(gesture)
+        var contentConfiguration = cell.imageConfiguration()
+        contentConfiguration.image = image
+        contentConfiguration.onChange = { [weak self] image in
+            self?.momentInfo.photo = image
+        }
+        return contentConfiguration
     }
+    
+    
 }

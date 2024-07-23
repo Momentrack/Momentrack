@@ -36,7 +36,7 @@ final class SettingViewController: UIViewController {
         settingView.reNicknameButton.addTarget(self, action: #selector(changeNicknameButtonTapped), for: .touchUpInside)
         
         settingView.delegate = self
-        
+
         getUserInfo()
     }
     

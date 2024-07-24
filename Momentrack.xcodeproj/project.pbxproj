@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10F7DCB72C45312E00C69573 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCB62C45312E00C69573 /* SnapKit */; };
-		10F7DCB92C45312E00C69573 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCB82C45312E00C69573 /* SnapKit-Dynamic */; };
 		10F7DCBC2C45318700C69573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBB2C45318700C69573 /* FirebaseAnalytics */; };
 		10F7DCBE2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBD2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion */; };
 		10F7DCC02C45318700C69573 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBF2C45318700C69573 /* FirebaseAnalyticsSwift */; };
@@ -33,6 +31,10 @@
 		10F7DCED2C46649F00C69573 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */; };
 		10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */; };
 		10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCF02C479F8300C69573 /* Extensions.swift */; };
+		10F7DD532C4E1F1200C69573 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD522C4E1F1200C69573 /* SettingViewController.swift */; };
+		10F7DD562C4E1F6000C69573 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD552C4E1F6000C69573 /* SettingView.swift */; };
+		10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD582C4E287700C69573 /* TitleButtonCell.swift */; };
+		10F7DD612C4E408600C69573 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */; };
 		1A1061CD2C47F519004D0396 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061CC2C47F519004D0396 /* FirebaseAppCheck */; };
 		1A1061CF2C47F519004D0396 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061CE2C47F519004D0396 /* FirebaseAppDistribution-Beta */; };
 		1A1061D12C47F519004D0396 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061D02C47F519004D0396 /* FirebaseCrashlytics */; };
@@ -50,6 +52,10 @@
 		1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */; };
 		1A1062042C4D7DD9004D0396 /* MomentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1062032C4D7DD9004D0396 /* MomentInfo.swift */; };
 		1A1062102C50CE4C004D0396 /* MomentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10620F2C50CE4C004D0396 /* MomentTextView.swift */; };
+
+		1A1062072C4E2701004D0396 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1062062C4E2701004D0396 /* SnapKit */; };
+		1A10620A2C4E4703004D0396 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1062092C4E4703004D0396 /* UIButton.swift */; };
+
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -73,10 +79,19 @@
 		10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentFriendCell.swift; sourceTree = "<group>"; };
 		10F7DCF02C479F8300C69573 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+
 		1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentView.swift; sourceTree = "<group>"; };
 		1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentViewController.swift; sourceTree = "<group>"; };
 		1A1062032C4D7DD9004D0396 /* MomentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentInfo.swift; sourceTree = "<group>"; };
 		1A10620F2C50CE4C004D0396 /* MomentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentTextView.swift; sourceTree = "<group>"; };
+
+		10F7DD522C4E1F1200C69573 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		10F7DD552C4E1F6000C69573 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		10F7DD582C4E287700C69573 /* TitleButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleButtonCell.swift; sourceTree = "<group>"; };
+		10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		1A1061E72C483B79004D0396 /* Momentrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Momentrack.entitlements; sourceTree = "<group>"; };
+		1A1062092C4E4703004D0396 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,10 +118,8 @@
 				10F7DCCA2C45318700C69573 /* FirebaseDatabaseSwift in Frameworks */,
 				10F7DCCC2C45318700C69573 /* FirebaseDynamicLinks in Frameworks */,
 				10F7DCD22C45318700C69573 /* FirebaseFirestoreSwift in Frameworks */,
-				10F7DCB72C45312E00C69573 /* SnapKit in Frameworks */,
 				10F7DCC22C45318700C69573 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				1A1061D32C47F519004D0396 /* FirebaseFunctions in Frameworks */,
-				10F7DCB92C45312E00C69573 /* SnapKit-Dynamic in Frameworks */,
 				1A1061D92C47F519004D0396 /* FirebaseMLModelDownloader in Frameworks */,
 				10F7DCCE2C45318700C69573 /* FirebaseFirestore in Frameworks */,
 				10F7DCD42C45318700C69573 /* FirebaseStorage in Frameworks */,
@@ -115,6 +128,7 @@
 				10F7DCBE2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				1A1061D52C47F519004D0396 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				1A1061DD2C47F519004D0396 /* FirebasePerformance in Frameworks */,
+				1A1062072C4E2701004D0396 /* SnapKit in Frameworks */,
 				10F7DCC42C45318700C69573 /* FirebaseAuth in Frameworks */,
 				1A1061D12C47F519004D0396 /* FirebaseCrashlytics in Frameworks */,
 				1A1061D72C47F519004D0396 /* FirebaseInAppMessaging-Beta in Frameworks */,
@@ -137,7 +151,10 @@
 				10F7DCF02C479F8300C69573 /* Extensions.swift */,
 				10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */,
 				10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */,
+
 				1A10620F2C50CE4C004D0396 /* MomentTextView.swift */,
+
+				1A1062092C4E4703004D0396 /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -152,10 +169,27 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		1A1062022C4D7DAF004D0396 /* Model */ = {
+		10F7DD542C4E1F3A00C69573 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				1A1062032C4D7DD9004D0396 /* MomentInfo.swift */,
+				10F7DD572C4E284500C69573 /* Cell */,
+				10F7DD552C4E1F6000C69573 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		10F7DD572C4E284500C69573 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				10F7DD582C4E287700C69573 /* TitleButtonCell.swift */,
+			);
+			path = Cell;
+      sourceTree = "<group>";
+		};
+		1A1062082C4E44C6004D0396 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,8 +213,10 @@
 		1AB0751A2C3FC46100199164 /* Momentrack */ = {
 			isa = PBXGroup;
 			children = (
+				1A1061E72C483B79004D0396 /* Momentrack.entitlements */,
 				1AB075302C3FC4C000199164 /* Applications */,
-				1A1062022C4D7DAF004D0396 /* Model */,
+				1A10620D2C4F5834004D0396 /* Model */,
+
 				1AB075322C3FC70600199164 /* Controller */,
 				1AB075332C3FC74200199164 /* View */,
 				10F7DCDE2C4557CE00C69573 /* Extension */,
@@ -204,7 +240,12 @@
 			children = (
 				1AB075782C3FF10D00199164 /* LoginViewController.swift */,
 				1AB075372C3FC82100199164 /* HomeViewController.swift */,
+
 				1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */,
+
+				10F7DD522C4E1F1200C69573 /* SettingViewController.swift */,
+				10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */,
+
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,6 +257,7 @@
 				1AB0757F2C3FF42500199164 /* Home */,
 				1AB075802C3FF42D00199164 /* Map */,
 				1AB075812C3FF43B00199164 /* Calendar */,
+				10F7DD542C4E1F3A00C69573 /* Setting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,8 +326,6 @@
 			);
 			name = Momentrack;
 			packageProductDependencies = (
-				10F7DCB62C45312E00C69573 /* SnapKit */,
-				10F7DCB82C45312E00C69573 /* SnapKit-Dynamic */,
 				10F7DCBB2C45318700C69573 /* FirebaseAnalytics */,
 				10F7DCBD2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion */,
 				10F7DCBF2C45318700C69573 /* FirebaseAnalyticsSwift */,
@@ -313,6 +353,7 @@
 				1A1061E02C47F519004D0396 /* FirebaseRemoteConfigSwift */,
 				1A1061E22C47F519004D0396 /* FirebaseVertexAI-Preview */,
 				1A1061E52C47F68F004D0396 /* FSCalendar */,
+				1A1062062C4E2701004D0396 /* SnapKit */,
 			);
 			productName = Momentrack;
 			productReference = 1AB075182C3FC46100199164 /* Momentrack.app */;
@@ -343,9 +384,9 @@
 			);
 			mainGroup = 1AB0750F2C3FC46100199164;
 			packageReferences = (
-				10F7DCB52C45312E00C69573 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				10F7DCBA2C45318700C69573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1A1061E42C47F68F004D0396 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				1A1062052C4E2701004D0396 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 1AB075192C3FC46100199164 /* Products */;
 			projectDirPath = "";
@@ -376,17 +417,24 @@
 			files = (
 				10F7DCE52C455F1800C69573 /* FriendCell.swift in Sources */,
 				1AB0757D2C3FF41700199164 /* MapView.swift in Sources */,
+				10F7DD612C4E408600C69573 /* CustomAlertViewController.swift in Sources */,
 				10F7DCED2C46649F00C69573 /* ImageCacheManager.swift in Sources */,
 				10F7DCE72C456AA600C69573 /* MomentListView.swift in Sources */,
 				1A1062102C50CE4C004D0396 /* MomentTextView.swift in Sources */,
 				1A1062042C4D7DD9004D0396 /* MomentInfo.swift in Sources */,
 				1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */,
+				10F7DD532C4E1F1200C69573 /* SettingViewController.swift in Sources */,
 				1AB075842C3FF4B600199164 /* CalendarView.swift in Sources */,
 				1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */,
 				10F7DCE92C456BC200C69573 /* MomentCell.swift in Sources */,
 				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
+				10F7DD562C4E1F6000C69573 /* SettingView.swift in Sources */,
 				10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */,
+
 				1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */,
+
+				10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */,
+
 				10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
@@ -395,6 +443,7 @@
 				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,
+				1A10620A2C4E4703004D0396 /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +587,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2P5FNS3JAJ;
@@ -547,6 +597,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,6 +619,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2P5FNS3JAJ;
@@ -577,6 +629,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,14 +670,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		10F7DCB52C45312E00C69573 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
 		10F7DCBA2C45318700C69573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -641,19 +686,17 @@
 				minimumVersion = 2.8.4;
 			};
 		};
+		1A1062052C4E2701004D0396 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		10F7DCB62C45312E00C69573 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10F7DCB52C45312E00C69573 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		10F7DCB82C45312E00C69573 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10F7DCB52C45312E00C69573 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		10F7DCBB2C45318700C69573 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 10F7DCBA2C45318700C69573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -788,6 +831,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1061E42C47F68F004D0396 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		1A1062062C4E2701004D0396 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A1062052C4E2701004D0396 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

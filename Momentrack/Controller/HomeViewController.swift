@@ -27,9 +27,9 @@ final class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = titleItem
         
         let settingsConfig = CustomBarItemConfiguration(image: UIImage(systemName: "gearshape")) {
-//            let settingViewController = SettingViewController()
-//            settingViewController.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(settingViewController, animated: true)
+            let settingViewController = SettingViewController()
+            settingViewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(settingViewController, animated: true)
         }
         let settingsItem = UIBarButtonItem.generate(with: settingsConfig, width: 30)
         

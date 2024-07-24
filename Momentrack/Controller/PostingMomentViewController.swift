@@ -8,7 +8,8 @@
 import UIKit
 
 class PostingMomentViewController: UICollectionViewController {
-
+    private let postingMomentView = PostingMomentView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

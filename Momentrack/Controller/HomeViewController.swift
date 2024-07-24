@@ -49,7 +49,9 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     
-    private let floattingButton: UIButton = {
+    // MARK: - floating Button(append travel log)
+    
+    private let floatingButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "floating_90"), for: .normal)
         return button
@@ -57,12 +59,12 @@ final class HomeViewController: UIViewController {
     
     lazy var blurView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.05)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         return view
     }()
     
     func setupBlurEffect() {
-        let blurEffect = UIBlurEffect(style: .systemChromeMaterialDark)
+        let blurEffect = UIBlurEffect(style: .prominent)
         let blur2 = UIBlurEffect(style: .regular)
         let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
@@ -72,15 +74,31 @@ final class HomeViewController: UIViewController {
         
     }
     
+    @objc func touchUpBottomSheet(_ sender: UIButton) {
+        let vc = PostingMomentViewController()
+        vc.isModalInPresentation = true
+        if let sheet = vc.presentationController as? UISheetPresentationController {
+            sheet.preferredCornerRadius = 20
+            vc.sheetPresentationController?.detents = [
+                .custom(resolver: { context in
+                    0.5 * context.maximumDetentValue
+                })
+            ]
+        }
+        
+        vc.sheetPresentationController?.largestUndimmedDetentIdentifier = .medium
+        vc.sheetPresentationController?.prefersGrabberVisible = true
+    }
+    
     private func setupView() {
         self.view.backgroundColor = .white
         self.view.addSubview(friendListView)
         self.view.addSubview(todayDateView)
         self.view.addSubview(momentListView)
-        self.view.addSubview(floattingButton)
-        view.addSubview(floattingButton)
+        self.view.addSubview(floatingButton)
+        view.addSubview(floatingButton)
         view.addSubview(blurView)
-        view.bringSubviewToFront(floattingButton)
+        view.bringSubviewToFront(floatingButton)
         
         friendListView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(15)
@@ -98,7 +116,7 @@ final class HomeViewController: UIViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
 
-        floattingButton.snp.makeConstraints {
+        floatingButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }

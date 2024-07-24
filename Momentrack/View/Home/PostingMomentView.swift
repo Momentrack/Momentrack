@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class PostingMomentView: UIView {
+    weak var textViewDelegate: UITextViewDelegate?
     
     lazy var withFriendLabel: UILabel = {
         let label = UILabel()
@@ -67,6 +68,12 @@ class PostingMomentView: UIView {
         label.textColor = .label
 
         return label
+    }()
+    
+    lazy var momentTextView: MomentTextView = {
+        let textView = MomentTextView()
+        textView.delegate = textViewDelegate
+        return textView
     }()
     
     lazy var saveButton: UIButton = {

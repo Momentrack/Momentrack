@@ -58,20 +58,27 @@ final class HomeViewController: UIViewController {
         return button
     }()
     
-    lazy var blurView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+    lazy var blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemChromeMaterialLight)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.alpha = 0
         return view
     }()
     
     func setupBlurEffect() {
-        let blurEffect = UIBlurEffect(style: .prominent)
-        let blur2 = UIBlurEffect(style: .regular)
-        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
-        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        let visualEffectView = UIVisualEffectView(effect: vibrancyEffect)
-        visualEffectView.frame = view.frame
-        blurView.addSubview(visualEffectView)
+        view.addSubview(blurView)
+        view.bringSubviewToFront(floatingButton)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        view.bringSubviewToFront(floatingButton)
+//        let blurEffect = UIBlurEffect(style: .prominent)
+//        let blur2 = UIBlurEffect(style: .regular)
+//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
+//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+//        //let visualEffectView = UIVisualEffectView(effect: vibrancyEffect)
+//        visualEffectView.frame = view.frame
+//        blurView.addSubview(visualEffectView)
         
     }
     
@@ -105,7 +112,7 @@ final class HomeViewController: UIViewController {
         self.view.addSubview(momentListView)
         self.view.addSubview(floatingButton)
         
-        view.addSubview(floatingButton)
+        //self.view.addSubview(floatingButton)
         view.addSubview(blurView)
         view.bringSubviewToFront(floatingButton)
         
@@ -143,6 +150,7 @@ extension HomeViewController: UISheetPresentationControllerDelegate {
     func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
         if sheetPresentationController.selectedDetentIdentifier == nil {
             print("detent identifier is nil")
+            
         } else if sheetPresentationController.selectedDetentIdentifier == .medium {
             
             dismiss(animated: true)

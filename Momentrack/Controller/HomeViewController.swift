@@ -54,6 +54,7 @@ final class HomeViewController: UIViewController {
     private let floatingButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "floating_90"), for: .normal)
+        button.addTarget(self, action: #selector(touchUpBottomSheet), for: .touchUpInside)
         return button
     }()
     
@@ -74,20 +75,27 @@ final class HomeViewController: UIViewController {
         
     }
     
-    @objc func touchUpBottomSheet(_ sender: UIButton) {
+    @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()
-        vc.isModalInPresentation = true
-        if let sheet = vc.presentationController as? UISheetPresentationController {
-            sheet.preferredCornerRadius = 20
-            vc.sheetPresentationController?.detents = [
-                .custom(resolver: { context in
-                    0.5 * context.maximumDetentValue
-                })
-            ]
-        }
+        vc.isModalInPresentation = false
         
-        vc.sheetPresentationController?.largestUndimmedDetentIdentifier = .medium
-        vc.sheetPresentationController?.prefersGrabberVisible = true
+        if let sheet = vc.presentationController as? UISheetPresentationController {
+            sheet.delegate = self
+            sheet.detents = [
+                .custom { context in
+                    return context.maximumDetentValue * 0.90
+                }
+                //.medium()
+            ]
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+     
+        
+        present(vc, animated: true)
     }
     
     private func setupView() {
@@ -96,6 +104,7 @@ final class HomeViewController: UIViewController {
         self.view.addSubview(todayDateView)
         self.view.addSubview(momentListView)
         self.view.addSubview(floatingButton)
+        
         view.addSubview(floatingButton)
         view.addSubview(blurView)
         view.bringSubviewToFront(floatingButton)
@@ -127,6 +136,17 @@ final class HomeViewController: UIViewController {
             $0.top.equalToSuperview().inset(800)
         }
         
+    }
+}
+
+extension HomeViewController: UISheetPresentationControllerDelegate {
+    func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
+        if sheetPresentationController.selectedDetentIdentifier == nil {
+            print("detent identifier is nil")
+        } else if sheetPresentationController.selectedDetentIdentifier == .medium {
+            
+            dismiss(animated: true)
+        }
     }
 }
 

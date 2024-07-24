@@ -7,11 +7,15 @@
 
 import UIKit
 
-class PostingMomentViewController: UICollectionViewController {
+class PostingMomentViewController: UIViewController {
     private let postingMomentView = PostingMomentView()
     
+    override func loadView() {
+        view = postingMomentView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
     }
 
 }

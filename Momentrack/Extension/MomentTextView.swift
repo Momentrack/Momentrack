@@ -9,12 +9,12 @@ import UIKit
 
 final class MomentTextView: UITextView {
     private enum TextViewConst {
-        static let backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        static let backgroundColor = UIColor.systemGray5.withAlphaComponent(0.5)
         static let cornerRadius = 10.0
         static let containerInset = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
         static let placeholderColor = UIColor.systemGray4
-        static let placeholderFont = UIFont(name: "GmarketSansTTFMedium", size: 16.0)
-        static let mainTextFont = UIFont(name: "GmarketSansTTFLight", size: 16.0)
+        static let placeholderFont = UIFont.systemFont(ofSize: 12, weight: .regular)
+        static let mainTextFont = UIFont.systemFont(ofSize: 16, weight: .medium)
         static let lineHeight: CGFloat = 24.0
     }
     
@@ -80,25 +80,14 @@ private extension MomentTextView {
         
         
         let mainTextAttributes: [NSAttributedString.Key: Any] = {
-            if let mainFont = TextViewConst.mainTextFont {
-                let style = NSMutableParagraphStyle()
-                style.lineSpacing = TextViewConst.lineHeight - mainFont.lineHeight
-                
-                return [
-                    .font: mainFont,
-                    .paragraphStyle: style
-                ]
-            } else {
-                // 대체할 폰트를 지정하거나 기본 폰트를 사용할 수 있습니다.
-                return [
-                    .font: UIFont.systemFont(ofSize: 14, weight: .regular),
-                    .paragraphStyle: {
-                        let style = NSMutableParagraphStyle()
-                        style.lineSpacing = TextViewConst.lineHeight - UIFont.systemFont(ofSize: 16.0).lineHeight
-                        return style
-                    }()
-                ]
-            }
+            let mainFont = TextViewConst.mainTextFont
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = TextViewConst.lineHeight - mainFont.lineHeight
+            
+            return [
+                .font: mainFont,
+                .paragraphStyle: style
+            ]
         }()
         self.typingAttributes = mainTextAttributes
         self.attributedText = NSAttributedString(string: self.text, attributes: mainTextAttributes)

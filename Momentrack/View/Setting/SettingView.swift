@@ -97,6 +97,15 @@ final class SettingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(email: String, nickname: String) {
+        self.emailLabel.text = email
+        self.nicknameLabel.text = nickname
+    }
+    
+    func getNickname() -> String {
+        return self.nicknameLabel.text ?? ""
+    }
+    
     private func setupView() {
         addSubview(profileView)
         profileView.addSubview(profileImageView)

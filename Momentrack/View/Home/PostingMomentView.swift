@@ -116,9 +116,9 @@ class PostingMomentView: UIView {
     }
     
     private func setupView() {
+        self.addSubview(currentLocationStack)
         self.addSubview(withFriendLabel)
         self.addSubview(withFriends)
-        self.addSubview(currentLocationStack)
         self.addSubview(photoLabel)
         self.addSubview(uploadPhoto)
         uploadPhoto.addSubview(cameraButton)
@@ -129,9 +129,18 @@ class PostingMomentView: UIView {
         
         self.addSubview(saveButton)
         
-        withFriendLabel.snp.makeConstraints {
+        currentLocationStack.snp.makeConstraints {
             $0.top.equalToSuperview().inset(33)
+            $0.left.right.equalToSuperview().inset(16)
+            //$0.top.equalTo(withFriends.snp.bottom).offset(19)
+            //$0.left.right.equalToSuperview().inset(16)
+        }
+        
+        withFriendLabel.snp.makeConstraints {
+            $0.top.equalTo(currentLocationStack.snp.bottom).offset(24)
             $0.left.equalToSuperview().inset(16)
+            //$0.top.equalToSuperview().inset(33)
+            //$0.left.equalToSuperview().inset(16)
         }
         
         withFriends.snp.makeConstraints {
@@ -140,14 +149,9 @@ class PostingMomentView: UIView {
             $0.height.equalTo(50)
         }
         
-        currentLocationStack.snp.makeConstraints {
-            $0.top.equalTo(withFriends.snp.bottom).offset(19)
-            $0.left.right.equalToSuperview().inset(16)
-        }
-        
         photoLabel.snp.makeConstraints {
-            $0.top.equalTo(currentLocationStack.snp.bottom).offset(30)
-            $0.left.equalTo(currentLocationStack.snp.left)
+            $0.top.equalTo(withFriends.snp.bottom).offset(30)
+            $0.left.equalTo(withFriendLabel.snp.left)
         }
         
         uploadPhoto.snp.makeConstraints {

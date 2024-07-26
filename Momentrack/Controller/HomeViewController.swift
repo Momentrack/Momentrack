@@ -84,17 +84,7 @@ final class HomeViewController: UIViewController {
     
     @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()
-//        let vc = PostingMomentViewController(
-//            moment: Moment(
-//                location: "",
-//                photoUrl: "",
-//                memo: "",
-//                sharedFriends: [],
-//                createdAt: Date().ISO8601Format()
-//            ),
-//            imageUrl: "", 
-//            onChange: { _ in}
-//        )
+
         vc.isModalInPresentation = false
         
         if let sheet = vc.presentationController as? UISheetPresentationController {

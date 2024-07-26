@@ -190,7 +190,7 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
+        
 		1A1062162C50EA6D004D0396 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,17 +200,6 @@
 			name = Model;
 			path = Momentrack/Model;
 			sourceTree = SOURCE_ROOT;
-=======
-		1A69A71B2C53E50500294D6D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				10F7DD642C4F388600C69573 /* User.swift */,
-				10F7DD662C4F389100C69573 /* Moment.swift */,
-			);
-			name = Model;
-			path = Applications/Model;
-			sourceTree = "<group>";
->>>>>>> develop
 		};
 		1AB0750F2C3FC46100199164 = {
 			isa = PBXGroup;
@@ -233,11 +222,9 @@
 			children = (
 				1A1061E72C483B79004D0396 /* Momentrack.entitlements */,
 				1AB075302C3FC4C000199164 /* Applications */,
-<<<<<<< HEAD
+
 				1A1062162C50EA6D004D0396 /* Model */,
-=======
-				1A69A71B2C53E50500294D6D /* Model */,
->>>>>>> develop
+
 				1AB075322C3FC70600199164 /* Controller */,
 				1AB075332C3FC74200199164 /* View */,
 				10F7DCDE2C4557CE00C69573 /* Extension */,
@@ -609,10 +596,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
-<<<<<<< HEAD
-=======
+
 				CODE_SIGN_IDENTITY = "Apple Development";
->>>>>>> develop
+
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -654,10 +640,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
-<<<<<<< HEAD
-=======
+
 				CODE_SIGN_IDENTITY = "Apple Development";
->>>>>>> develop
+
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

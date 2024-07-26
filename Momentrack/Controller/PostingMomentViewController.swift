@@ -82,20 +82,6 @@ extension PostingMomentViewController: PHPickerViewControllerDelegate {
                 self.postingMomentView.cameraButton.isHidden = true
             }
         }
-//        if let itemprovider = results.first?.itemProvider{
-//
-//            if itemprovider.canLoadObject(ofClass: UIImage.self){
-//
-//                itemprovider.loadObject(ofClass: UIImage.self) { image , error  in
-//                    if let selectedImage = image as? UIImage{
-//                        DispatchQueue.main.async {
-//                            self.postingMomentView.uploadPhoto.image = selectedImage
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
     }
     
    

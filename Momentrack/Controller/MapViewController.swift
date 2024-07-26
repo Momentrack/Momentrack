@@ -125,7 +125,7 @@ final class MapViewController: UIViewController {
        
        let alertController = UIAlertController(
            title: "위치 권한 비활성화",
-           message: "정확한 위치 정보를 등록하기 위해 정확한 위치를 켜야합니다. 설정으로 이동하시겠습니까?",
+           message: "위치 정보를 등록하기 위해 일시적인 위치 허용설정을 켜야합니다. 설정으로 이동하시겠습니까?",
            preferredStyle: .alert
        )
        
@@ -165,7 +165,18 @@ final class MapViewController: UIViewController {
 extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkAccuracyAuthorization()
+        switch manager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            checkAccuracyAuthorization()
+        case .denied, .restricted:
+            DispatchQueue.main.async {
+                self.showLocationServicesDisabledAlert()
+            }
+        case .notDetermined:
+            break
+        @unknown default:
+            break
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

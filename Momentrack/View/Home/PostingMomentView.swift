@@ -68,7 +68,7 @@ class PostingMomentView: UIView {
         let photo = UIImageView()
         photo.backgroundColor = .systemGray5
         photo.contentMode = .scaleAspectFill
-        
+        photo.clipsToBounds = true
         return photo
     }()
     

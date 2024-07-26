@@ -50,8 +50,9 @@ class PostingMomentView: UIView {
     lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        //label.text = "테스트 주소입니다."
         label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = UIColor.blue
         return label
     }()
     
@@ -117,6 +118,7 @@ class PostingMomentView: UIView {
     
     private func setupView() {
         self.addSubview(currentLocationStack)
+        self.addSubview(addressLabel)
         self.addSubview(withFriendLabel)
         self.addSubview(withFriends)
         self.addSubview(photoLabel)
@@ -136,11 +138,14 @@ class PostingMomentView: UIView {
             //$0.left.right.equalToSuperview().inset(16)
         }
         
+        addressLabel.snp.makeConstraints {
+            $0.top.equalTo(currentLocationStack.snp.top).offset(32)
+            $0.left.equalTo(currentLocationLabel.snp.left)
+        }
+        
         withFriendLabel.snp.makeConstraints {
             $0.top.equalTo(currentLocationStack.snp.bottom).offset(24)
             $0.left.equalToSuperview().inset(16)
-            //$0.top.equalToSuperview().inset(33)
-            //$0.left.equalToSuperview().inset(16)
         }
         
         withFriends.snp.makeConstraints {

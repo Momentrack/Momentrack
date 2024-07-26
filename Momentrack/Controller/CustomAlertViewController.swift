@@ -8,13 +8,18 @@
 import UIKit
 
 protocol CustomAlertDelegate {
-    func action()
+    func action(alertType: AlertType, data: String)
     func exit()
 }
 
 enum CustomAlertType {
     case onlyDone
     case doneAndCancel
+}
+
+enum AlertType {
+    case renickname
+    case addfriend
 }
 
 final class CustomAlertViewController: UIViewController {
@@ -40,7 +45,7 @@ final class CustomAlertViewController: UIViewController {
         return label
     }()
     
-    lazy var nickNameTextField: UITextField = {
+    lazy var customTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = textFieldPlaceholder
         textField.borderStyle = .line
@@ -95,14 +100,16 @@ final class CustomAlertViewController: UIViewController {
     private var mainTitle: String
     private var textFieldPlaceholder: String
     private var customAlertType: CustomAlertType
+    private var alertType: AlertType
     private var height: Int
     
     var delegate: CustomAlertDelegate?
     
-    init(mainTitle: String, textFieldPlaceholder: String, customAlertType: CustomAlertType, alertHeight: Int) {
+    init(mainTitle: String, textFieldPlaceholder: String, customAlertType: CustomAlertType, alertType: AlertType,alertHeight: Int) {
         self.mainTitle = mainTitle
         self.textFieldPlaceholder = textFieldPlaceholder
         self.customAlertType = customAlertType
+        self.alertType = alertType
         self.height = alertHeight
         super.init(nibName: nil, bundle: nil)
     }
@@ -131,7 +138,7 @@ final class CustomAlertViewController: UIViewController {
         self.view.addSubview(backgroudView)
         backgroudView.addSubview(mainView)
         mainView.addSubview(titleLabel)
-        mainView.addSubview(nickNameTextField)
+        mainView.addSubview(customTextField)
         mainView.addSubview(buttonStackView)
         
         backgroudView.snp.makeConstraints { make in
@@ -146,7 +153,7 @@ final class CustomAlertViewController: UIViewController {
             make.top.equalToSuperview().inset(44)
             make.centerX.equalToSuperview()
         }
-        nickNameTextField.snp.makeConstraints { make in
+        customTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.right.equalToSuperview().inset(24)
             make.height.equalTo(48)
@@ -167,7 +174,8 @@ final class CustomAlertViewController: UIViewController {
     
     @objc func actionButtonTapped() {
         self.dismiss(animated: true) {
-            self.delegate?.action()
+            let data = self.customTextField.text!
+            self.delegate?.action(alertType: self.alertType, data: data)
         }
     }
 }

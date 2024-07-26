@@ -35,6 +35,9 @@
 		10F7DD562C4E1F6000C69573 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD552C4E1F6000C69573 /* SettingView.swift */; };
 		10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD582C4E287700C69573 /* TitleButtonCell.swift */; };
 		10F7DD612C4E408600C69573 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */; };
+		10F7DD632C4F387500C69573 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD622C4F387500C69573 /* Network.swift */; };
+		10F7DD652C4F388600C69573 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD642C4F388600C69573 /* User.swift */; };
+		10F7DD672C4F389100C69573 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD662C4F389100C69573 /* Moment.swift */; };
 		1A1061CD2C47F519004D0396 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061CC2C47F519004D0396 /* FirebaseAppCheck */; };
 		1A1061CF2C47F519004D0396 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061CE2C47F519004D0396 /* FirebaseAppDistribution-Beta */; };
 		1A1061D12C47F519004D0396 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061D02C47F519004D0396 /* FirebaseCrashlytics */; };
@@ -83,6 +86,9 @@
 		10F7DD552C4E1F6000C69573 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		10F7DD582C4E287700C69573 /* TitleButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleButtonCell.swift; sourceTree = "<group>"; };
 		10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		10F7DD622C4F387500C69573 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		10F7DD642C4F388600C69573 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Momentrack/Applications/Model/User.swift; sourceTree = SOURCE_ROOT; };
+		10F7DD662C4F389100C69573 /* Moment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Moment.swift; path = Momentrack/Applications/Model/Moment.swift; sourceTree = SOURCE_ROOT; };
 		1A1061E72C483B79004D0396 /* Momentrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Momentrack.entitlements; sourceTree = "<group>"; };
 		1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentView.swift; sourceTree = "<group>"; };
 		1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */,
 				1A10620F2C50CE4C004D0396 /* MomentTextView.swift */,
 				1A1062092C4E4703004D0396 /* UIButton.swift */,
+				10F7DD622C4F387500C69573 /* Network.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		1A1062162C50EA6D004D0396 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +200,17 @@
 			name = Model;
 			path = Momentrack/Model;
 			sourceTree = SOURCE_ROOT;
+=======
+		1A69A71B2C53E50500294D6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10F7DD642C4F388600C69573 /* User.swift */,
+				10F7DD662C4F389100C69573 /* Moment.swift */,
+			);
+			name = Model;
+			path = Applications/Model;
+			sourceTree = "<group>";
+>>>>>>> develop
 		};
 		1AB0750F2C3FC46100199164 = {
 			isa = PBXGroup;
@@ -214,7 +233,11 @@
 			children = (
 				1A1061E72C483B79004D0396 /* Momentrack.entitlements */,
 				1AB075302C3FC4C000199164 /* Applications */,
+<<<<<<< HEAD
 				1A1062162C50EA6D004D0396 /* Model */,
+=======
+				1A69A71B2C53E50500294D6D /* Model */,
+>>>>>>> develop
 				1AB075322C3FC70600199164 /* Controller */,
 				1AB075332C3FC74200199164 /* View */,
 				10F7DCDE2C4557CE00C69573 /* Extension */,
@@ -432,13 +455,16 @@
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
+				10F7DD672C4F389100C69573 /* Moment.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1A10621F2C50EB34004D0396 /* Moment.swift in Sources */,
 				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
+				10F7DD652C4F388600C69573 /* User.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,
 				1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */,
 				1A10620A2C4E4703004D0396 /* UIButton.swift in Sources */,
+				10F7DD632C4F387500C69573 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +609,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
+<<<<<<< HEAD
+=======
+				CODE_SIGN_IDENTITY = "Apple Development";
+>>>>>>> develop
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -624,6 +654,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Momentrack/Momentrack.entitlements;
+<<<<<<< HEAD
+=======
+				CODE_SIGN_IDENTITY = "Apple Development";
+>>>>>>> develop
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

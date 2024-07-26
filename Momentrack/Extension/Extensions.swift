@@ -47,3 +47,15 @@ extension UITextField {
         self.rightViewMode = ViewMode.always
     }
 }
+
+extension Date {
+    static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+    
+    var stringFormat: String {
+        return Date.dateFormatter.string(from: self)
+    }
+}

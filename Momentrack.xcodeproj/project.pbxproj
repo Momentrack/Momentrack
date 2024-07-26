@@ -53,7 +53,6 @@
 		1A1062072C4E2701004D0396 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1062062C4E2701004D0396 /* SnapKit */; };
 		1A10620A2C4E4703004D0396 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1062092C4E4703004D0396 /* UIButton.swift */; };
 		1A1062102C50CE4C004D0396 /* MomentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10620F2C50CE4C004D0396 /* MomentTextView.swift */; };
-		1A1062172C50EA6D004D0396 /* MomentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1062152C50EA6D004D0396 /* MomentInfo.swift */; };
 		1A10621D2C50EB29004D0396 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621C2C50EB29004D0396 /* User.swift */; };
 		1A10621F2C50EB34004D0396 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621E2C50EB34004D0396 /* Moment.swift */; };
 		1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A151AAB2C5272E7008ACFDA /* MapViewController.swift */; };
@@ -90,7 +89,6 @@
 		1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentViewController.swift; sourceTree = "<group>"; };
 		1A1062092C4E4703004D0396 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		1A10620F2C50CE4C004D0396 /* MomentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentTextView.swift; sourceTree = "<group>"; };
-		1A1062152C50EA6D004D0396 /* MomentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentInfo.swift; sourceTree = "<group>"; };
 		1A10621C2C50EB29004D0396 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1A10621E2C50EB34004D0396 /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 		1A151AAB2C5272E7008ACFDA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 		1A1062162C50EA6D004D0396 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1A1062152C50EA6D004D0396 /* MomentInfo.swift */,
 				1A10621C2C50EB29004D0396 /* User.swift */,
 				1A10621E2C50EB34004D0396 /* Moment.swift */,
 			);
@@ -433,7 +430,6 @@
 				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
 				10F7DD562C4E1F6000C69573 /* SettingView.swift in Sources */,
 				10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */,
-				1A1062172C50EA6D004D0396 /* MomentInfo.swift in Sources */,
 				1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */,
 				10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */,
 				10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */,

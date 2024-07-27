@@ -29,6 +29,16 @@ class PostingMomentView: UIView {
         return stackView
     }()
     
+    lazy var shareLocationBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 24, weight: .regular, scale: .default), forImageIn: .normal)
+        button.tintColor = .orange
+        
+        return button
+    }()
+    
     lazy var currentLocationLabel: UILabel = {
         let label = UILabel()
         label.text = "현재 위치"
@@ -118,6 +128,7 @@ class PostingMomentView: UIView {
     
     private func setupView() {
         self.addSubview(currentLocationStack)
+        self.addSubview(shareLocationBtn)
         self.addSubview(addressLabel)
         self.addSubview(withFriendLabel)
         self.addSubview(withFriends)
@@ -136,6 +147,11 @@ class PostingMomentView: UIView {
             $0.left.right.equalToSuperview().inset(16)
             //$0.top.equalTo(withFriends.snp.bottom).offset(19)
             //$0.left.right.equalToSuperview().inset(16)
+        }
+        
+        shareLocationBtn.snp.makeConstraints {
+            $0.top.equalTo(currentLocationStack.snp.bottom).offset(8)
+            $0.right.equalTo(currentLocationBtn)
         }
         
         addressLabel.snp.makeConstraints {

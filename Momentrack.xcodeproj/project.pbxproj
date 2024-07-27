@@ -57,6 +57,7 @@
 		1A10621D2C50EB29004D0396 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621C2C50EB29004D0396 /* User.swift */; };
 		1A10621F2C50EB34004D0396 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621E2C50EB34004D0396 /* Moment.swift */; };
 		1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A151AAB2C5272E7008ACFDA /* MapViewController.swift */; };
+		1A69A7212C556F0900294D6D /* SharingLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7202C556F0900294D6D /* SharingLocationService.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		1A10621C2C50EB29004D0396 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1A10621E2C50EB34004D0396 /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 		1A151AAB2C5272E7008ACFDA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1A69A7202C556F0900294D6D /* SharingLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingLocationService.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				1A10620F2C50CE4C004D0396 /* MomentTextView.swift */,
 				1A1062092C4E4703004D0396 /* UIButton.swift */,
 				10F7DD622C4F387500C69573 /* Network.swift */,
+				1A69A7202C556F0900294D6D /* SharingLocationService.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1A10621F2C50EB34004D0396 /* Moment.swift in Sources */,
+				1A69A7212C556F0900294D6D /* SharingLocationService.swift in Sources */,
 				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,

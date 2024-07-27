@@ -10,7 +10,8 @@ import PhotosUI
 
 class PostingMomentViewController: UIViewController {
     private let postingMomentView = PostingMomentView()
-  
+    private let sharingLocationService = SharingLocationService()
+    
     override func loadView() {
         view = postingMomentView
     }
@@ -33,6 +34,7 @@ class PostingMomentViewController: UIViewController {
     func setTargetActions() {
         postingMomentView.cameraButton.addTarget(self, action: #selector(addImageButtonTapped), for: .touchUpInside)
         postingMomentView.currentLocationBtn.addTarget(self, action: #selector(pinnedCurrentLocation), for: .touchUpInside)
+        postingMomentView.shareLocationBtn.addTarget(self, action: #selector(shareLocationButtonTapped), for: .touchUpInside)
     }
     
     @objc func pinnedCurrentLocation(_ sender: UIButton) {
@@ -59,6 +61,11 @@ class PostingMomentViewController: UIViewController {
         
         pickerViewController.delegate = self
         present(pickerViewController, animated: true)
+    }
+    
+    @objc func shareLocationButtonTapped() {
+        guard let address = postingMomentView.addressLabel.text else { return }
+        sharingLocationService.shareLocation(address: address, presenter: self, sourceView: postingMomentView.shareLocationBtn)
     }
     
     @objc func handleImageTap() {

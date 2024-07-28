@@ -62,11 +62,11 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "Share", handler: { action, view, completionHaldler in
+        let shareAction = UIContextualAction(style: .normal, title: "Share", handler: { action, view, completionHaldler in
             completionHaldler(true)
         })
-        deleteAction.image = UIImage(systemName: "balloon")
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        shareAction.image = UIImage(systemName: "balloon")
+        return UISwipeActionsConfiguration(actions: [shareAction])
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

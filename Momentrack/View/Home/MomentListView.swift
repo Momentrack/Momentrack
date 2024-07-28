@@ -62,11 +62,25 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "Share", handler: { action, view, completionHaldler in
-            completionHaldler(true)
-        })
-        deleteAction.image = UIImage(systemName: "balloon")
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        let shareAction = UIContextualAction(style: .normal, title: "공유") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            
+            if let cellImage = self.captureCell(at: indexPath) {
+                let activityViewController = UIActivityViewController(activityItems: [cellImage], applicationActivities: nil)
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let rootViewController = windowScene.windows.first?.rootViewController {
+                    rootViewController.present(activityViewController, animated: true, completion: nil)
+                }
+            }
+            
+            completionHandler(true)
+        }
+        
+        shareAction.image = UIImage(systemName: "balloon")
+        shareAction.backgroundColor = .systemBlue
+        
+        return UISwipeActionsConfiguration(actions: [shareAction])
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -82,5 +96,27 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
         config.performsFirstActionWithFullSwipe = false
         return config
+    }
+}
+
+
+extension MomentListView {
+    func captureCell(at indexPath: IndexPath) -> UIImage? {
+        guard let cell = momentTableView.cellForRow(at: indexPath) as? MomentCell else {
+            return nil
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(
+            cell.bounds.size,
+            false,
+            UIScreen.main.scale
+        )
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        cell.layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndPDFContext()
+       
+        return image
     }
 }

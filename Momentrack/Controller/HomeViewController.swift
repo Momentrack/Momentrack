@@ -34,7 +34,8 @@ final class HomeViewController: UIViewController {
         let settingsItem = UIBarButtonItem.generate(with: settingsConfig, width: 30)
         
         let calendarConfig = CustomBarItemConfiguration(image: UIImage(systemName: "calendar")) {
-            // TODO: calendarViewController
+            let calendarViewController = CalendarViewController()
+            self.navigationController?.pushViewController(calendarViewController, animated: false)
         }
         let calendarItem = UIBarButtonItem.generate(with: calendarConfig, width: 30)
         

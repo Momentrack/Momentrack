@@ -41,8 +41,6 @@
 		10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD582C4E287700C69573 /* TitleButtonCell.swift */; };
 		10F7DD612C4E408600C69573 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */; };
 		10F7DD632C4F387500C69573 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD622C4F387500C69573 /* Network.swift */; };
-		10F7DD652C4F388600C69573 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD642C4F388600C69573 /* User.swift */; };
-		10F7DD672C4F389100C69573 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DD662C4F389100C69573 /* Moment.swift */; };
 		1A1061CD2C47F519004D0396 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061CC2C47F519004D0396 /* FirebaseAppCheck */; };
 		1A1061CF2C47F519004D0396 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061CE2C47F519004D0396 /* FirebaseAppDistribution-Beta */; };
 		1A1061D12C47F519004D0396 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061D02C47F519004D0396 /* FirebaseCrashlytics */; };
@@ -56,8 +54,14 @@
 		1A1061E12C47F519004D0396 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E02C47F519004D0396 /* FirebaseRemoteConfigSwift */; };
 		1A1061E32C47F519004D0396 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E22C47F519004D0396 /* FirebaseVertexAI-Preview */; };
 		1A1061E62C47F68F004D0396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E52C47F68F004D0396 /* FSCalendar */; };
+		1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */; };
+		1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */; };
 		1A1062072C4E2701004D0396 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1062062C4E2701004D0396 /* SnapKit */; };
 		1A10620A2C4E4703004D0396 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1062092C4E4703004D0396 /* UIButton.swift */; };
+		1A1062102C50CE4C004D0396 /* MomentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10620F2C50CE4C004D0396 /* MomentTextView.swift */; };
+		1A10621D2C50EB29004D0396 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621C2C50EB29004D0396 /* User.swift */; };
+		1A10621F2C50EB34004D0396 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621E2C50EB34004D0396 /* Moment.swift */; };
+		1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A151AAB2C5272E7008ACFDA /* MapViewController.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -90,10 +94,14 @@
 		10F7DD582C4E287700C69573 /* TitleButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleButtonCell.swift; sourceTree = "<group>"; };
 		10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		10F7DD622C4F387500C69573 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		10F7DD642C4F388600C69573 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Momentrack/Extension/User.swift; sourceTree = SOURCE_ROOT; };
-		10F7DD662C4F389100C69573 /* Moment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Moment.swift; path = Momentrack/Extension/Moment.swift; sourceTree = SOURCE_ROOT; };
 		1A1061E72C483B79004D0396 /* Momentrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Momentrack.entitlements; sourceTree = "<group>"; };
+		1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentView.swift; sourceTree = "<group>"; };
+		1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingMomentViewController.swift; sourceTree = "<group>"; };
 		1A1062092C4E4703004D0396 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		1A10620F2C50CE4C004D0396 /* MomentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentTextView.swift; sourceTree = "<group>"; };
+		1A10621C2C50EB29004D0396 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1A10621E2C50EB34004D0396 /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		1A151AAB2C5272E7008ACFDA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +168,7 @@
 				10F7DCF02C479F8300C69573 /* Extensions.swift */,
 				10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */,
 				10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */,
+				1A10620F2C50CE4C004D0396 /* MomentTextView.swift */,
 				1A1062092C4E4703004D0396 /* UIButton.swift */,
 				10F7DD622C4F387500C69573 /* Network.swift */,
 			);
@@ -193,14 +202,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		1A1062082C4E44C6004D0396 /* Model */ = {
+		1A1062162C50EA6D004D0396 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				10F7DD642C4F388600C69573 /* User.swift */,
-				10F7DD662C4F389100C69573 /* Moment.swift */,
+				1A10621C2C50EB29004D0396 /* User.swift */,
+				1A10621E2C50EB34004D0396 /* Moment.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
+			name = Model;
+			path = Momentrack/Model;
+			sourceTree = SOURCE_ROOT;
 		};
 		1AB0750F2C3FC46100199164 = {
 			isa = PBXGroup;
@@ -223,7 +233,7 @@
 			children = (
 				1A1061E72C483B79004D0396 /* Momentrack.entitlements */,
 				1AB075302C3FC4C000199164 /* Applications */,
-				1A1062082C4E44C6004D0396 /* Model */,
+				1A1062162C50EA6D004D0396 /* Model */,
 				1AB075322C3FC70600199164 /* Controller */,
 				1AB075332C3FC74200199164 /* View */,
 				10F7DCDE2C4557CE00C69573 /* Extension */,
@@ -247,10 +257,12 @@
 			children = (
 				1AB075782C3FF10D00199164 /* LoginViewController.swift */,
 				1AB075372C3FC82100199164 /* HomeViewController.swift */,
+				1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */,
 				107309E02C522B7900E37ED1 /* CalendarViewController.swift */,
 				107309E22C522B8200E37ED1 /* DetailDayViewController.swift */,
 				10F7DD522C4E1F1200C69573 /* SettingViewController.swift */,
 				10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */,
+				1A151AAB2C5272E7008ACFDA /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +305,7 @@
 				10F7DCE12C455D7E00C69573 /* FriendListView.swift */,
 				10F7DCE62C456AA600C69573 /* MomentListView.swift */,
 				10F7DCEA2C4660E700C69573 /* TodayDateView.swift */,
+				1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -426,6 +439,8 @@
 				10F7DD612C4E408600C69573 /* CustomAlertViewController.swift in Sources */,
 				10F7DCED2C46649F00C69573 /* ImageCacheManager.swift in Sources */,
 				10F7DCE72C456AA600C69573 /* MomentListView.swift in Sources */,
+				1A10621D2C50EB29004D0396 /* User.swift in Sources */,
+				1A1062102C50CE4C004D0396 /* MomentTextView.swift in Sources */,
 				1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */,
 				10F7DD532C4E1F1200C69573 /* SettingViewController.swift in Sources */,
 				107309E12C522B7900E37ED1 /* CalendarViewController.swift in Sources */,
@@ -434,11 +449,13 @@
 				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
 				10F7DD562C4E1F6000C69573 /* SettingView.swift in Sources */,
 				10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */,
+				1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */,
 				10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */,
 				10F7DCF12C479F8300C69573 /* Extensions.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
+				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				10F7DD672C4F389100C69573 /* Moment.swift in Sources */,
 				107309E62C522B9F00E37ED1 /* DayCell.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
@@ -447,6 +464,7 @@
 				107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */,
 				10F7DD652C4F388600C69573 /* User.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,
+				1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */,
 				1A10620A2C4E4703004D0396 /* UIButton.swift in Sources */,
 				10F7DD632C4F387500C69573 /* Network.swift in Sources */,
 				107309E32C522B8200E37ED1 /* DetailDayViewController.swift in Sources */,
@@ -602,6 +620,11 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2P5FNS3JAJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Momentrack/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "모멘트랙에 여행사진을 등록하려면 카메라 접근 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "모멘트랙에 여행 위치를 기록하려면 사용자 위치 접근 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "모멘트랙에 여행사진을 등록하려면 사진 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -639,6 +662,11 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2P5FNS3JAJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Momentrack/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "모멘트랙에 여행사진을 등록하려면 카메라 접근 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "모멘트랙에 여행 위치를 기록하려면 사용자 위치 접근 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "모멘트랙에 여행사진을 등록하려면 사진 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

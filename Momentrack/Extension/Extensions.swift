@@ -58,4 +58,15 @@ extension Date {
     var stringFormat: String {
         return Date.dateFormatter.string(from: self)
     }
+    
+    static var todayDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        formatter.dateFormat = "yyyy년 M월 d일 E요일"
+        return formatter
+    }()
+    
+    var todayStringFormat: String {
+        return Date.todayDateFormatter.string(from: self)
+    }
 }

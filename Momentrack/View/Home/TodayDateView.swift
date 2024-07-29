@@ -17,7 +17,7 @@ final class TodayDateView: UIView {
     
     private var todayLabel: UILabel = {
         let label = UILabel()
-        label.text = "2024년 7월 16일 화요일" // Date()
+        label.text = Date().todayStringFormat
         label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .black
         return label

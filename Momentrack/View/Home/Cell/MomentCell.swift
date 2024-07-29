@@ -53,6 +53,7 @@ final class MomentCell: UITableViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.tintColor = .black
+        button.isHidden = true
         return button
     }()
     
@@ -104,8 +105,8 @@ final class MomentCell: UITableViewCell {
         return stackView
     }()
     
-    private let dotLine: UIView = {
-        let dotLine = UIView(frame: CGRect(x: .zero , y: .zero, width: 30, height: 30))
+    private lazy var dotLine: UIView = {
+        let dotLine = UIView(frame: CGRect(x: .zero , y: .zero, width: contentsView.bounds.width, height: 30))
         
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor.systemGray.cgColor

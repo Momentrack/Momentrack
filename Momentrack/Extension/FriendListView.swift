@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol AddFriendDelegate {
+    func action(indexPath: IndexPath)
+}
+
 final class FriendListView: UIView {
     
-    private let friendList: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+    lazy var friendList: [String] = []
+    var delegate: AddFriendDelegate?
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         return collectionView
     }()
@@ -35,6 +40,7 @@ final class FriendListView: UIView {
         }
         
         collectionView.register(FriendCell.self, forCellWithReuseIdentifier: FriendCell.identifier)
+        collectionView.register(AddFriendCell.self, forCellWithReuseIdentifier: AddFriendCell.identifier)
         collectionView.alwaysBounceVertical = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -56,13 +62,25 @@ final class FriendListView: UIView {
 
 extension FriendListView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friendList.count
+        return friendList.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendCell.identifier, for: indexPath) as! FriendCell
-        cell.configure(nickname: friendList[indexPath.item])
-        
-        return cell
+        if friendList.count == 0 || indexPath.item == friendList.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddFriendCell.identifier, for: indexPath) as! AddFriendCell
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendCell.identifier, for: indexPath) as! FriendCell
+            cell.configure(nickname: String(friendList[indexPath.item].first!))
+            
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if friendList.count == 0 || indexPath.item == friendList.count {
+            delegate?.action(indexPath: indexPath)
+        }
     }
 }

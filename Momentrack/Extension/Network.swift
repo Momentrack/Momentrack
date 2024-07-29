@@ -197,7 +197,7 @@ final class Network {
     }
     
     // 친구 추가
-    func addFriend(email: String) {
+    func addFriend(email: String, completion: @escaping (Result<String, Error>) -> Void) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
         self.ref.child("users").child(userID).child("userInfo").child("friends").observeSingleEvent(of: .value) { snapshot in
             var count = "0"
@@ -207,6 +207,7 @@ final class Network {
             var newFriend = [String: String]()
             newFriend[count] = email
             self.ref.child("users").child(userID).child("userInfo").child("friends").updateChildValues(newFriend)
+            completion(.success("친구 추가 성공"))
         }
     }
     

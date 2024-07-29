@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
         setupNavigationBar()
         setupView()
         setupBlurEffect()
+        getUserInfo()
     }
     
     private func setupNavigationBar() {
@@ -155,6 +156,14 @@ final class HomeViewController: UIViewController {
             $0.top.equalToSuperview().inset(800)
         }
         
+        friendListView.delegate = self
+    }
+    
+    private func getUserInfo() {
+        Network.shared.getUserInfo { user in
+            self.friendListView.friendList = user.friends
+            self.friendListView.collectionView.reloadData()
+        }
     }
 }
 
@@ -167,6 +176,42 @@ extension HomeViewController: UISheetPresentationControllerDelegate {
             
             dismiss(animated: true)
         }
+    }
+}
+
+extension HomeViewController: AddFriendDelegate {
+    func action(indexPath: IndexPath) {
+        let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertHeight: 244)
+        viewController.delegate = self
+        viewController.customTextField.becomeFirstResponder()
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .overFullScreen
+        self.present(viewController, animated: true)
+    }
+}
+
+extension HomeViewController: CustomAlertDelegate {
+    func action(data: String) {
+        // NOTE: email로 존재하는 사용자인지 확인
+        Network.shared.getUsersEmail { usersEmail in
+            if usersEmail.contains(data) {
+                Network.shared.addFriend(email: data) { result in
+                    switch result {
+                    case .success(_):
+                        self.getUserInfo()
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                
+            } else {
+                // 존재하지 않는 사용자입니다.
+            }
+        }
+    }
+    
+    func exit() {
+        
     }
 }
 

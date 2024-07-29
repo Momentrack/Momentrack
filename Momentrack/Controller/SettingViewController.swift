@@ -45,7 +45,7 @@ final class SettingViewController: UIViewController {
     }
     
     @objc private func changeNicknameButtonTapped(_ sender: UIButton) {
-        let viewController = CustomAlertViewController(mainTitle: "닉네임 수정하기", textFieldPlaceholder: self.settingView.getNickname(), customAlertType: .doneAndCancel, alertType: .renickname, alertHeight: 244)
+        let viewController = CustomAlertViewController(mainTitle: "닉네임 수정하기", textFieldPlaceholder: self.settingView.getNickname(), customAlertType: .doneAndCancel, alertHeight: 244)
         viewController.delegate = self
         viewController.customTextField.becomeFirstResponder()
         viewController.modalTransitionStyle = .crossDissolve
@@ -61,21 +61,9 @@ final class SettingViewController: UIViewController {
 }
 
 extension SettingViewController: CustomAlertDelegate {
-    func action(alertType: AlertType, data: String) {
-        switch alertType {
-        case .renickname:
-            Network.shared.updateNickname(nickname: data)
-            getUserInfo()
-        case .addfriend:
-            // NOTE: email로 존재하는 사용자인지 확인 
-            Network.shared.getUsersEmail { usersEmail in
-                if usersEmail.contains(data) {
-                    Network.shared.addFriend(email: data)
-                } else {
-                    // 존재하지 않는 사용자입니다.
-                }
-            }
-        }
+    func action(data: String) {
+        Network.shared.updateNickname(nickname: data)
+        getUserInfo()
     }
     
     func exit() {
@@ -87,15 +75,8 @@ extension SettingViewController: SettingDelegate {
     func action(indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertType: .addfriend, alertHeight: 244)
-            viewController.delegate = self
-            viewController.customTextField.becomeFirstResponder()
-            viewController.modalTransitionStyle = .crossDissolve
-            viewController.modalPresentationStyle = .overFullScreen
-            self.present(viewController, animated: true)
-        case 1:
             fatalError()
-        case 2:
+        case 1:
             fatalError()
         default:
             fatalError()

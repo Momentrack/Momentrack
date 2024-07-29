@@ -12,6 +12,7 @@
 		107309E62C522B9F00E37ED1 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E52C522B9E00E37ED1 /* DayCell.swift */; };
 		107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E72C522BB200E37ED1 /* CalendarView.swift */; };
 		107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */; };
+		107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */; };
 		10F7DCBC2C45318700C69573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBB2C45318700C69573 /* FirebaseAnalytics */; };
 		10F7DCBE2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBD2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion */; };
 		10F7DCC02C45318700C69573 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBF2C45318700C69573 /* FirebaseAnalyticsSwift */; };
@@ -79,6 +80,7 @@
 		107309E52C522B9E00E37ED1 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		107309E72C522BB200E37ED1 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
 		10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarItemConfiguration.swift; sourceTree = "<group>"; };
 		10F7DCE12C455D7E00C69573 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendListView.swift; path = Momentrack/Extension/FriendListView.swift; sourceTree = SOURCE_ROOT; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				10F7DCE42C455F1800C69573 /* FriendCell.swift */,
+				107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */,
 				10F7DCE82C456BC200C69573 /* MomentCell.swift */,
 				10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */,
 			);
@@ -455,6 +458,7 @@
 				1A69A7222C5691F600294D6D /* Network.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1A69A7232C5692DC00294D6D /* Moment.swift in Sources */,
+				107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,

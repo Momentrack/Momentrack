@@ -8,18 +8,13 @@
 import UIKit
 
 protocol CustomAlertDelegate {
-    func action(alertType: AlertType, data: String)
+    func action(data: String)
     func exit()
 }
 
 enum CustomAlertType {
     case onlyDone
     case doneAndCancel
-}
-
-enum AlertType {
-    case renickname
-    case addfriend
 }
 
 final class CustomAlertViewController: UIViewController {
@@ -100,16 +95,14 @@ final class CustomAlertViewController: UIViewController {
     private var mainTitle: String
     private var textFieldPlaceholder: String
     private var customAlertType: CustomAlertType
-    private var alertType: AlertType
     private var height: Int
     
     var delegate: CustomAlertDelegate?
     
-    init(mainTitle: String, textFieldPlaceholder: String, customAlertType: CustomAlertType, alertType: AlertType,alertHeight: Int) {
+    init(mainTitle: String, textFieldPlaceholder: String, customAlertType: CustomAlertType, alertHeight: Int) {
         self.mainTitle = mainTitle
         self.textFieldPlaceholder = textFieldPlaceholder
         self.customAlertType = customAlertType
-        self.alertType = alertType
         self.height = alertHeight
         super.init(nibName: nil, bundle: nil)
     }
@@ -175,7 +168,7 @@ final class CustomAlertViewController: UIViewController {
     @objc func actionButtonTapped() {
         self.dismiss(animated: true) {
             let data = self.customTextField.text!
-            self.delegate?.action(alertType: self.alertType, data: data)
+            self.delegate?.action(data: data)
         }
     }
 }

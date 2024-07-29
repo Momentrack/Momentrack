@@ -109,10 +109,14 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let shareAction = UIContextualAction(style: .normal, title: "Share", handler: { action, view, completionHaldler in
-            completionHaldler(true)
-        })
+        let shareAction = UIContextualAction(style: .normal, title: "공유") { [weak self] (action, view, completionHandler) in
+            self?.showShareActionSheet(for: indexPath)
+            completionHandler(true)
+        }
+        
         shareAction.image = UIImage(systemName: "balloon")
+        shareAction.backgroundColor = .systemBlue
+        
         return UISwipeActionsConfiguration(actions: [shareAction])
     }
     

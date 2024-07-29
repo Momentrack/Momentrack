@@ -12,6 +12,9 @@ final class MomentCell: UITableViewCell {
     static let identifier: String = "MomentCell"
     
     private let friendList: [String] = ["A", "B", "C", "D", "E", "F"]
+    // TODO: - 데이터 연동 주소 값 가지고 오기(임시 위도 경도 값 삭제 예정)
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     
     private let cellView: UIView = {
         let view = UIView()
@@ -41,7 +44,7 @@ final class MomentCell: UITableViewCell {
         return view
     }()
     
-    private var locationLabel: UILabel = {
+    var locationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
         label.textColor = .systemGray
@@ -142,7 +145,10 @@ final class MomentCell: UITableViewCell {
     
     func configure(time: String, location: String, imageUrl: String, content: String) {
         timeLabel.text = "12:39"
-        locationLabel.text = "경기 부천시 원미구 상동로117번길 57"
+        // TODO: - DB 연동 모델 값으로 대체하기 (임시 주소라 삭제 예정)
+        locationLabel.text = "Apple Park, Cupertino, CA"
+        latitude = 37.334900
+        longitude = -122.009020
         photoImageView.setImageURL("https://t4.ftcdn.net/jpg/05/49/86/39/360_F_549863991_6yPKI08MG7JiZX83tMHlhDtd6XLFAMce.jpg")
         contentLabel.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer "
     }

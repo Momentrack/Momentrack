@@ -84,17 +84,7 @@ final class HomeViewController: UIViewController {
     
     @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()
-//        let vc = PostingMomentViewController(
-//            moment: Moment(
-//                location: "",
-//                photoUrl: "",
-//                memo: "",
-//                sharedFriends: [],
-//                createdAt: Date().ISO8601Format()
-//            ),
-//            imageUrl: "", 
-//            onChange: { _ in}
-//        )
+
         vc.isModalInPresentation = false
         
         if let sheet = vc.presentationController as? UISheetPresentationController {
@@ -123,7 +113,6 @@ final class HomeViewController: UIViewController {
         self.view.addSubview(momentListView)
         self.view.addSubview(floatingButton)
         
-        //self.view.addSubview(floatingButton)
         view.addSubview(blurView)
         view.bringSubviewToFront(floatingButton)
         

@@ -39,10 +39,10 @@ final class MapViewController: UIViewController {
         var titleContainer = AttributeContainer()
         titleContainer.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         configuration.attributedTitle = AttributedString("확인", attributes: titleContainer)
-        configuration.baseForegroundColor = .black
-        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 8, bottom: 8, trailing: 8)
+        configuration.baseForegroundColor = .white
+        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 16, bottom: 8, trailing: 16)
         let button = UIButton(configuration: configuration)
-        button.backgroundColor = .systemGray5
+        button.backgroundColor = .black
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(downPopViewButton), for: .touchUpInside)

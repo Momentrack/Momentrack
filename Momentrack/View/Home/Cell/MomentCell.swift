@@ -15,6 +15,10 @@ final class MomentCell: UITableViewCell {
     let locationManger = CLLocationManager()
     
     private var friendList: [String] = []
+  
+    // TODO: - 데이터 연동 주소 값 가지고 오기(임시 위도 경도 값 삭제 예정)
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     
     private let cellView: UIView = {
         let view = UIView()
@@ -49,8 +53,8 @@ final class MomentCell: UITableViewCell {
         view.backgroundColor = .black
         return view
     }()
-    
-    private var locationLabel: UILabel = {
+
+    var locationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
         label.textColor = .systemGray
@@ -174,6 +178,10 @@ final class MomentCell: UITableViewCell {
             contentLabel.text = content
         }
         setAnnotation(latitudeValue: latitude, longitudeValue: longitude, delta: 0.0005, title: "", subtitle: "")
+
+        // TODO: - DB 연동 모델 값으로 대체하기 (임시 주소라 삭제 예정)
+        latitude = latitude // 37.334900
+        longitude = longitude // -122.009020
     }
     
     private func setupCell() {

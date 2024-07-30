@@ -250,8 +250,8 @@ final class Network {
     // Moment 삭제
     func deleteMomentData(momentId: String) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
-        self.ref.child("users").child(userID).child("moment").child(momentId).removeValue()
-        deleteImageAndData(storageName: momentId)
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(momentId).removeValue()
+//        deleteImageAndData(storageName: momentId)
     }
     
     // MARK: 이미지 업로드

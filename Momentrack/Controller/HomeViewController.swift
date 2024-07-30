@@ -21,8 +21,6 @@ final class HomeViewController: UIViewController {
         setupBlurEffect()
         getUserInfo()
         getMomentList()
-        
-//        Network.shared.createMoment(location: "서울", photoUrl: "", memo: "", sharedFriends: ["ㅎ"], latitude: 37.529622, longitude: 126.978459)
     }
     
     private func setupNavigationBar() {

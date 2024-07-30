@@ -71,7 +71,9 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "") { action, view, completionHaldler in
-//            self.momentList.remove(at: indexPath.row)
+            Network.shared.deleteMomentData(momentId: self.momentList[indexPath.row].id)
+            self.momentList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             completionHaldler(true)
         }
         

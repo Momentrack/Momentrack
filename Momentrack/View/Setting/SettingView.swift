@@ -13,7 +13,7 @@ protocol SettingDelegate {
 
 final class SettingView: UIView {
     
-    private let settingList: [String] = ["친구 추가", "로그아웃", "회원탈퇴"]
+    private let settingList: [String] = ["로그아웃", "회원탈퇴"]
     var delegate: SettingDelegate?
     
     private let profileView: UIView = {

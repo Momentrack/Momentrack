@@ -14,6 +14,7 @@ protocol AddFriendDelegate {
 final class FriendListView: UIView {
     
     lazy var friendList: [String] = []
+    var withAddFriendCell: Bool = true
     var delegate: AddFriendDelegate?
     
     lazy var collectionView: UICollectionView = {
@@ -21,8 +22,9 @@ final class FriendListView: UIView {
         return collectionView
     }()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, value: Bool) {
         super.init(frame: frame)
+        self.withAddFriendCell = value
         setupView()
     }
     
@@ -62,14 +64,25 @@ final class FriendListView: UIView {
 
 extension FriendListView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friendList.count + 1
+        if withAddFriendCell {
+            return friendList.count + 1
+        } else {
+            return friendList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if friendList.count == 0 || indexPath.item == friendList.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddFriendCell.identifier, for: indexPath) as! AddFriendCell
-            
-            return cell
+        if withAddFriendCell {
+            if friendList.count == 0 || indexPath.item == friendList.count {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddFriendCell.identifier, for: indexPath) as! AddFriendCell
+                
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendCell.identifier, for: indexPath) as! FriendCell
+                cell.configure(nickname: String(friendList[indexPath.item].first!))
+                
+                return cell
+            }
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendCell.identifier, for: indexPath) as! FriendCell
             cell.configure(nickname: String(friendList[indexPath.item].first!))

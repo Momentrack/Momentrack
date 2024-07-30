@@ -14,9 +14,12 @@ struct Moment: Codable {
     var memo: String
     var sharedFriends: [String]
     var createdAt: String
+    var time: String
+    var latitude: Double
+    var longitude: Double
     
     var toDictionary: [String: Any] {
-        let moment: [String: Any] = ["id": id, "location": location, "photoUrl": photoUrl, "memo": memo, "sharedFriends": sharedFriends, "created": createdAt]
+        let moment: [String: Any] = ["id": id, "location": location, "photoUrl": photoUrl, "memo": memo, "sharedFriends": sharedFriends, "createdAt": createdAt, "time": time, "latitude": latitude, "longitude": longitude]
         return moment
     }
 }

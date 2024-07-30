@@ -69,4 +69,14 @@ extension Date {
     var todayStringFormat: String {
         return Date.todayDateFormatter.string(from: self)
     }
+    
+    static var timeDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    
+    var timeStringFormat: String {
+        return Date.timeDateFormatter.string(from: self)
+    }
 }

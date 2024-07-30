@@ -20,6 +20,9 @@ final class HomeViewController: UIViewController {
         setupView()
         setupBlurEffect()
         getUserInfo()
+        getMomentList()
+        
+//        Network.shared.createMoment(location: "서울", photoUrl: "", memo: "", sharedFriends: ["ㅎ"], latitude: 37.529622, longitude: 126.978459)
     }
     
     private func setupNavigationBar() {
@@ -157,12 +160,20 @@ final class HomeViewController: UIViewController {
         }
         
         friendListView.delegate = self
+        momentListView.momentTableView.separatorStyle = .none
     }
     
     private func getUserInfo() {
         Network.shared.getUserInfo { user in
             self.friendListView.friendList = user.friends
             self.friendListView.collectionView.reloadData()
+        }
+    }
+    
+    private func getMomentList() {
+        Network.shared.getMoments { moments in
+            self.momentListView.momentList = moments
+            self.momentListView.momentTableView.reloadData()
         }
     }
 }

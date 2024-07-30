@@ -119,10 +119,10 @@ final class Network {
     }
     
     // Moment 생성
-    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String]) {
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat)
-        self.ref.child("users").child(userID).child("moment").child(moment.id).setValue(moment.toDictionary)
+    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
+//        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
+        self.ref.child("users").child("WALVV7sSxTSxGkQWELEP6ceccLM2").child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
     }
     
     // MARK: [Read] 데이터 읽기
@@ -166,7 +166,7 @@ final class Network {
     }
     
     // moments 가져오기
-    func getMoments(completion: @escaping (Moment) -> Void) {
+    func getMoments(completion: @escaping ([Moment]) -> Void) {
         guard let uid = UserDefaults.standard.string(forKey: "userId") else { return }
         ref.child("users").child(uid).child("moment").getData { error, snapshot in
             guard error == nil else {
@@ -174,14 +174,26 @@ final class Network {
                 return
             }
             guard let snapshot else { return }
+            var momentList: [Moment] = []
             if snapshot.exists() {
                 guard let snapshot = snapshot.value as? [String: Any] else { return }
                 do {
-                    let data = try JSONSerialization.data(withJSONObject: snapshot, options: [])
-                    let decoder = JSONDecoder()
-                    let moments: Moment = try decoder.decode(Moment.self, from: data)
-                    completion(moments)
-                    
+                    if snapshot.keys.contains(Date().todayStringFormat) {
+                        for (key, value) in snapshot {
+                            if key == Date().todayStringFormat {
+                                guard let momentArray = value as? [String: Any] else { return }
+                                for (_, value) in momentArray {
+                                    let data = try JSONSerialization.data(withJSONObject: value, options: [])
+                                    let decoder = JSONDecoder()
+                                    let moment: Moment = try decoder.decode(Moment.self, from: data)
+                                    momentList.append(moment)
+                                }
+                            }
+                        }
+                        // NOTE: 생성된 날짜순으로 정렬
+                        let sortedMomentList = momentList.sorted { $0.time < $1.time }
+                        completion(sortedMomentList)
+                    }
                 } catch let error {
                     print(error.localizedDescription)
                 }

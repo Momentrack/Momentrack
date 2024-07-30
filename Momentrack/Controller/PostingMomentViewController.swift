@@ -10,7 +10,7 @@ import PhotosUI
 
 class PostingMomentViewController: UIViewController {
     private let postingMomentView = PostingMomentView()
-  
+    
     override func loadView() {
         view = postingMomentView
     }
@@ -60,7 +60,7 @@ class PostingMomentViewController: UIViewController {
         pickerViewController.delegate = self
         present(pickerViewController, animated: true)
     }
-    
+   
     @objc func handleImageTap() {
         if postingMomentView.uploadPhoto.image != nil {
             postingMomentView.uploadPhoto.image = nil
@@ -88,18 +88,6 @@ extension PostingMomentViewController: PHPickerViewControllerDelegate {
 
 }
 
-extension UIViewController {
-    func alert(_ message: String, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .cancel) { (_) in
-                completion?() // completion 매개변수의 값이 nil이 아닐때에만 실행되도록
-            }
-            alert.addAction(okAction)
-            self.present(alert, animated: false)
-        }
-    }
-}
 
 extension PostingMomentViewController: MapViewControllerDelegate {
     func didSelectLocationWithAddress(_ address: String?) {

@@ -285,24 +285,4 @@ extension MomentCell: CLLocationManagerDelegate {
         annotation.coordinate = goLocation(latitudeValue: latitudeValue, longitudeValue: longitudeValue, delta: span)
         mapView.addAnnotation(annotation)
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let pLocation = locations.last
-//        goLocation(latitudeValue: (pLocation?.coordinate.latitude)!, longitudeValue: (pLocation?.coordinate.longitude)!, delta: 0.001)
-//        CLGeocoder().reverseGeocodeLocation(pLocation!) { placemarks, error in
-//            let pm = placemarks!.first
-//            let country = pm!.country
-//            var address: String = country!
-//            if pm!.locality != nil {
-//                address += ""
-//                address += pm!.locality!
-//            }
-//            if pm!.thoroughfare != nil {
-//                address += ""
-//                address += pm!.thoroughfare!
-//            }
-//        }
-//        locationManger.stopUpdatingLocation()
-//    }
-    
 }

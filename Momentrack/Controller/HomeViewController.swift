@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
-    private let friendListView = FriendListView()
+    private let friendListView = FriendListView(frame: .zero, value: true)
     private let todayDateView = TodayDateView()
     private let momentListView = MomentListView()
     

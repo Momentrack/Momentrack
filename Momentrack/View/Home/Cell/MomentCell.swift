@@ -180,8 +180,8 @@ final class MomentCell: UITableViewCell {
         setAnnotation(latitudeValue: latitude, longitudeValue: longitude, delta: 0.0005, title: "", subtitle: "")
 
         // TODO: - DB 연동 모델 값으로 대체하기 (임시 주소라 삭제 예정)
-        latitude = latitude // 37.334900
-        longitude = longitude // -122.009020
+        self.latitude = latitude // 37.334900
+        self.longitude = longitude // -122.009020
     }
     
     private func setupCell() {

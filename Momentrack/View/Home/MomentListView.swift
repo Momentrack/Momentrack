@@ -8,6 +8,8 @@
 import UIKit
 
 final class MomentListView: UIView {
+    
+    lazy var momentList: [Moment] = []
 
     lazy var momentTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -82,17 +84,15 @@ final class MomentListView: UIView {
 }
 
 extension MomentListView: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return momentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MomentCell.identifier, for: indexPath) as! MomentCell
-        cell.configure(time: "", location: "", imageUrl: "", content: "")
+        let moment = momentList[indexPath.row]
+        cell.configure(time: moment.time, location: moment.location, friendList: moment.sharedFriends, latitude: moment.latitude, longitude: moment.longitude, imageUrl: moment.photoUrl, content: moment.memo)
         return cell
     }
     
@@ -105,7 +105,7 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
+        return 110
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -122,7 +122,9 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "") { action, view, completionHaldler in
-//            self.momentList.remove(at: indexPath.row)
+            Network.shared.deleteMomentData(momentId: self.momentList[indexPath.row].id)
+            self.momentList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             completionHaldler(true)
         }
         

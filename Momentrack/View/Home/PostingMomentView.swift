@@ -11,7 +11,7 @@ import SnapKit
 class PostingMomentView: UIView {
     weak var textViewDelegate: UITextViewDelegate?
     
-    private let withFriends = FriendListView()
+    let withFriends = FriendListView(frame: .zero, value: false)
     
     lazy var withFriendLabel: UILabel = {
         let label = UILabel()

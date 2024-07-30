@@ -21,6 +21,8 @@ final class HomeViewController: UIViewController {
         setupBlurEffect()
         getUserInfo()
         getMomentList()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
     }
     
     private func setupNavigationBar() {
@@ -84,6 +86,14 @@ final class HomeViewController: UIViewController {
 //        blurView.addSubview(visualEffectView)
         
     }
+    
+//    @objc func momentSaved() {
+//        getMomentList()
+//    }
+    
+//    deinit {
+//        NotificationCenter.default.removeObserver(self)
+//    }
     
     @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()

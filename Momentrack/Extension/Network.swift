@@ -119,11 +119,31 @@ final class Network {
     }
     
     // Moment 생성
-    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
-//        guard let userID = Auth.auth().currentUser?.uid else { return }
+    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            completion(.failure(NSError(domain: "Auth", code: 0, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
+            return
+        }
+        
         let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
-        self.ref.child("users").child("WALVV7sSxTSxGkQWELEP6ceccLM2").child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+        
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary) { error, _ in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
     }
+    /*
+    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+        
+    }
+    */
     
     // MARK: [Read] 데이터 읽기
     // 사용자 정보 가져오기
@@ -296,17 +316,6 @@ final class Network {
                     }
                 }
             }
-//            for item in result.items {
-//                if item.name == imageName {
-//                    imageRef.child(imageName).delete { error in
-//                        if let error = error {
-//                            print(error)
-//                        } else {
-//                            print("삭제되었습니다.")
-//                        }
-//                    }
-//                }
-//            }
         })
     }
 }

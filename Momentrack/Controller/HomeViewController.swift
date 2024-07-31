@@ -21,9 +21,9 @@ final class HomeViewController: UIViewController {
         setupBlurEffect()
         getUserInfo()
         getMomentList()
-        UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
+        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,13 +92,13 @@ final class HomeViewController: UIViewController {
         
     }
     
-//    @objc func momentSaved() {
-//        getMomentList()
-//    }
+    @objc func momentSaved() {
+        getMomentList()
+    }
     
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()

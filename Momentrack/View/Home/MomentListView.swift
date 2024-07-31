@@ -94,6 +94,7 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: MomentCell.identifier, for: indexPath) as! MomentCell
         let moment = momentList[indexPath.row]
         //print("테스트, 셀에 표시될 모멘트: \(moment)")
+        print("테스트, 모멘트 photoUrl: \(moment.photoUrl)")
         cell.configure(time: moment.time, location: moment.location, friendList: moment.sharedFriends, latitude: moment.latitude, longitude: moment.longitude, imageUrl: moment.photoUrl, content: moment.memo)
         return cell
     }

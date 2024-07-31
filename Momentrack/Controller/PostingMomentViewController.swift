@@ -83,41 +83,24 @@ class PostingMomentViewController: UIViewController {
             return
         }
         
-        //let location = postingMomentView.addressLabel.text ?? ""
         let memo = postingMomentView.momentTextView.text ?? ""
         let sharedFriends = postingMomentView.withFriends.friendList.isEmpty ? ["나"] : postingMomentView.withFriends.friendList
         
         if let image = selectedImage, let imageData = image.jpegData(compressionQuality: 0.5) {
+            print("테스트, 이미지 업로드 시작")
             Network.shared.imageUpload(storageName: "moments", id: momentId, imageData: imageData) { [weak self] photoUrl in
                 guard let self = self else { return }
+                print("테스트, 이미지 업로드 완료. URL: \(photoUrl)")
                 self.saveMoment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends)
             }
         } else {
+            print("테스트, 이미지 없음")
             saveMoment(location: location, photoUrl: "", memo: memo, sharedFriends: sharedFriends)
         }
+       
     }
     
     private func saveMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String]) {
-        Network.shared.createMoment(
-            location: location,
-            photoUrl: photoUrl,
-            memo: memo,
-            sharedFriends: sharedFriends,
-            latitude: self.latitude,
-            longitude: self.longitude
-        ) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.dismiss(animated: true) {
-                        NotificationCenter.default.post(name: .momentSaved, object: nil)
-                    }
-                case .failure(let error):
-                    self.showAlert(message: "Moment 저장 실패: \(error.localizedDescription)")
-                }
-            }
-        }
-        /*
         Network.shared.createMoment(
             location: location,
             photoUrl: photoUrl,
@@ -132,7 +115,7 @@ class PostingMomentViewController: UIViewController {
                 NotificationCenter.default.post(name: .momentSaved, object: nil)
             }
         }
-        */
+        
     }
 
     private func showAlert(message: String) {
@@ -179,3 +162,18 @@ extension PostingMomentViewController: MapViewControllerDelegate {
 extension Notification.Name {
     static let momentSaved = Notification.Name("momentSaved")
 }
+
+/*
+//let location = postingMomentView.addressLabel.text ?? ""
+let memo = postingMomentView.momentTextView.text ?? ""
+let sharedFriends = postingMomentView.withFriends.friendList.isEmpty ? ["나"] : postingMomentView.withFriends.friendList
+
+if let image = selectedImage, let imageData = image.jpegData(compressionQuality: 0.5) {
+    Network.shared.imageUpload(storageName: "moments", id: momentId, imageData: imageData) { [weak self] photoUrl in
+        guard let self = self else { return }
+        self.saveMoment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends)
+    }
+} else {
+    saveMoment(location: location, photoUrl: "", memo: memo, sharedFriends: sharedFriends)
+}
+*/

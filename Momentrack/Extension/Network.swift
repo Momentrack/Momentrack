@@ -120,9 +120,11 @@ final class Network {
     
     // Moment 생성
     func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
-//        guard let userID = Auth.auth().currentUser?.uid else { return }
-        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
-        self.ref.child("users").child("WALVV7sSxTSxGkQWELEP6ceccLM2").child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+        guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
+        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude
+//                            , date: Date().yearMonthDayStringFormat
+        )
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
     }
     
     // MARK: [Read] 데이터 읽기
@@ -194,6 +196,41 @@ final class Network {
                         let sortedMomentList = momentList.sorted { $0.time < $1.time }
                         completion(sortedMomentList)
                     }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func getMomentList(completion: @escaping ([AllOfMoment]) -> Void) {
+        guard let uid = UserDefaults.standard.string(forKey: "userId") else { return }
+        ref.child("users").child(uid).child("moment").getData { error, snapshot in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            guard let snapshot else { return }
+            var allOfmoment: [AllOfMoment] = []
+            if snapshot.exists() {
+                guard let snapshot = snapshot.value as? [String: Any] else { return }
+                do {
+                    for (key, value) in snapshot {
+                        guard let momentArray = value as? [String: Any] else { return }
+                        var momentList: [Moment] = []
+                        for (_, value) in momentArray {
+                            let data = try JSONSerialization.data(withJSONObject: value, options: [])
+                            let decoder = JSONDecoder()
+                            let moment: Moment = try decoder.decode(Moment.self, from: data)
+                            momentList.append(moment)
+                        }
+                        let sortedMomentList = momentList.sorted { $0.time < $1.time }
+                        let todaysMoment = AllOfMoment(date: key, moment: sortedMomentList)
+                        allOfmoment.append(todaysMoment)
+                    }
+                    let sortedAllofMoment = allOfmoment.sorted { $0.date < $1.date }
+                    completion(sortedAllofMoment)
+        
                 } catch let error {
                     print(error.localizedDescription)
                 }

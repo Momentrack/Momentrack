@@ -1,17 +1,13 @@
 //
-//  CalendarView.swift
+//  HistoryView.swift
 //  Momentrack
 //
-//  Created by heyji on 2024/07/24.
+//  Created by heyji on 2024/07/30.
 //
 
 import UIKit
 
-protocol CalendarViewDelegate {
-    func showDetailView(indexPath: IndexPath)
-}
-
-final class CalendarView: UIView {
+final class HistoryView: UIView {
     
     var allOfMoment: [AllOfMoment] = []
     var delegate: CalendarViewDelegate?
@@ -42,20 +38,19 @@ final class CalendarView: UIView {
         collectionView.alwaysBounceHorizontal = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        
     }
     
     private func collectionViewLayout() -> UICollectionViewCompositionalLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/6), heightDimension: .fractionalWidth(1/6))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(1/3))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/6))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/3))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         group.interItemSpacing = .fixed(10)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = CGFloat(10)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 30, trailing: 16)
         
-        // section 헤더 
+        // section 헤더
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60.0))
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [headerElement]
@@ -65,29 +60,28 @@ final class CalendarView: UIView {
     }
 }
 
-extension CalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HistoryView: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return allOfMoment.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allOfMoment[section].moment.count
+        return allOfMoment.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCell.identifier, for: indexPath) as! DayCell
-        cell.configure(day: allOfMoment[indexPath.section].date.components(separatedBy: " ")[2])
+        cell.configure(day: allOfMoment[indexPath.item].date.components(separatedBy: " ")[1] + " " + allOfMoment[indexPath.item].date.components(separatedBy: " ")[2])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CalendarHeaderView.identifier, for: indexPath) as! CalendarHeaderView
-        headerView.configure(title: allOfMoment[indexPath.section].date.components(separatedBy: " ")[0] + " " + allOfMoment[indexPath.section].date.components(separatedBy: " ")[1]) // "2024년 7월"
+        headerView.configure(title: "2024년")
         return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
         delegate?.showDetailView(indexPath: indexPath)
     }
 }

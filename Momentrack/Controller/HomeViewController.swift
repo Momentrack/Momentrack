@@ -21,6 +21,14 @@ final class HomeViewController: UIViewController {
         setupBlurEffect()
         getUserInfo()
         getMomentList()
+        UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMomentList()
     }
     
     private func setupNavigationBar() {
@@ -74,7 +82,6 @@ final class HomeViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        view.bringSubviewToFront(floatingButton)
 //        let blurEffect = UIBlurEffect(style: .prominent)
 //        let blur2 = UIBlurEffect(style: .regular)
 //        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
@@ -84,6 +91,14 @@ final class HomeViewController: UIViewController {
 //        blurView.addSubview(visualEffectView)
         
     }
+    
+//    @objc func momentSaved() {
+//        getMomentList()
+//    }
+    
+//    deinit {
+//        NotificationCenter.default.removeObserver(self)
+//    }
     
     @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()
@@ -160,6 +175,7 @@ final class HomeViewController: UIViewController {
     private func getMomentList() {
         Network.shared.getMoments { moments in
             self.momentListView.momentList = moments
+            //print("테스트, 가져온 모멘트 리스트: \(moments)")
             self.momentListView.momentTableView.reloadData()
         }
     }

@@ -79,6 +79,9 @@ final class MomentCell: UITableViewCell {
     
     private var photoImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .systemGray5
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -187,8 +190,8 @@ final class MomentCell: UITableViewCell {
         setAnnotation(latitudeValue: latitude, longitudeValue: longitude, delta: 0.0005, title: "", subtitle: "")
 
         // TODO: - DB 연동 모델 값으로 대체하기 (임시 주소라 삭제 예정)
-        self.latitude = latitude // 37.334900
-        self.longitude = longitude // -122.009020
+        //self.latitude = latitude // 37.334900
+        //self.longitude = longitude // -122.009020
     }
     
     private func setupCell() {

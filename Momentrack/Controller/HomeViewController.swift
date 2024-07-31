@@ -84,13 +84,6 @@ final class HomeViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-//        let blurEffect = UIBlurEffect(style: .prominent)
-//        let blur2 = UIBlurEffect(style: .regular)
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
-//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        //let visualEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//        visualEffectView.frame = view.frame
-//        blurView.addSubview(visualEffectView)
         
     }
     

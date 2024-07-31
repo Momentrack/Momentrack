@@ -11,7 +11,11 @@ import SnapKit
 
 class HomeNaviMapView: UIView {
     
-    let map = MKMapView()
+    let mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.mapType = .standard
+        return mapView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,15 +27,14 @@ class HomeNaviMapView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
-    func configure() {
-        
-    }
     
     func makeConstraints() {
-        self.addSubview(map)
-        map.snp.makeConstraints {
-            $0.top.left.right.bottom.equalToSuperview()
+        self.addSubview(mapView)
+//        mapView.snp.makeConstraints {
+//            $0.top.left.right.bottom.equalToSuperview()
+//        }
+        mapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }

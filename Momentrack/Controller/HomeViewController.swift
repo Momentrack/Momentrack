@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
-    private let friendListView = FriendListView()
+    private let friendListView = FriendListView(frame: .zero, value: true)
     private let todayDateView = TodayDateView()
     private let momentListView = MomentListView()
     
@@ -19,6 +19,16 @@ final class HomeViewController: UIViewController {
         setupNavigationBar()
         setupView()
         setupBlurEffect()
+        getUserInfo()
+        getMomentList()
+        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMomentList()
     }
     
     private func setupNavigationBar() {
@@ -74,7 +84,6 @@ final class HomeViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        view.bringSubviewToFront(floatingButton)
 //        let blurEffect = UIBlurEffect(style: .prominent)
 //        let blur2 = UIBlurEffect(style: .regular)
 //        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
@@ -83,6 +92,14 @@ final class HomeViewController: UIViewController {
 //        visualEffectView.frame = view.frame
 //        blurView.addSubview(visualEffectView)
         
+    }
+    
+    @objc func momentSaved() {
+        getMomentList()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func touchUpBottomSheet() {
@@ -146,6 +163,23 @@ final class HomeViewController: UIViewController {
             $0.top.equalToSuperview().inset(800)
         }
         
+        friendListView.delegate = self
+        momentListView.momentTableView.separatorStyle = .none
+    }
+    
+    private func getUserInfo() {
+        Network.shared.getUserInfo { user in
+            self.friendListView.friendList = user.friends
+            self.friendListView.collectionView.reloadData()
+        }
+    }
+    
+    private func getMomentList() {
+        Network.shared.getMoments { moments in
+            self.momentListView.momentList = moments
+            //print("테스트, 가져온 모멘트 리스트: \(moments)")
+            self.momentListView.momentTableView.reloadData()
+        }
     }
 }
 
@@ -158,6 +192,42 @@ extension HomeViewController: UISheetPresentationControllerDelegate {
             
             dismiss(animated: true)
         }
+    }
+}
+
+extension HomeViewController: AddFriendDelegate {
+    func action(indexPath: IndexPath) {
+        let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertHeight: 244)
+        viewController.delegate = self
+        viewController.customTextField.becomeFirstResponder()
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .overFullScreen
+        self.present(viewController, animated: true)
+    }
+}
+
+extension HomeViewController: CustomAlertDelegate {
+    func action(data: String) {
+        // NOTE: email로 존재하는 사용자인지 확인
+        Network.shared.getUsersEmail { usersEmail in
+            if usersEmail.contains(data) {
+                Network.shared.addFriend(email: data) { result in
+                    switch result {
+                    case .success(_):
+                        self.getUserInfo()
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                
+            } else {
+                // 존재하지 않는 사용자입니다.
+            }
+        }
+    }
+    
+    func exit() {
+        
     }
 }
 

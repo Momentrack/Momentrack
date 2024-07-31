@@ -12,6 +12,7 @@
 		107309E62C522B9F00E37ED1 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E52C522B9E00E37ED1 /* DayCell.swift */; };
 		107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E72C522BB200E37ED1 /* CalendarView.swift */; };
 		107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */; };
+		107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */; };
 		10F7DCBC2C45318700C69573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBB2C45318700C69573 /* FirebaseAnalytics */; };
 		10F7DCBE2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBD2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion */; };
 		10F7DCC02C45318700C69573 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBF2C45318700C69573 /* FirebaseAnalyticsSwift */; };
@@ -52,7 +53,6 @@
 		1A1061DF2C47F519004D0396 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061DE2C47F519004D0396 /* FirebaseRemoteConfig */; };
 		1A1061E12C47F519004D0396 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E02C47F519004D0396 /* FirebaseRemoteConfigSwift */; };
 		1A1061E32C47F519004D0396 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E22C47F519004D0396 /* FirebaseVertexAI-Preview */; };
-		1A1061E62C47F68F004D0396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1061E52C47F68F004D0396 /* FSCalendar */; };
 		1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061EB2C4B5D7C004D0396 /* PostingMomentView.swift */; };
 		1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */; };
 		1A1062072C4E2701004D0396 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1062062C4E2701004D0396 /* SnapKit */; };
@@ -64,7 +64,13 @@
 		1A69A7232C5692DC00294D6D /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621E2C50EB34004D0396 /* Moment.swift */; };
 		1A69A7252C57828C00294D6D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7242C57828C00294D6D /* UIView+Extensions.swift */; };
 		1A69A7272C578F5F00294D6D /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7262C578F5F00294D6D /* SharingManager.swift */; };
+
 		1A9D95F72C5A5A14009BDF9C /* HomeNaviMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D95F62C5A5A14009BDF9C /* HomeNaviMapViewController.swift */; };
+
+
+		1A9D95F52C59FEBD009BDF9C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D95F42C59FEBD009BDF9C /* UIColor+Extensions.swift */; };
+
+
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -82,6 +88,7 @@
 		107309E52C522B9E00E37ED1 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		107309E72C522BB200E37ED1 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
 		10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarItemConfiguration.swift; sourceTree = "<group>"; };
 		10F7DCE12C455D7E00C69573 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendListView.swift; path = Momentrack/Extension/FriendListView.swift; sourceTree = SOURCE_ROOT; };
@@ -107,7 +114,11 @@
 		1A151AAB2C5272E7008ACFDA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1A69A7242C57828C00294D6D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1A69A7262C578F5F00294D6D /* SharingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
+
 		1A9D95F62C5A5A14009BDF9C /* HomeNaviMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNaviMapViewController.swift; sourceTree = "<group>"; };
+
+		1A9D95F42C59FEBD009BDF9C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +139,6 @@
 			files = (
 				1A1061DB2C47F519004D0396 /* FirebaseMessaging in Frameworks */,
 				10F7DCD02C45318700C69573 /* FirebaseFirestoreCombine-Community in Frameworks */,
-				1A1061E62C47F68F004D0396 /* FSCalendar in Frameworks */,
 				1A1061CD2C47F519004D0396 /* FirebaseAppCheck in Frameworks */,
 				10F7DCCA2C45318700C69573 /* FirebaseDatabaseSwift in Frameworks */,
 				10F7DCCC2C45318700C69573 /* FirebaseDynamicLinks in Frameworks */,
@@ -179,6 +189,7 @@
 				10F7DD622C4F387500C69573 /* Network.swift */,
 				1A69A7242C57828C00294D6D /* UIView+Extensions.swift */,
 				1A69A7262C578F5F00294D6D /* SharingManager.swift */,
+				1A9D95F42C59FEBD009BDF9C /* UIColor+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				10F7DCE42C455F1800C69573 /* FriendCell.swift */,
+				107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */,
 				10F7DCE82C456BC200C69573 /* MomentCell.swift */,
 				10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */,
 			);
@@ -380,7 +392,6 @@
 				1A1061DE2C47F519004D0396 /* FirebaseRemoteConfig */,
 				1A1061E02C47F519004D0396 /* FirebaseRemoteConfigSwift */,
 				1A1061E22C47F519004D0396 /* FirebaseVertexAI-Preview */,
-				1A1061E52C47F68F004D0396 /* FSCalendar */,
 				1A1062062C4E2701004D0396 /* SnapKit */,
 			);
 			productName = Momentrack;
@@ -413,7 +424,6 @@
 			mainGroup = 1AB0750F2C3FC46100199164;
 			packageReferences = (
 				10F7DCBA2C45318700C69573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				1A1061E42C47F68F004D0396 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				1A1062052C4E2701004D0396 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 1AB075192C3FC46100199164 /* Products */;
@@ -465,6 +475,7 @@
 				1A69A7222C5691F600294D6D /* Network.swift in Sources */,
 				1AB075762C3FE5CB00199164 /* LoginView.swift in Sources */,
 				1A69A7232C5692DC00294D6D /* Moment.swift in Sources */,
+				107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
@@ -472,6 +483,7 @@
 				1A1061EC2C4B5D7C004D0396 /* PostingMomentView.swift in Sources */,
 				107309E62C522B9F00E37ED1 /* DayCell.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
+				1A9D95F52C59FEBD009BDF9C /* UIColor+Extensions.swift in Sources */,
 				107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */,
@@ -734,14 +746,6 @@
 				minimumVersion = 10.29.0;
 			};
 		};
-		1A1061E42C47F68F004D0396 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.4;
-			};
-		};
 		1A1062052C4E2701004D0396 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -882,11 +886,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10F7DCBA2C45318700C69573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseVertexAI-Preview";
-		};
-		1A1061E52C47F68F004D0396 /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A1061E42C47F68F004D0396 /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
 		};
 		1A1062062C4E2701004D0396 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

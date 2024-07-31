@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import MapKit
 
 final class MomentCell: UITableViewCell {
     
     static let identifier: String = "MomentCell"
     
-    private let friendList: [String] = ["A", "B", "C", "D", "E", "F"]
+    let locationManger = CLLocationManager()
+    
+    private var friendList: [String] = []
+  
     // TODO: - 데이터 연동 주소 값 가지고 오기(임시 위도 경도 값 삭제 예정)
     var latitude: Double = 0.0
     var longitude: Double = 0.0
@@ -44,6 +48,12 @@ final class MomentCell: UITableViewCell {
         return view
     }()
     
+    private let locationLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
+    }()
+
     var locationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
@@ -56,6 +66,7 @@ final class MomentCell: UITableViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.tintColor = .black
+        button.isHidden = true
         return button
     }()
     
@@ -69,6 +80,13 @@ final class MomentCell: UITableViewCell {
     private var photoImageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
+    }()
+    
+    // NOTE: 이미지가 없을 시에는 위치 지도 보여주기
+    private var mapView: MKMapView = {
+        let view = MKMapView()
+        view.isUserInteractionEnabled = false
+        return view
     }()
     
     private let contentsView: UIView = {
@@ -96,7 +114,7 @@ final class MomentCell: UITableViewCell {
     }()
     
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [locationView, photoImageView, contentsView, friendListView])
+        let stackView = UIStackView(arrangedSubviews: [locationView, locationLineView, photoImageView, mapView, contentsView, friendListView])
         stackView.axis = .vertical
         return stackView
     }()
@@ -107,8 +125,8 @@ final class MomentCell: UITableViewCell {
         return stackView
     }()
     
-    private let dotLine: UIView = {
-        let dotLine = UIView(frame: CGRect(x: .zero , y: .zero, width: 30, height: 30))
+    private lazy var dotLine: UIView = {
+        let dotLine = UIView(frame: CGRect(x: .zero , y: .zero, width: contentsView.bounds.width, height: 30))
         
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor.systemGray.cgColor
@@ -143,27 +161,47 @@ final class MomentCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(time: String, location: String, imageUrl: String, content: String) {
-        timeLabel.text = "12:39"
+    func configure(time: String, location: String, friendList: [String], latitude: Double, longitude: Double ,imageUrl: String? = nil, content: String? = nil) {
+        timeLabel.text = time
+        locationLabel.text = location
+        self.friendList = friendList
+        
+        if friendList.isEmpty {
+            self.friendList = ["나"]
+        } else {
+            self.friendList = friendList
+        }
+        
+        if imageUrl == "" {
+            photoImageView.isHidden = true
+        } else {
+            guard let imageUrl else { return }
+            photoImageView.setImageURL(imageUrl)
+            mapView.isHidden = true
+        }
+        if content == "" {
+            contentLabel.isHidden = true
+        } else {
+            contentLabel.text = content
+        }
+        setAnnotation(latitudeValue: latitude, longitudeValue: longitude, delta: 0.0005, title: "", subtitle: "")
+
         // TODO: - DB 연동 모델 값으로 대체하기 (임시 주소라 삭제 예정)
-        locationLabel.text = "Apple Park, Cupertino, CA"
-        latitude = 37.334900
-        longitude = -122.009020
-        photoImageView.setImageURL("https://t4.ftcdn.net/jpg/05/49/86/39/360_F_549863991_6yPKI08MG7JiZX83tMHlhDtd6XLFAMce.jpg")
-        contentLabel.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer "
+        self.latitude = latitude // 37.334900
+        self.longitude = longitude // -122.009020
     }
     
     private func setupCell() {
         contentView.addSubview(cellView)
+        contentView.addSubview(dotLine)
         cellView.addSubview(mainStackView)
         timeView.addSubview(timeLabel)
         locationView.addSubview(locationStackView)
         contentsView.addSubview(contentLabel)
         friendListView.addSubview(collectionView)
-        cellView.addSubview(dotLine)
         
         cellView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            make.top.equalToSuperview()
             make.left.right.equalToSuperview().inset(16)
         }
         timeView.snp.makeConstraints { make in
@@ -176,10 +214,16 @@ final class MomentCell: UITableViewCell {
         locationView.snp.makeConstraints { make in
             make.height.equalTo(22)
         }
+        locationLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+        }
         locationStackView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(6)
         }
         photoImageView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+        }
+        mapView.snp.makeConstraints { make in
             make.height.equalTo(80)
         }
         contentLabel.snp.makeConstraints { make in
@@ -196,7 +240,8 @@ final class MomentCell: UITableViewCell {
         }
         dotLine.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(mainStackView.snp.bottom)
+            make.top.equalTo(cellView.snp.bottom)
+            make.height.equalTo(30)
             make.bottom.equalToSuperview()
         }
         
@@ -206,6 +251,11 @@ final class MomentCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.semanticContentAttribute = UISemanticContentAttribute.forceRightToLeft
 
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.startUpdatingLocation()
+        mapView.showsUserLocation = true
     }
     
     private func collectionViewLayout() -> UICollectionViewCompositionalLayout {
@@ -229,8 +279,25 @@ extension MomentCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MomentFriendCell.identifier, for: indexPath) as! MomentFriendCell
-        cell.configure(nickname: friendList[indexPath.row])
+        cell.configure(nickname: String(friendList[indexPath.item].first!))
         
         return cell
+    }
+}
+
+extension MomentCell: CLLocationManagerDelegate {
+    
+    func goLocation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double) -> CLLocationCoordinate2D {
+        let pLocation = CLLocationCoordinate2DMake(latitudeValue, longitudeValue)
+        let spanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
+        let pRegion = MKCoordinateRegion(center: pLocation, span: spanValue)
+        mapView.setRegion(pRegion, animated: true)
+        return pLocation
+    }
+    
+    func setAnnotation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double, title strTitle: String, subtitle strSubtitle: String) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = goLocation(latitudeValue: latitudeValue, longitudeValue: longitudeValue, delta: span)
+        mapView.addAnnotation(annotation)
     }
 }

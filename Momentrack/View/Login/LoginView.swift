@@ -73,7 +73,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.setTitle("이메일로 인증하기", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.setUnderline()
         return button
     }()
@@ -109,7 +109,7 @@ class LoginView: UIView {
         
         loginButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(280)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(240)
             $0.left.right.equalToSuperview().inset(24)
             $0.height.equalTo(48)
             

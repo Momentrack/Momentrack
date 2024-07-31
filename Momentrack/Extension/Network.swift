@@ -119,11 +119,46 @@ final class Network {
     }
     
     // Moment 생성
-    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String]) {
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat)
-        self.ref.child("users").child(userID).child("moment").child(moment.id).setValue(moment.toDictionary)
+    /*
+    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            completion(.failure(NSError(domain: "Auth", code: 0, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
+            return
+        }
+        // TODO: - 테스트를 위한 임시 UserDefault 값(삭제 예정)
+        //guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
+        
+        let moment = Moment(
+            location: location,
+            photoUrl: photoUrl,
+            memo: memo,
+            sharedFriends: sharedFriends,
+            createdAt: Date().stringFormat,
+            time: Date().timeStringFormat,
+            latitude: latitude,
+            longitude: longitude
+        )
+        
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary) { error, _ in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
     }
+    */
+    // MARK: - 원래 createMoment 메소드 코드
+    
+    func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+        
+    }
+    
     
     // MARK: [Read] 데이터 읽기
     // 사용자 정보 가져오기
@@ -166,7 +201,7 @@ final class Network {
     }
     
     // moments 가져오기
-    func getMoments(completion: @escaping (Moment) -> Void) {
+    func getMoments(completion: @escaping ([Moment]) -> Void) {
         guard let uid = UserDefaults.standard.string(forKey: "userId") else { return }
         ref.child("users").child(uid).child("moment").getData { error, snapshot in
             guard error == nil else {
@@ -174,14 +209,26 @@ final class Network {
                 return
             }
             guard let snapshot else { return }
+            var momentList: [Moment] = []
             if snapshot.exists() {
                 guard let snapshot = snapshot.value as? [String: Any] else { return }
                 do {
-                    let data = try JSONSerialization.data(withJSONObject: snapshot, options: [])
-                    let decoder = JSONDecoder()
-                    let moments: Moment = try decoder.decode(Moment.self, from: data)
-                    completion(moments)
-                    
+                    if snapshot.keys.contains(Date().todayStringFormat) {
+                        for (key, value) in snapshot {
+                            if key == Date().todayStringFormat {
+                                guard let momentArray = value as? [String: Any] else { return }
+                                for (_, value) in momentArray {
+                                    let data = try JSONSerialization.data(withJSONObject: value, options: [])
+                                    let decoder = JSONDecoder()
+                                    let moment: Moment = try decoder.decode(Moment.self, from: data)
+                                    momentList.append(moment)
+                                }
+                            }
+                        }
+                        // NOTE: 생성된 날짜순으로 정렬
+                        let sortedMomentList = momentList.sorted { $0.time < $1.time }
+                        completion(sortedMomentList)
+                    }
                 } catch let error {
                     print(error.localizedDescription)
                 }
@@ -197,7 +244,7 @@ final class Network {
     }
     
     // 친구 추가
-    func addFriend(email: String) {
+    func addFriend(email: String, completion: @escaping (Result<String, Error>) -> Void) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
         self.ref.child("users").child(userID).child("userInfo").child("friends").observeSingleEvent(of: .value) { snapshot in
             var count = "0"
@@ -207,6 +254,7 @@ final class Network {
             var newFriend = [String: String]()
             newFriend[count] = email
             self.ref.child("users").child(userID).child("userInfo").child("friends").updateChildValues(newFriend)
+            completion(.success("친구 추가 성공"))
         }
     }
     
@@ -237,8 +285,8 @@ final class Network {
     // Moment 삭제
     func deleteMomentData(momentId: String) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
-        self.ref.child("users").child(userID).child("moment").child(momentId).removeValue()
-        deleteImageAndData(storageName: momentId)
+        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(momentId).removeValue()
+//        deleteImageAndData(storageName: momentId)
     }
     
     // MARK: 이미지 업로드
@@ -283,17 +331,6 @@ final class Network {
                     }
                 }
             }
-//            for item in result.items {
-//                if item.name == imageName {
-//                    imageRef.child(imageName).delete { error in
-//                        if let error = error {
-//                            print(error)
-//                        } else {
-//                            print("삭제되었습니다.")
-//                        }
-//                    }
-//                }
-//            }
         })
     }
 }

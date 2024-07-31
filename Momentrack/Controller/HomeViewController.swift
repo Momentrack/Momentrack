@@ -41,6 +41,8 @@ final class HomeViewController: UIViewController {
         
         let mapConfig = CustomBarItemConfiguration(image: UIImage(systemName: "map")) {
             // TODO: mapViewController
+            let homeNaviMapViewController = HomeNaviMapViewController()
+            self.navigationController?.pushViewController(homeNaviMapViewController, animated: false)
         }
         let mapItem = UIBarButtonItem.generate(with: mapConfig, width: 30)
         

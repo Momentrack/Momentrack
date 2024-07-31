@@ -64,10 +64,9 @@
 		1A69A7232C5692DC00294D6D /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621E2C50EB34004D0396 /* Moment.swift */; };
 		1A69A7252C57828C00294D6D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7242C57828C00294D6D /* UIView+Extensions.swift */; };
 		1A69A7272C578F5F00294D6D /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7262C578F5F00294D6D /* SharingManager.swift */; };
-<<<<<<< HEAD
+
 		1A9D95F52C59FEBD009BDF9C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D95F42C59FEBD009BDF9C /* UIColor+Extensions.swift */; };
-=======
->>>>>>> 4de943b (pin marker 이미지셋 추가)
+
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };

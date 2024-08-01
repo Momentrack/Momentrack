@@ -51,6 +51,8 @@ final class HomeViewController: UIViewController {
         
         let mapConfig = CustomBarItemConfiguration(image: UIImage(systemName: "map")) {
             // TODO: mapViewController
+            let homeNaviMapViewController = HomeNaviMapViewController()
+            self.navigationController?.pushViewController(homeNaviMapViewController, animated: false)
         }
         let mapItem = UIBarButtonItem.generate(with: mapConfig, width: 30)
         
@@ -82,13 +84,6 @@ final class HomeViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-//        let blurEffect = UIBlurEffect(style: .prominent)
-//        let blur2 = UIBlurEffect(style: .regular)
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
-//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        //let visualEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//        visualEffectView.frame = view.frame
-//        blurView.addSubview(visualEffectView)
         
     }
     
@@ -167,7 +162,10 @@ final class HomeViewController: UIViewController {
     
     private func getUserInfo() {
         Network.shared.getUserInfo { user in
-            self.friendListView.friendList = user.friends
+            if user.friends.contains(user.email) {
+                let friends = user.friends
+                self.friendListView.friendList = friends.filter { $0 != user.email }
+            }
             self.friendListView.collectionView.reloadData()
         }
     }

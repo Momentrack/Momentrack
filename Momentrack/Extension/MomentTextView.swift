@@ -49,17 +49,6 @@ final class MomentTextView: UITextView {
         super.layoutSubviews()
         updateTextView()
         configureUI()
-        addTapGestureToDismissKeyboard()
-    }
-    
-    private func addTapGestureToDismissKeyboard() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGesture.delegate = self
-        superview?.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func dismissKeyboard() {
-        resignFirstResponder()
     }
 }
 

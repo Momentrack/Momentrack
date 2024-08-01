@@ -130,10 +130,6 @@ final class Network {
 //                            , date: Date().yearMonthDayStringFormat
         )
         self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
-        
-//        guard let userID = Auth.auth().currentUser?.uid else { return }
-//        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
-//        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
     }
     
     

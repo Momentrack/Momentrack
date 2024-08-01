@@ -21,14 +21,8 @@ final class HomeViewController: UIViewController {
         setupBlurEffect()
         getUserInfo()
         getMomentList()
-        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
         
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getMomentList()
     }
     
     private func setupNavigationBar() {

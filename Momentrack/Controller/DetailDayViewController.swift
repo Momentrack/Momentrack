@@ -10,6 +10,7 @@ import UIKit
 final class DetailDayViewController: UIViewController {
     
     private let detailDayView = MomentListView()
+    var moment: AllOfMoment?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ final class DetailDayViewController: UIViewController {
     private func setupNavigationBar() {
         self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
         self.navigationController?.navigationBar.tintColor = .black
-        self.navigationItem.title = "2024년 7월 16일"
+        self.navigationItem.title = moment?.date
     }
     
     private func setupView() {
@@ -31,6 +32,9 @@ final class DetailDayViewController: UIViewController {
         detailDayView.snp.makeConstraints { make in
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
+        guard let moments = moment?.moment else { return }
+        self.detailDayView.momentList = moments
+        self.detailDayView.momentTableView.reloadData()
     }
     
     @objc private func backButtonTapped(_ sender: UIButton) {

@@ -13,6 +13,7 @@
 		107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E72C522BB200E37ED1 /* CalendarView.swift */; };
 		107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */; };
 		107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */; };
+		107309F02C59269B00E37ED1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309EF2C59269B00E37ED1 /* HistoryView.swift */; };
 		10F7DCBC2C45318700C69573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBB2C45318700C69573 /* FirebaseAnalytics */; };
 		10F7DCBE2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBD2C45318700C69573 /* FirebaseAnalyticsOnDeviceConversion */; };
 		10F7DCC02C45318700C69573 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10F7DCBF2C45318700C69573 /* FirebaseAnalyticsSwift */; };
@@ -85,6 +86,7 @@
 		107309E72C522BB200E37ED1 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
+		107309EF2C59269B00E37ED1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarItemConfiguration.swift; sourceTree = "<group>"; };
 		10F7DCE12C455D7E00C69573 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendListView.swift; path = Momentrack/Extension/FriendListView.swift; sourceTree = SOURCE_ROOT; };
@@ -340,6 +342,7 @@
 				107309E42C522B9E00E37ED1 /* Cell */,
 				107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */,
 				107309E72C522BB200E37ED1 /* CalendarView.swift */,
+				107309EF2C59269B00E37ED1 /* HistoryView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				1A9D95F52C59FEBD009BDF9C /* UIColor+Extensions.swift in Sources */,
 				107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
+				107309F02C59269B00E37ED1 /* HistoryView.swift in Sources */,
 				107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,
 				1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */,

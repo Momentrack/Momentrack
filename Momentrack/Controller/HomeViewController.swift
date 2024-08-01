@@ -162,7 +162,10 @@ final class HomeViewController: UIViewController {
     
     private func getUserInfo() {
         Network.shared.getUserInfo { user in
-            self.friendListView.friendList = user.friends
+            if user.friends.contains(user.email) {
+                let friends = user.friends
+                self.friendListView.friendList = friends.filter { $0 != user.email }
+            }
             self.friendListView.collectionView.reloadData()
         }
     }

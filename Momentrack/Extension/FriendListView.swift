@@ -94,6 +94,8 @@ extension FriendListView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if friendList.count == 0 || indexPath.item == friendList.count {
             delegate?.action(indexPath: indexPath)
+        } else if friendList.count == 0 || indexPath.item == friendList.count {
+            delegate?.action(indexPath: indexPath)
         }
     }
 }

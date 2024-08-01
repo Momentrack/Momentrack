@@ -10,15 +10,15 @@ import PhotosUI
 
 class PostingMomentViewController: UIViewController {
     private let postingMomentView = PostingMomentView()
-    
+
     var moment: Moment?
     private let momentId =  UUID().uuidString
-    
     var imageData: Data = Data()
     var imageUrl: String = ""
-    
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
+    private var selectedFriends: [String] = []
+    
     
     override func loadView() {
         view = postingMomentView
@@ -29,10 +29,12 @@ class PostingMomentViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.white
         setTargetActions()
+        getUserInfo()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
-            postingMomentView.uploadPhoto.addGestureRecognizer(tapGesture)
-            postingMomentView.uploadPhoto.isUserInteractionEnabled = true
+        postingMomentView.uploadPhoto.addGestureRecognizer(tapGesture)
+        postingMomentView.uploadPhoto.isUserInteractionEnabled = true
+        postingMomentView.withFriends.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -55,6 +57,10 @@ class PostingMomentViewController: UIViewController {
             mapVC.requestLocationPermission()
             mapVC.checkAccuracyAuthorization()
         }
+    }
+    
+    @objc func selectWithFriendsTapped() {
+        
     }
     
     @objc func addImageButtonTapped() {
@@ -127,6 +133,13 @@ class PostingMomentViewController: UIViewController {
         }
         
     }
+    
+    private func getUserInfo() {
+        Network.shared.getUserInfo { user in
+            self.postingMomentView.withFriends.friendList = user.friends
+            self.postingMomentView.withFriends.collectionView.reloadData()
+        }
+    }
 
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
@@ -164,7 +177,6 @@ extension PostingMomentViewController: MapViewControllerDelegate {
             postingMomentView.addressLabel.text = address
             self.latitude = latitude
             self.longitude = longitude
-            
         }
     }
     
@@ -173,7 +185,24 @@ extension PostingMomentViewController: MapViewControllerDelegate {
     }
 }
 
+
+
+extension PostingMomentViewController: AddFriendDelegate {
+    func action(indexPath: IndexPath) {
+        if indexPath.item < postingMomentView.withFriends.friendList.count {
+            let selectedFriend = postingMomentView.withFriends.friendList[indexPath.item]
+            if let index = selectedFriends.firstIndex(of: selectedFriend) {
+                selectedFriends.remove(at: index)
+            } else {
+                selectedFriends.append(selectedFriend)
+            }
+            postingMomentView.withFriends.collectionView.reloadItems(at: [indexPath])
+        }
+    }
+    
+    
+}
+
 extension Notification.Name {
     static let momentSaved = Notification.Name("momentSaved")
 }
-

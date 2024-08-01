@@ -187,7 +187,6 @@ class PostingMomentView: UIView {
             $0.height.equalTo(52)
         }
     }
-    
 }
 
 //MARK: - Preview Setting

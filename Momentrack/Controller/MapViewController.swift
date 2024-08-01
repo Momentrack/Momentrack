@@ -11,15 +11,18 @@ import CoreLocation
 import SnapKit
 
 protocol MapViewControllerDelegate: AnyObject {
-     func didSelectLocationWithAddress(_ address: String?)
-     func dismissMapViewController()
+    func didSelectLocationWithCoordinate(_ address: String?, latitude: Double, longitude: Double)
+    func dismissMapViewController()
 }
 
 
 final class MapViewController: UIViewController {
     var locationManager = CLLocationManager()
     weak var mapDelegate: MapViewControllerDelegate?
-    var currentLocationAddress: String?
+    
+    var selectedLocationAddress: String?
+    private var selectedLatitude: Double?
+    private var selectedLongitude: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,29 +197,38 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
                 
                 if #available(iOS 14.0, *) {
                     if self.locationManager.accuracyAuthorization == .fullAccuracy {
-                        if let throughfare = placemark.thoroughfare {
-                            address += throughfare
-                        }
-                        if let subThoroughfare = placemark.subThoroughfare {
-                            address += subThoroughfare + ", "
-                        }
+                        
+//                        if let subThoroughfare = placemark.subThoroughfare {
+//                            address += subThoroughfare + ", 📌"
+//                        }
+                        
+//                        if let throughfare = placemark.thoroughfare {
+//                            address += throughfare + " "
+//                        }
                     }
-                }
-
-                if let sublocal = placemark.subLocality {
-                    address += sublocal + ", "
-                }
-                
-                if let admistrativeArea = placemark.administrativeArea {
-                    address += admistrativeArea + ", "
                 }
                 
                 if let country = placemark.country {
                     address += country + " "
                 }
-      
+                
+//                if let admistrativeArea = placemark.administrativeArea {
+//                    address += admistrativeArea + ",🍃 "
+//                }
+                if let local = placemark.locality {
+                    address += local + " "
+                }
+                
+                if let sublocal = placemark.subLocality {
+                    address += sublocal + " "
+                }
+                
+                self.selectedLocationAddress = address
+                self.selectedLatitude = location.coordinate.latitude
+                self.selectedLongitude = location.coordinate.longitude
+                
                 DispatchQueue.main.async {
-                    self.mapDelegate?.didSelectLocationWithAddress(address)
+                    self.mapDelegate?.didSelectLocationWithCoordinate(address, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
                 }
             }
         }

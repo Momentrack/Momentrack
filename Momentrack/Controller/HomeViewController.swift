@@ -21,9 +21,9 @@ final class HomeViewController: UIViewController {
         setupBlurEffect()
         getUserInfo()
         getMomentList()
-        UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
+        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +51,8 @@ final class HomeViewController: UIViewController {
         
         let mapConfig = CustomBarItemConfiguration(image: UIImage(systemName: "map")) {
             // TODO: mapViewController
+            let homeNaviMapViewController = HomeNaviMapViewController()
+            self.navigationController?.pushViewController(homeNaviMapViewController, animated: false)
         }
         let mapItem = UIBarButtonItem.generate(with: mapConfig, width: 30)
         
@@ -82,23 +84,16 @@ final class HomeViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-//        let blurEffect = UIBlurEffect(style: .prominent)
-//        let blur2 = UIBlurEffect(style: .regular)
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
-//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        //let visualEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//        visualEffectView.frame = view.frame
-//        blurView.addSubview(visualEffectView)
         
     }
     
-//    @objc func momentSaved() {
-//        getMomentList()
-//    }
+    @objc func momentSaved() {
+        getMomentList()
+    }
     
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @objc func touchUpBottomSheet() {
         let vc = PostingMomentViewController()

@@ -63,24 +63,28 @@ final class Network {
     }
     
     // MARK: 사용자 재인증
-    func reauthenricateUser(email: String, completion: @escaping (String) -> Void) {
+    func reauthenricateUser(completion: @escaping (String) -> Void) {
         guard let link = UserDefaults.standard.string(forKey: "Link") else { return }
-        var credential: AuthCredential
-        credential = EmailAuthProvider.credential(withEmail: email, link: link)
-        
-        firebaseAuth.currentUser?.reauthenticate(with: credential, completion: { result, error in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            if let email = result?.user.email {
-                print("재인증이 완료되었습니다.")
-                completion(email)
-            } else {
-                print("재인증에 실패하였습니다.")
-                return
-            }
-        })
+        guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
+        self.getUserInfo { user in
+            let email = user.email
+            var credential: AuthCredential
+            credential = EmailAuthProvider.credential(withEmail: email, link: link)
+            
+            self.firebaseAuth.currentUser?.reauthenticate(with: credential, completion: { result, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if let email = result?.user.email {
+                    print("재인증이 완료되었습니다.")
+                    completion(email)
+                } else {
+                    print("재인증에 실패하였습니다.")
+                    return
+                }
+            })
+        }
     }
     
     // MARK: 로그아웃
@@ -94,9 +98,9 @@ final class Network {
     }
     
     // MARK: 사용자 계정 삭제하기 (탈퇴하기)
-    func deleteAccount(email: String) {
+    func deleteAccount() {
         // NOTE: 최근 로그인(로그인 후 5분)이 지나면 사용자 재인증 필요
-        self.reauthenricateUser(email: email) { _ in
+        self.reauthenricateUser() { _ in
             self.firebaseAuth.currentUser?.delete(completion: { error in
                 if let error = error {
                     print(error.localizedDescription)

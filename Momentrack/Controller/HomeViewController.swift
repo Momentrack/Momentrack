@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class HomeViewController: UIViewController {
     
@@ -13,22 +14,19 @@ final class HomeViewController: UIViewController {
     private let todayDateView = TodayDateView()
     private let momentListView = MomentListView()
     
+    private let locationManger = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupView()
+        setupUserLocation()
         setupBlurEffect()
         getUserInfo()
         getMomentList()
-        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
         
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getMomentList()
     }
     
     private func setupNavigationBar() {
@@ -160,6 +158,11 @@ final class HomeViewController: UIViewController {
         momentListView.momentTableView.separatorStyle = .none
     }
     
+    private func setupUserLocation() {
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+    }
+    
     private func getUserInfo() {
         Network.shared.getUserInfo { user in
             if user.friends.contains(user.email) {
@@ -173,7 +176,6 @@ final class HomeViewController: UIViewController {
     private func getMomentList() {
         Network.shared.getMoments { moments in
             self.momentListView.momentList = moments
-            
             self.momentListView.momentTableView.reloadData()
         }
     }

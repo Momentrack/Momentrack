@@ -18,6 +18,10 @@ final class FriendCell: UICollectionViewCell {
         view.layer.cornerRadius = 45 / 2
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.black.cgColor
+//        view.layer.masksToBounds = false
+//        view.layer.shadowColor = UIColor.black.withAlphaComponent(0.05).cgColor
+//        view.layer.shadowOffset = .zero
+//        view.layer.shadowOpacity = 1
         return view
     }()
     
@@ -29,8 +33,6 @@ final class FriendCell: UICollectionViewCell {
         return label
     }()
     
-   
-   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
@@ -44,7 +46,6 @@ final class FriendCell: UICollectionViewCell {
         titleLabel.text = nickname
     }
     
-  
     private func setupCell() {
         addSubview(cellView)
         cellView.addSubview(titleLabel)

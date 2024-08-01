@@ -86,7 +86,6 @@ final class MomentListView: UIView {
 extension MomentListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return momentList.count
     }
     

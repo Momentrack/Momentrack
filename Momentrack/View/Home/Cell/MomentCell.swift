@@ -170,14 +170,17 @@ final class MomentCell: UITableViewCell {
         
         if imageUrl == "" {
             photoImageView.isHidden = true
+            mapView.isHidden = false
         } else {
             guard let imageUrl else { return }
-            photoImageView.setImageURL(imageUrl)
             mapView.isHidden = true
+            photoImageView.isHidden = false
+            photoImageView.setImageURL(imageUrl)
         }
         if content == "" {
             contentLabel.isHidden = true
         } else {
+            contentLabel.isHidden = false
             contentLabel.text = content
         }
         setAnnotation(latitudeValue: latitude, longitudeValue: longitude, delta: 0.0005, title: "", subtitle: "")

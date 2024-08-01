@@ -11,7 +11,7 @@ import MapKit
 class HomeNaviMapViewController: UIViewController {
     
     private let homeNaviMapView = HomeNaviMapView()
-    private var moments: [Moment] = []
+    private var moments: [AllOfMoment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +38,23 @@ class HomeNaviMapViewController: UIViewController {
     }
     
     private func fetchMoments() {
-        Network.shared.getMoments { [weak self] moments in
+        Network.shared.getMomentList { [weak self] moments in
             self?.moments = moments
             self?.addPinsToMap()
         }
     }
     
     private func addPinsToMap() {
-        for moment in moments {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: moment.latitude, longitude: moment.longitude)
-            annotation.title = moment.location
-            homeNaviMapView.mapView.addAnnotation(annotation)
+        for allOfMoment in moments {
+            for moment in allOfMoment.moment {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: moment.latitude, longitude: moment.longitude)
+                annotation.title = moment.location
+                homeNaviMapView.mapView.addAnnotation(annotation)
+            }
         }
         
-        if let firstMoment = moments.first {
+        if let firstAllOfMoment = moments.first, let firstMoment = firstAllOfMoment.moment.first {
             let region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: firstMoment.latitude, longitude: firstMoment.longitude),
                 latitudinalMeters: 10000,
@@ -72,7 +74,7 @@ extension HomeNaviMapViewController: MKMapViewDelegate {
         guard annotation is MKPointAnnotation else { return nil }
         
         let identifier = "MomentPin"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKAnnotationView
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         
         if annotationView == nil {

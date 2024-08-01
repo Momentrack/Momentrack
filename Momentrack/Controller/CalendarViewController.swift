@@ -27,7 +27,7 @@ final class CalendarViewController: UIViewController {
     private func setupNavigationBar() {
         self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
         self.navigationController?.navigationBar.tintColor = .black
-        self.navigationItem.title = "추억"
+        self.navigationItem.title = "추억 보관소"
     }
     
     private func setupView() {

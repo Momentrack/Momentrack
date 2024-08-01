@@ -13,7 +13,7 @@ class PostingMomentViewController: UIViewController {
 
     var moment: Moment?
     private let momentId =  UUID().uuidString
-    var imageData: Data = Data()
+    var imageData: Data?
     var imageUrl: String = ""
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
@@ -357,19 +357,18 @@ class PostingMomentViewController: UIViewController {
         }
         let sharedFriends = selectedFriends.isEmpty ? ["나"] : selectedFriends
         if self.moment?.photoUrl != self.imageUrl {
-            Network.shared.imageUpload(storageName: "moments", id: momentId, imageData: imageData) { url in
+            guard let imageData else {
+                self.saveMoment(location: location, photoUrl: "", memo: memo, sharedFriends: sharedFriends)
                 
-                if self.moment?.location != "" {
-                    self.moment?.photoUrl = url
-                    self.saveMoment(location: location, photoUrl: url, memo: memo, sharedFriends: sharedFriends)
-
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.showAlert(message: "위치버튼을 클릭해주세요.")
-                }
-                
+                self.dismiss(animated: true)
+                return
             }
-            
+            Network.shared.imageUpload(storageName: "moments", id: momentId, imageData: imageData) { url in
+                self.moment?.photoUrl = url
+                self.saveMoment(location: location, photoUrl: url, memo: memo, sharedFriends: sharedFriends)
+                
+                self.dismiss(animated: true, completion: nil)
+            }
         } else {
             saveMoment(location: location, photoUrl: "", memo: memo, sharedFriends: sharedFriends)
         }

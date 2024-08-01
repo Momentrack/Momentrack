@@ -121,15 +121,21 @@ final class Network {
         let user = User(email: email, nickname: nickname, friends: [email], createdAt: Date().stringFormat, activite: true)
         self.ref.child("users").child(userID).child("userInfo").setValue(user.toDictionary)
     }
+
+    // MARK: - 원래 createMoment 메소드 코드
     
-    // Moment 생성
     func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
         let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude
 //                            , date: Date().yearMonthDayStringFormat
         )
         self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+        
+//        guard let userID = Auth.auth().currentUser?.uid else { return }
+//        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude)
+//        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
     }
+    
     
     // MARK: [Read] 데이터 읽기
     // 사용자 정보 가져오기
@@ -337,17 +343,40 @@ final class Network {
                     }
                 }
             }
-//            for item in result.items {
-//                if item.name == imageName {
-//                    imageRef.child(imageName).delete { error in
-//                        if let error = error {
-//                            print(error)
-//                        } else {
-//                            print("삭제되었습니다.")
-//                        }
-//                    }
-//                }
-//            }
         })
     }
 }
+
+
+
+// Moment 생성
+/*
+func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double, completion: @escaping (Result<Void, Error>) -> Void) {
+    
+    guard let userID = Auth.auth().currentUser?.uid else {
+        completion(.failure(NSError(domain: "Auth", code: 0, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
+        return
+    }
+    // TODO: - 테스트를 위한 임시 UserDefault 값(삭제 예정)
+    //guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
+    
+    let moment = Moment(
+        location: location,
+        photoUrl: photoUrl,
+        memo: memo,
+        sharedFriends: sharedFriends,
+        createdAt: Date().stringFormat,
+        time: Date().timeStringFormat,
+        latitude: latitude,
+        longitude: longitude
+    )
+    
+    self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary) { error, _ in
+        if let error = error {
+            completion(.failure(error))
+        } else {
+            completion(.success(()))
+        }
+    }
+}
+*/

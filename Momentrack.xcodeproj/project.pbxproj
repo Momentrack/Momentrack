@@ -64,6 +64,7 @@
 		1A69A7232C5692DC00294D6D /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10621E2C50EB34004D0396 /* Moment.swift */; };
 		1A69A7252C57828C00294D6D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7242C57828C00294D6D /* UIView+Extensions.swift */; };
 		1A69A7272C578F5F00294D6D /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69A7262C578F5F00294D6D /* SharingManager.swift */; };
+		1A9D95FD2C5B9EB8009BDF9C /* SelectedFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D95FC2C5B9EB8009BDF9C /* SelectedFriendCell.swift */; };
 		1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751B2C3FC46100199164 /* AppDelegate.swift */; };
 		1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0751D2C3FC46100199164 /* SceneDelegate.swift */; };
 		1AB075252C3FC46200199164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075242C3FC46200199164 /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		1A151AAB2C5272E7008ACFDA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1A69A7242C57828C00294D6D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1A69A7262C578F5F00294D6D /* SharingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
+		1A9D95FC2C5B9EB8009BDF9C /* SelectedFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFriendCell.swift; sourceTree = "<group>"; };
 		1AB075182C3FC46100199164 /* Momentrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB0751B2C3FC46100199164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB0751D2C3FC46100199164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */,
 				10F7DCE82C456BC200C69573 /* MomentCell.swift */,
 				10F7DCEE2C47557C00C69573 /* MomentFriendCell.swift */,
+				1A9D95FC2C5B9EB8009BDF9C /* SelectedFriendCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				107309E92C522BB300E37ED1 /* CalendarView.swift in Sources */,
+				1A9D95FD2C5B9EB8009BDF9C /* SelectedFriendCell.swift in Sources */,
 				1AB075382C3FC82100199164 /* HomeViewController.swift in Sources */,
 				1A151AAC2C5272E7008ACFDA /* MapViewController.swift in Sources */,
 				1A69A7252C57828C00294D6D /* UIView+Extensions.swift in Sources */,

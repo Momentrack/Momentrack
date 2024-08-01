@@ -1,15 +1,14 @@
 //
-//  FriendCell.swift
+//  SelectedFriendCell.swift
 //  Momentrack
 //
-//  Created by heyji on 2024/07/15.
+//  Created by Nat Kim on 8/1/24.
 //
 
 import UIKit
 
-final class FriendCell: UICollectionViewCell {
-    
-    static let identifier: String = "FriendCell"
+class SelectedFriendCell: UICollectionViewCell {
+    static let identifier: String = "SelectedFriendCell"
     
     private let cellView: UIView = {
         let view = UIView()
@@ -29,7 +28,12 @@ final class FriendCell: UICollectionViewCell {
         return label
     }()
     
-   
+    override var isSelected: Bool {
+        didSet {
+            updateAppearance()
+        }
+    }
+    
    
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +48,22 @@ final class FriendCell: UICollectionViewCell {
         titleLabel.text = nickname
     }
     
-  
+    func withFriendsconfigure(nickname: String, isSelected: Bool = false) {
+        titleLabel.text = nickname
+        self.isSelected = isSelected
+        updateAppearance()
+    }
+    
+    private func updateAppearance() {
+        if isSelected {
+            cellView.backgroundColor = .systemBlue
+            titleLabel.textColor = .white
+        } else {
+            cellView.backgroundColor = .systemGray5
+            titleLabel.textColor = .black
+        }
+    }
+    
     private func setupCell() {
         addSubview(cellView)
         cellView.addSubview(titleLabel)

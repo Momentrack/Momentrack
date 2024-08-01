@@ -168,12 +168,6 @@ final class MomentCell: UITableViewCell {
         locationLabel.text = location
         self.friendList = friendList
         
-        if friendList.isEmpty {
-            self.friendList = ["나"]
-        } else {
-            self.friendList = friendList
-        }
-        
         if imageUrl == "" {
             photoImageView.isHidden = true
         } else {

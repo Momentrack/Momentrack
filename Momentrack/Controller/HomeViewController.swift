@@ -173,7 +173,7 @@ final class HomeViewController: UIViewController {
     private func getMomentList() {
         Network.shared.getMoments { moments in
             self.momentListView.momentList = moments
-            //print("테스트, 가져온 모멘트 리스트: \(moments)")
+            
             self.momentListView.momentTableView.reloadData()
         }
     }

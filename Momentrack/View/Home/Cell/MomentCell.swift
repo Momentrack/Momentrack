@@ -79,6 +79,8 @@ final class MomentCell: UITableViewCell {
     
     private var photoImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -165,12 +167,6 @@ final class MomentCell: UITableViewCell {
         timeLabel.text = time
         locationLabel.text = location
         self.friendList = friendList
-        
-        if friendList.isEmpty {
-            self.friendList = ["나"]
-        } else {
-            self.friendList = friendList
-        }
         
         if imageUrl == "" {
             photoImageView.isHidden = true

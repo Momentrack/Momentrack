@@ -11,6 +11,7 @@ final class CalendarViewController: UIViewController {
     
     private let calendarView = CalendarView()
     private let historyView = HistoryView()
+    var momentList: [AllOfMoment] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ final class CalendarViewController: UIViewController {
         
         Network.shared.getMomentList { momentList in
             self.historyView.allOfMoment = momentList
+            self.momentList = momentList
             self.historyView.collectionView.reloadData()
         }
     }
@@ -56,6 +58,7 @@ final class CalendarViewController: UIViewController {
 extension CalendarViewController: CalendarViewDelegate {
     func showDetailView(indexPath: IndexPath) {
         let detailDayViewController = DetailDayViewController()
+        detailDayViewController.moment = self.momentList[indexPath.item]
         self.navigationController?.pushViewController(detailDayViewController, animated: true)
     }
 }

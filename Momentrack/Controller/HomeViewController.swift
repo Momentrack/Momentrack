@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class HomeViewController: UIViewController {
     
@@ -13,11 +14,14 @@ final class HomeViewController: UIViewController {
     private let todayDateView = TodayDateView()
     private let momentListView = MomentListView()
     
+    private let locationManger = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupView()
+        setupUserLocation()
         setupBlurEffect()
         getUserInfo()
         getMomentList()
@@ -152,6 +156,11 @@ final class HomeViewController: UIViewController {
         
         friendListView.delegate = self
         momentListView.momentTableView.separatorStyle = .none
+    }
+    
+    private func setupUserLocation() {
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
     }
     
     private func getUserInfo() {

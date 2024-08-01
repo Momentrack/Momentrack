@@ -13,8 +13,10 @@ class PostingMomentViewController: UIViewController {
     
     var moment: Moment?
     private let momentId =  UUID().uuidString
+    
     var imageData: Data = Data()
     var imageUrl: String = ""
+    
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
     
@@ -143,6 +145,10 @@ extension PostingMomentViewController: PHPickerViewControllerDelegate {
             DispatchQueue.main.async {
                 self.postingMomentView.uploadPhoto.image = selectedImage
                 self.postingMomentView.cameraButton.isHidden = true
+                
+                if let imageData = selectedImage.jpegData(compressionQuality: 0.8) {
+                    self.imageData = imageData
+                }
             }
         }
     }

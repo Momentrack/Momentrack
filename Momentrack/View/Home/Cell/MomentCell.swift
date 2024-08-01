@@ -79,6 +79,8 @@ final class MomentCell: UITableViewCell {
     
     private var photoImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     

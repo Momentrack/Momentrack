@@ -600,8 +600,8 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2P5FNS3JAJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Momentrack/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "모멘트랙";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "모멘트랙에 여행사진을 등록하려면 카메라 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "모멘트랙에 여행 위치를 기록하려면 사용자 위치 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "모멘트랙에 여행사진을 등록하려면 사진 접근 권한을 허용해주세요.";
@@ -642,8 +642,8 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2P5FNS3JAJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Momentrack/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "모멘트랙";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "모멘트랙에 여행사진을 등록하려면 카메라 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "모멘트랙에 여행 위치를 기록하려면 사용자 위치 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "모멘트랙에 여행사진을 등록하려면 사진 접근 권한을 허용해주세요.";

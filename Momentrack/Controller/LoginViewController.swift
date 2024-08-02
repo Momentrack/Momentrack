@@ -13,12 +13,14 @@ class LoginViewController: UIViewController {
     
     override func loadView() {
         view = loginView
+        loginView.emailTextField.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         setTargetAction()
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -48,11 +50,26 @@ class LoginViewController: UIViewController {
     }
     
     @objc func didTapAuthButton() {
-        guard let email = loginView.emailTextField.text else { return }
-        
-        Network.shared.createNewUser(email: email) { result in
-            print(result)
+        guard let email = loginView.emailTextField.text else {
+            showAlert(message: "이메일을 입력해주세요.")
+            return
         }
+        
+        checkEmail()
+            
+            if emailValid {
+                Network.shared.createNewUser(email: email) { [weak self] result in
+                    DispatchQueue.main.async {
+                        if result == "email sent" {
+                            self?.showAlert(message: "받은 메일함을 확인하세요.")
+                        } else {
+                            self?.showAlert(message: "오류가 발생했습니다: \(result)")
+                        }
+                    }
+                }
+            } else {
+                showAlert(message: "유효한 이메일 주소를 입력해주세요.")
+            }
     }
     
     @objc func didTappedLoginBtn() {
@@ -83,6 +100,50 @@ class LoginViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func appMovedToForeground() {
+        checkAuthStatus()
+    }
+    
+    func checkAuthStatus() {
+        if let link = UserDefaults.standard.string(forKey: "Link") {
+            
+            showToastMessage("인증 완료했습니다. 로그인 버튼을 클릭해주세요")
+            
+            UserDefaults.standard.removeObject(forKey: "Link")
+        }
+    }
+    
+    private func showToastMessage(_ message: String) {
+        let toastLabel = UILabel()
+        toastLabel.backgroundColor = .systemGray.withAlphaComponent(0.8)
+        toastLabel.textColor = .white
+        toastLabel.font = .systemFont(ofSize: 12)
+        toastLabel.textAlignment = .center
+        toastLabel.text = message
+        toastLabel.layer.cornerRadius = 8
+        toastLabel.clipsToBounds = true
+        
+        self.view.addSubview(toastLabel)
+        toastLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(100)
+            make.width.equalTo(335)
+            make.height.equalTo(30)
+        }
+        
+        UIView.animate(withDuration: 3, delay: 1.5, options: .curveEaseOut) {
+            toastLabel.alpha = 0.0
+        } completion: { isCompleted in
+            toastLabel.removeFromSuperview()
         }
     }
 }

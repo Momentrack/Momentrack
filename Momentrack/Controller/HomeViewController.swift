@@ -30,7 +30,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let titleConfig = CustomBarItemConfiguration(title: "MomenTrack", action: {})
+        let titleConfig = CustomBarItemConfiguration(image: UIImage(named: "homeLogo"),action: {})
         let titleItem = UIBarButtonItem.generate(with: titleConfig)
         navigationItem.leftBarButtonItem = titleItem
         
@@ -62,9 +62,9 @@ final class HomeViewController: UIViewController {
     
     // MARK: - floating Button(append travel log)
     
-    private let floatingButton: UIButton = {
+    private lazy var floatingButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "floating_90"), for: .normal)
+        button.setImage(UIImage(named: "floatingButton"), for: .normal)
         button.addTarget(self, action: #selector(touchUpBottomSheet), for: .touchUpInside)
         return button
     }()

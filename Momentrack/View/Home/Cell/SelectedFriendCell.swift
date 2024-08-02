@@ -12,7 +12,7 @@ class SelectedFriendCell: UICollectionViewCell {
     
     private let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .white
         view.clipsToBounds = true
         view.layer.cornerRadius = 45 / 2
         view.layer.borderWidth = 0.5
@@ -60,7 +60,7 @@ class SelectedFriendCell: UICollectionViewCell {
             titleLabel.textColor = .white
             titleLabel.font = .systemFont(ofSize: 14, weight: .bold)
         } else {
-            cellView.backgroundColor = .systemGray5
+            cellView.backgroundColor = .white
             titleLabel.textColor = .black
         }
     }

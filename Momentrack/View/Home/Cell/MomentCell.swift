@@ -29,7 +29,7 @@ final class MomentCell: UITableViewCell {
     
     private let timeView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray4
+        view.backgroundColor = .lightBlueJean
         view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 1
         return view
@@ -38,7 +38,7 @@ final class MomentCell: UITableViewCell {
     private var timeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }()

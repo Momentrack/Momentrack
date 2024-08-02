@@ -23,9 +23,18 @@ final class SettingView: UIView {
     
     private var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemGray
+        imageView.backgroundColor = .pastelBlueJean
         imageView.layer.cornerRadius = 60 / 2
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.black.cgColor
         return imageView
+    }()
+    
+    private var profileLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18)
+        label.textColor = .black
+        return label
     }()
     
     private let titleLabel: UILabel = {
@@ -100,6 +109,7 @@ final class SettingView: UIView {
     func configure(email: String, nickname: String) {
         self.emailLabel.text = email
         self.nicknameLabel.text = nickname
+        self.profileLabel.text = String(email.first!)
     }
     
     func getNickname() -> String {
@@ -109,6 +119,7 @@ final class SettingView: UIView {
     private func setupView() {
         addSubview(profileView)
         profileView.addSubview(profileImageView)
+        profileImageView.addSubview(profileLabel)
         profileView.addSubview(emailStackView)
         addSubview(nicknameView)
         nicknameView.addSubview(nicknameTitleLabel)
@@ -125,6 +136,9 @@ final class SettingView: UIView {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview()
             make.width.height.equalTo(60)
+        }
+        profileLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         emailStackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

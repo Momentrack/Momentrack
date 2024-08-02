@@ -13,7 +13,7 @@ final class CalendarHeaderView: UICollectionReusableView {
     
     private let titleLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemCyan.withAlphaComponent(0.6)
+        view.backgroundColor = .pastelBlueJean.withAlphaComponent(0.8)
         return view
     }()
     

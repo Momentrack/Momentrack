@@ -15,6 +15,7 @@ final class TitleButtonCell: UITableViewCell {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.isUserInteractionEnabled = false
         return button
     }()
 

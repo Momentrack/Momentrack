@@ -231,8 +231,25 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
                     self.mapDelegate?.didSelectLocationWithCoordinate(address, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
                 }
             }
+            guard let selectedLatitude, let selectedLongitude else { return }
+            setAnnotation(latitudeValue: selectedLatitude, longitudeValue: selectedLongitude, delta: 0.01, title: "", subtitle: "")
         }
+        
         manager.stopUpdatingLocation()
+    }
+    
+    func goLocation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double) -> CLLocationCoordinate2D {
+        let pLocation = CLLocationCoordinate2DMake(latitudeValue, longitudeValue)
+        let spanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
+        let pRegion = MKCoordinateRegion(center: pLocation, span: spanValue)
+        mapView.setRegion(pRegion, animated: true)
+        return pLocation
+    }
+    
+    func setAnnotation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double, title strTitle: String, subtitle strSubtitle: String) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = goLocation(latitudeValue: latitudeValue, longitudeValue: longitudeValue, delta: span)
+        mapView.addAnnotation(annotation)
     }
 }
 

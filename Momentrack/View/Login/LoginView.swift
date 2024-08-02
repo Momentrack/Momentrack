@@ -91,9 +91,7 @@ class LoginView: UIView {
         self.addSubview(maillabel)
         self.addSubview(emailTextField)
         self.addSubview(loginStack)
-        //self.addSubview(authButton)
-        //self.addSubview(loginButton)
-        
+
         logo.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(60)
             $0.left.right.equalToSuperview().inset(80)
@@ -112,7 +110,7 @@ class LoginView: UIView {
         }
         
         loginStack.snp.makeConstraints {
-            $0.top.equalTo(emailTextField.snp.bottom).offset(48)
+            $0.top.equalTo(emailTextField.snp.bottom).offset(24)
             $0.left.right.equalToSuperview().inset(8)
             $0.height.equalTo(86)
         }

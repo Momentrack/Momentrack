@@ -21,7 +21,7 @@ class LoginView: UIView {
     }
     private lazy var logo: UIImageView = {
         let logoImage = UIImageView()
-        logoImage.image = UIImage(named: "logo_01")
+        logoImage.image = UIImage(named: "logo_02")
         logoImage.contentMode = .scaleAspectFit
         logoImage.tintColor = .label
         return logoImage
@@ -57,6 +57,15 @@ class LoginView: UIView {
         return textField
     }()
     
+    lazy var loginStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [authButton, loginButton])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 16
+        //stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 72, height: 40)
@@ -81,13 +90,14 @@ class LoginView: UIView {
         self.addSubview(logo)
         self.addSubview(maillabel)
         self.addSubview(emailTextField)
-        self.addSubview(authButton)
-        self.addSubview(loginButton)
+        self.addSubview(loginStack)
+        //self.addSubview(authButton)
+        //self.addSubview(loginButton)
         
         logo.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(60)
-            $0.left.right.equalToSuperview().inset(54)
-            $0.height.equalTo(200)
+            $0.left.right.equalToSuperview().inset(80)
+            $0.height.equalTo(120)
         }
         
         maillabel.snp.makeConstraints {
@@ -101,15 +111,15 @@ class LoginView: UIView {
             $0.left.right.equalToSuperview().inset(24)
         }
         
-        authButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(emailTextField.snp.bottom).offset(16)
+        loginStack.snp.makeConstraints {
+            $0.top.equalTo(emailTextField.snp.bottom).offset(48)
+            $0.left.right.equalToSuperview().inset(8)
+            $0.height.equalTo(86)
         }
-        
+       
         loginButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(160)
-            $0.left.right.equalToSuperview().inset(24)
+            $0.left.right.equalTo(loginStack).inset(16)
             $0.height.equalTo(48)
             
         }

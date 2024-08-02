@@ -21,7 +21,7 @@ class LoginView: UIView {
     }
     private lazy var logo: UIImageView = {
         let logoImage = UIImageView()
-        logoImage.image = UIImage(systemName: "airplane.circle.fill")
+        logoImage.image = UIImage(named: "logo_01")
         logoImage.contentMode = .scaleAspectFit
         logoImage.tintColor = .label
         return logoImage
@@ -62,8 +62,8 @@ class LoginView: UIView {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 72, height: 40)
         button.layer.cornerRadius = 10
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor.lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .lightBlueJean
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.setTitle("로그인", for: .normal)
         return button
@@ -88,7 +88,7 @@ class LoginView: UIView {
         logo.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(60)
             $0.left.right.equalToSuperview().inset(54)
-            $0.height.equalTo(160)
+            $0.height.equalTo(200)
         }
         
         maillabel.snp.makeConstraints {
@@ -109,7 +109,7 @@ class LoginView: UIView {
         
         loginButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(240)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(160)
             $0.left.right.equalToSuperview().inset(24)
             $0.height.equalTo(48)
             

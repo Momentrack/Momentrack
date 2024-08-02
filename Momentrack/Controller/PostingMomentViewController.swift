@@ -7,9 +7,9 @@
 
 import UIKit
 import PhotosUI
+import SnapKit
 
 class PostingMomentViewController: UIViewController {
-    //private let postingMomentView = PostingMomentView()
 
     var moment: Moment?
     private let momentId =  UUID().uuidString
@@ -23,6 +23,19 @@ class PostingMomentViewController: UIViewController {
     var friendDelegate: AddFriendDelegate?
     var selectedFriends: [String] = []
     var friendList: [String] = []
+    
+    // 스크롤뷰 추가
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    
+    // 컨텐츠뷰 추가
+    lazy var contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
     
     lazy var withFriendLabel: UILabel = {
         let label = UILabel()
@@ -59,7 +72,7 @@ class PostingMomentViewController: UIViewController {
         button.setImage(UIImage(systemName: "location.fill"), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
         button.setPreferredSymbolConfiguration(.init(pointSize: 32, weight: .regular, scale: .default), forImageIn: .normal)
-        button.tintColor = .black
+        button.tintColor = .label
         button.addTarget(self, action: #selector(pinnedCurrentLocation), for: .touchUpInside)
         return button
     }()
@@ -68,8 +81,8 @@ class PostingMomentViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         //label.text = "테스트 주소입니다."
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor.blue
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = UIColor.lightBlueJean
         return label
     }()
     
@@ -96,7 +109,7 @@ class PostingMomentViewController: UIViewController {
         button.setImage(UIImage(systemName: "camera.fill"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 32, weight: .regular, scale: .default), forImageIn: .normal)
         button.addTarget(self, action: #selector(addImageButtonTapped), for: .touchUpInside)
-        button.tintColor = .black
+        button.tintColor = .label
         return button
     }()
     
@@ -115,12 +128,27 @@ class PostingMomentViewController: UIViewController {
         return textView
     }()
     
+    lazy var keyboardAccessoryView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        view.backgroundColor = UIColor.lightBlueJean
+        let doneButton = UIButton(type: .system)
+        doneButton.setTitle("글 작성완료", for: .normal)
+        doneButton.setTitleColor(.white, for: .normal)
+        doneButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
+        view.addSubview(doneButton)
+        doneButton.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(-16)
+            $0.centerY.equalToSuperview()
+        }
+        return view
+    }()
+    
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 72, height: 40)
         button.layer.cornerRadius = 10
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor.lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor.lightBlueJean
         button.titleLabel?.font = .systemFont(ofSize: 18)
         button.setTitle("완료", for: .normal)
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
@@ -134,53 +162,73 @@ class PostingMomentViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         //setTargetActions()
         setupView()
+        
         getUserInfo()
         
 
         self.friendDelegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        momentTextView.inputAccessoryView = keyboardAccessoryView
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
 
-    
     private func setupView() {
-        view.addSubview(currentLocationStack)
-        //self.addSubview(shareLocationBtn)
-        view.addSubview(addressLabel)
-        view.addSubview(withFriendLabel)
-        view.addSubview(collectionView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        contentView.addSubview(currentLocationStack)
+        contentView.addSubview(addressLabel)
+        contentView.addSubview(withFriendLabel)
+        contentView.addSubview(collectionView)
+        contentView.addSubview(photoLabel)
+        contentView.addSubview(uploadPhoto)
+        uploadPhoto.addSubview(cameraButton)
+        contentView.addSubview(writingLabel)
+        contentView.addSubview(momentTextView)
+       
+        view.addSubview(saveButton)
+        
         collectionView.register(SelectedFriendCell.self, forCellWithReuseIdentifier: SelectedFriendCell.identifier)
         
         collectionView.alwaysBounceVertical = false
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        
-        view.addSubview(photoLabel)
-        view.addSubview(uploadPhoto)
-        uploadPhoto.addSubview(cameraButton)
-        
-        view.addSubview(writingLabel)
-        view.addSubview(momentTextView)
         momentTextView.placeholderText = "당신의 여정을 기록해보세요."
+        setupConstraints()
+      
+    }
+    
+    private func setupConstraints() {
+        scrollView.snp.makeConstraints {
+            $0.top.left.right.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+            //$0.edges.equalToSuperview()
+        }
         
-        view.addSubview(saveButton)
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
         currentLocationStack.snp.makeConstraints {
             $0.top.equalToSuperview().inset(33)
             $0.left.right.equalToSuperview().inset(16)
         }
-
+        
         addressLabel.snp.makeConstraints {
-            $0.top.equalTo(currentLocationStack.snp.top).offset(32)
-            $0.left.equalTo(currentLocationLabel.snp.left)
+            $0.top.equalTo(currentLocationStack.snp.bottom).offset(8)
+            $0.left.right.equalToSuperview().inset(16)
         }
         
         withFriendLabel.snp.makeConstraints {
-            $0.top.equalTo(currentLocationStack.snp.bottom).offset(24)
+            $0.top.equalTo(addressLabel.snp.bottom).offset(24)
             $0.left.equalToSuperview().inset(16)
         }
         
@@ -192,7 +240,7 @@ class PostingMomentViewController: UIViewController {
         
         photoLabel.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom).offset(30)
-            $0.left.equalTo(withFriendLabel.snp.left)
+            $0.left.equalTo(withFriendLabel)
         }
         
         uploadPhoto.snp.makeConstraints {
@@ -206,22 +254,48 @@ class PostingMomentViewController: UIViewController {
         }
         
         writingLabel.snp.makeConstraints {
-            $0.left.equalTo(photoLabel)
             $0.top.equalTo(uploadPhoto.snp.bottom).offset(19)
+            $0.left.equalTo(photoLabel)
         }
         
         momentTextView.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(24)
             $0.top.equalTo(writingLabel.snp.bottom).offset(8)
-            //$0.bottom.equalTo(saveButton.snp.top).offset(12)
+            $0.left.right.equalToSuperview().inset(24)
             $0.height.greaterThanOrEqualTo(100)
+            $0.bottom.equalToSuperview().inset(120) // 여백 추가
         }
         
         saveButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(40)
             $0.left.right.equalToSuperview().inset(16)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-8)
+            //$0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(16)
+            //$0.left.right.equalToSuperview().inset(16)
             $0.height.equalTo(52)
         }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+
+            if momentTextView.isFirstResponder {
+                let activeRect = momentTextView.convert(momentTextView.bounds, to: scrollView)
+                scrollView.scrollRectToVisible(activeRect, animated: true)
+            }
+     
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     private func collectionViewLayout() -> UICollectionViewCompositionalLayout {
@@ -266,7 +340,7 @@ class PostingMomentViewController: UIViewController {
    
     @objc func handleImageTap() {
         if uploadPhoto.image != nil {
-           uploadPhoto.image = nil
+            uploadPhoto.image = nil
             cameraButton.isHidden = false
         }
     }
@@ -426,3 +500,4 @@ extension PostingMomentViewController: UICollectionViewDataSource, UICollectionV
 
     }
 }
+

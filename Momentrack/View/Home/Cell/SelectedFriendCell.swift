@@ -56,8 +56,9 @@ class SelectedFriendCell: UICollectionViewCell {
     
     private func updateAppearance() {
         if isSelected {
-            cellView.backgroundColor = .systemBlue
+            cellView.backgroundColor = UIColor.lightBlueJean
             titleLabel.textColor = .white
+            titleLabel.font = .systemFont(ofSize: 14, weight: .bold)
         } else {
             cellView.backgroundColor = .systemGray5
             titleLabel.textColor = .black

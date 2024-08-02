@@ -45,7 +45,7 @@ final class MapViewController: UIViewController {
         configuration.baseForegroundColor = .white
         configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 16, bottom: 8, trailing: 16)
         let button = UIButton(configuration: configuration)
-        button.backgroundColor = .black
+        button.backgroundColor = UIColor.lightBlueJean
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(downPopViewButton), for: .touchUpInside)

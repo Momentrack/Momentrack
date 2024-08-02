@@ -64,8 +64,8 @@ final class HomeViewController: UIViewController {
     
     private let floatingButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "floating_90"), for: .normal)
-        button.addTarget(self, action: #selector(touchUpBottomSheet), for: .touchUpInside)
+        button.setImage(UIImage(named: "floatingButton"), for: .normal)
+        button.addTarget(HomeViewController.self, action: #selector(touchUpBottomSheet), for: .touchUpInside)
         return button
     }()
     

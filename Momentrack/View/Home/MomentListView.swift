@@ -114,9 +114,9 @@ extension MomentListView: UITableViewDataSource, UITableViewDelegate {
             self?.showShareActionSheet(for: indexPath)
             completionHandler(true)
         }
-        
-        shareAction.image = UIImage(systemName: "balloon")
-        shareAction.backgroundColor = .systemBlue
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 17.0, weight: .bold, scale: .large)
+        shareAction.image = UIImage(systemName: "square.and.arrow.up", withConfiguration: largeConfig)?.withTintColor(.white, renderingMode: .alwaysTemplate).addBackgroundCircle(.systemBlue)
+        shareAction.backgroundColor = .systemBackground
         
         return UISwipeActionsConfiguration(actions: [shareAction])
     }

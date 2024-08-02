@@ -30,7 +30,8 @@ final class AppController {
         
         
         if Auth.auth().currentUser == nil {
-            routeToLogin()
+            //routeToLogin()
+            setHome()
         }
     }
     

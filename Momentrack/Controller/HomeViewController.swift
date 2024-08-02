@@ -27,14 +27,11 @@ final class HomeViewController: UIViewController {
         getMomentList()
 
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
+        
+        UserDefaults.standard.setValue("R0FDlmvN9qShS1qvqW8MJ8N1L6d2", forKey: "userId")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getMomentList()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
-    }
+    
     
     private func setupNavigationBar() {
         let titleConfig = CustomBarItemConfiguration(image: UIImage(named: "homeLogo"),action: {})

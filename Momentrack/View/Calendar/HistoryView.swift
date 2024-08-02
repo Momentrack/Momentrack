@@ -71,7 +71,14 @@ extension HistoryView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCell.identifier, for: indexPath) as! DayCell
-        cell.configure(day: allOfMoment[indexPath.item].date.components(separatedBy: " ")[1] + " " + allOfMoment[indexPath.item].date.components(separatedBy: " ")[2])
+        
+        for i in 0..<allOfMoment[indexPath.item].moment.count {
+            if allOfMoment[indexPath.item].moment[i].photoUrl != "" {
+                cell.configure(day: allOfMoment[indexPath.item].date.components(separatedBy: " ")[1] + " " + allOfMoment[indexPath.item].date.components(separatedBy: " ")[2], imageUrl: allOfMoment[indexPath.item].moment[i].photoUrl)
+                break
+            }
+            cell.configure(day: allOfMoment[indexPath.item].date.components(separatedBy: " ")[1] + " " + allOfMoment[indexPath.item].date.components(separatedBy: " ")[2])
+        }
         return cell
     }
     

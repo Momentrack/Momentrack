@@ -13,7 +13,7 @@ final class DayCell: UICollectionViewCell {
     
     private let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .lightBlueJean
         view.clipsToBounds = true
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 0.5
@@ -23,6 +23,8 @@ final class DayCell: UICollectionViewCell {
     
     private let mainImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -45,7 +47,8 @@ final class DayCell: UICollectionViewCell {
     
     func configure(day: String, imageUrl: String? = nil) {
         titleLabel.text = day
-        mainImageView.setImageURL("https://t4.ftcdn.net/jpg/05/49/86/39/360_F_549863991_6yPKI08MG7JiZX83tMHlhDtd6XLFAMce.jpg")
+        guard let imageUrl else { return }
+        mainImageView.setImageURL(imageUrl)
     }
     
     private func setupCell() {

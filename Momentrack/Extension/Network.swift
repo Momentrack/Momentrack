@@ -55,10 +55,17 @@ final class Network {
             // NOTE: 사용자 uid UserDefault에 임시 저장 및 데이터베이스에 유저 생성
             guard let uid = result?.user.uid else { return }
             UserDefaults.standard.setValue(uid, forKey: "userId")
-            Network.shared.createUserInfo(email: email)
-            Network.shared.updateUserEmail(email: email)
             
-            completion(.success("로그인 성공"))
+            // MARK: 기존 유저와 신규 유저 구분
+            Network.shared.getUsersEmail { emails in
+                if emails.contains(email) {
+                    
+                } else {
+                    Network.shared.createUserInfo(email: email)
+                    Network.shared.updateUserEmail(email: email)
+                }
+                completion(.success("로그인 성공"))
+            }
         }
     }
     
@@ -98,6 +105,7 @@ final class Network {
     }
     
     // MARK: 사용자 계정 삭제하기 (탈퇴하기)
+    // NOTE: 사용자 계정 삭제 시 유저 Info와 친구 리스트에도 삭제
     func deleteAccount() {
         // NOTE: 최근 로그인(로그인 후 5분)이 지나면 사용자 재인증 필요
         self.reauthenricateUser() { _ in

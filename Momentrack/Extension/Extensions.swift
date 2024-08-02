@@ -70,6 +70,17 @@ extension Date {
         return Date.todayDateFormatter.string(from: self)
     }
     
+    static var yearMonthDayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    var yearMonthDayStringFormat: String {
+        return Date.yearMonthDayFormatter.string(from: self)
+    }
+    
     static var timeDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"

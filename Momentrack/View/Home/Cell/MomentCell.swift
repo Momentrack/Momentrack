@@ -79,7 +79,6 @@ final class MomentCell: UITableViewCell {
     
     private var photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemGray5
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -169,29 +168,26 @@ final class MomentCell: UITableViewCell {
         locationLabel.text = location
         self.friendList = friendList
         
-        if friendList.isEmpty {
-            self.friendList = ["나"]
-        } else {
-            self.friendList = friendList
-        }
-        
         if imageUrl == "" {
             photoImageView.isHidden = true
+            mapView.isHidden = false
         } else {
             guard let imageUrl else { return }
-            photoImageView.setImageURL(imageUrl)
             mapView.isHidden = true
+            photoImageView.isHidden = false
+            photoImageView.setImageURL(imageUrl)
         }
         if content == "" {
             contentLabel.isHidden = true
         } else {
+            contentLabel.isHidden = false
             contentLabel.text = content
         }
         setAnnotation(latitudeValue: latitude, longitudeValue: longitude, delta: 0.0005, title: "", subtitle: "")
 
         // TODO: - DB 연동 모델 값으로 대체하기 (임시 주소라 삭제 예정)
-        //self.latitude = latitude // 37.334900
-        //self.longitude = longitude // -122.009020
+        self.latitude = latitude // 37.334900
+        self.longitude = longitude // -122.009020
     }
     
     private func setupCell() {

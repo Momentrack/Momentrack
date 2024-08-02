@@ -21,10 +21,15 @@ final class DayCell: UICollectionViewCell {
         return view
     }()
     
+    private let mainImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }()
@@ -38,15 +43,20 @@ final class DayCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(day: String) {
+    func configure(day: String, imageUrl: String? = nil) {
         titleLabel.text = day
+        mainImageView.setImageURL("https://t4.ftcdn.net/jpg/05/49/86/39/360_F_549863991_6yPKI08MG7JiZX83tMHlhDtd6XLFAMce.jpg")
     }
     
     private func setupCell() {
         addSubview(cellView)
-        cellView.addSubview(titleLabel)
+        cellView.addSubview(mainImageView)
+        mainImageView.addSubview(titleLabel)
         
         cellView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        mainImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in

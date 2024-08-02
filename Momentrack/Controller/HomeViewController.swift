@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class HomeViewController: UIViewController {
     
@@ -13,22 +14,26 @@ final class HomeViewController: UIViewController {
     private let todayDateView = TodayDateView()
     private let momentListView = MomentListView()
     
+    private let locationManger = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupView()
+        setupUserLocation()
         setupBlurEffect()
         getUserInfo()
         getMomentList()
-        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getMomentList()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
     }
     
     private func setupNavigationBar() {
@@ -51,6 +56,8 @@ final class HomeViewController: UIViewController {
         
         let mapConfig = CustomBarItemConfiguration(image: UIImage(systemName: "map")) {
             // TODO: mapViewController
+            let homeNaviMapViewController = HomeNaviMapViewController()
+            self.navigationController?.pushViewController(homeNaviMapViewController, animated: false)
         }
         let mapItem = UIBarButtonItem.generate(with: mapConfig, width: 30)
         
@@ -82,13 +89,6 @@ final class HomeViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-//        let blurEffect = UIBlurEffect(style: .prominent)
-//        let blur2 = UIBlurEffect(style: .regular)
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blur2)
-//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        //let visualEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//        visualEffectView.frame = view.frame
-//        blurView.addSubview(visualEffectView)
         
     }
     
@@ -165,9 +165,17 @@ final class HomeViewController: UIViewController {
         momentListView.momentTableView.separatorStyle = .none
     }
     
+    private func setupUserLocation() {
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+    }
+    
     private func getUserInfo() {
         Network.shared.getUserInfo { user in
-            self.friendListView.friendList = user.friends
+            if user.friends.contains(user.email) {
+                let friends = user.friends
+                self.friendListView.friendList = friends.filter { $0 != user.email }
+            }
             self.friendListView.collectionView.reloadData()
         }
     }
@@ -175,7 +183,6 @@ final class HomeViewController: UIViewController {
     private func getMomentList() {
         Network.shared.getMoments { moments in
             self.momentListView.momentList = moments
-            //print("테스트, 가져온 모멘트 리스트: \(moments)")
             self.momentListView.momentTableView.reloadData()
         }
     }

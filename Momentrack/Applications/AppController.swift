@@ -5,7 +5,8 @@
 //  Created by Nat Kim on 7/12/24.
 //
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseCore
 
 
 final class AppController {

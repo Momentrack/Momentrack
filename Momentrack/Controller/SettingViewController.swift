@@ -75,11 +75,26 @@ extension SettingViewController: SettingDelegate {
     func action(indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            fatalError()
+            // NOTE: 로그아웃 후 로그인 화면으로 화면전환
+            Network.shared.signOut()
+            showLoginVC()
         case 1:
-            fatalError()
+            // NOTE: 회원탈퇴 후 로그인 화면으로 화면전환
+            Network.shared.deleteAccount()
+            showLoginVC()
         default:
             fatalError()
+        }
+    }
+    
+    private func showLoginVC() {
+        let LoginVC = LoginViewController()
+        let navigationController = UINavigationController(rootViewController: LoginVC)
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
         }
     }
 }

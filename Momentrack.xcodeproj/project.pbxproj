@@ -14,6 +14,8 @@
 		107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */; };
 		107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */; };
 		107309F02C59269B00E37ED1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309EF2C59269B00E37ED1 /* HistoryView.swift */; };
+		10730A0F2C5CEC8600E37ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075262C3FC46200199164 /* LaunchScreen.storyboard */; };
+		10730A112C5CF0AA00E37ED1 /* logo_03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10730A102C5CF0A900E37ED1 /* logo_03@3x.png */; };
 		10F7DCD82C45325C00C69573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */; };
 		10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */; };
 		10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCE12C455D7E00C69573 /* FriendListView.swift */; };
@@ -72,6 +74,7 @@
 		107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
 		107309EF2C59269B00E37ED1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		10730A102C5CF0A900E37ED1 /* logo_03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_03@3x.png"; sourceTree = "<group>"; };
 		10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarItemConfiguration.swift; sourceTree = "<group>"; };
 		10F7DCE12C455D7E00C69573 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendListView.swift; path = Momentrack/Extension/FriendListView.swift; sourceTree = SOURCE_ROOT; };
@@ -274,6 +277,7 @@
 				1AB075262C3FC46200199164 /* LaunchScreen.storyboard */,
 				1AB075292C3FC46200199164 /* Info.plist */,
 				10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */,
+				10730A102C5CF0A900E37ED1 /* logo_03@3x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -394,6 +398,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AB075252C3FC46200199164 /* Assets.xcassets in Resources */,
+				10730A112C5CF0AA00E37ED1 /* logo_03@3x.png in Resources */,
+				10730A0F2C5CEC8600E37ED1 /* LaunchScreen.storyboard in Resources */,
 				1AB075282C3FC46200199164 /* Base in Resources */,
 				10F7DCD82C45325C00C69573 /* GoogleService-Info.plist in Resources */,
 			);

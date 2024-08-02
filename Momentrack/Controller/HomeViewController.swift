@@ -30,7 +30,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let titleConfig = CustomBarItemConfiguration(title: "MomenTrack", action: {})
+        let titleConfig = CustomBarItemConfiguration(image: UIImage(named: "homeLogo"),action: {})
         let titleItem = UIBarButtonItem.generate(with: titleConfig)
         navigationItem.leftBarButtonItem = titleItem
         

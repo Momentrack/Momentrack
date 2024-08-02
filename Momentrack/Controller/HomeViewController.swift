@@ -62,10 +62,10 @@ final class HomeViewController: UIViewController {
     
     // MARK: - floating Button(append travel log)
     
-    private let floatingButton: UIButton = {
+    private lazy var floatingButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "floatingButton"), for: .normal)
-        button.addTarget(HomeViewController.self, action: #selector(touchUpBottomSheet), for: .touchUpInside)
+        button.addTarget(self, action: #selector(touchUpBottomSheet), for: .touchUpInside)
         return button
     }()
     

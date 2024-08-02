@@ -37,6 +37,16 @@ class PostingMomentViewController: UIViewController {
         return view
     }()
     
+    // 인디케이터 추가
+    let indicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.color = .black
+        indicator.style = .large
+        indicator.hidesWhenStopped = true
+        indicator.stopAnimating()
+        return indicator
+    }()
+    
     lazy var withFriendLabel: UILabel = {
         let label = UILabel()
         label.text = "함께한 사람 선택"
@@ -181,6 +191,7 @@ class PostingMomentViewController: UIViewController {
     private func setupView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        view.addSubview(indicatorView)
         
         contentView.addSubview(currentLocationStack)
         contentView.addSubview(addressLabel)
@@ -272,6 +283,11 @@ class PostingMomentViewController: UIViewController {
             //$0.left.right.equalToSuperview().inset(16)
             $0.height.equalTo(52)
         }
+        
+        indicatorView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        self.view.bringSubviewToFront(indicatorView)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -345,7 +361,10 @@ class PostingMomentViewController: UIViewController {
         }
     }
     
-    @objc func saveButtonTapped() {
+    @objc func saveButtonTapped(_ sender: UIButton) {
+        self.indicatorView.startAnimating()
+        sender.isEnabled = false
+        
         guard let location = addressLabel.text, !location.isEmpty else {
             showAlert(message: "위치를 선택해주세요.")
             return
@@ -367,10 +386,14 @@ class PostingMomentViewController: UIViewController {
                 self.moment?.photoUrl = url
                 self.saveMoment(location: location, photoUrl: url, memo: memo, sharedFriends: sharedFriends)
                 
+                self.indicatorView.stopAnimating()
                 self.dismiss(animated: true, completion: nil)
+                sender.isEnabled = true
             }
         } else {
             saveMoment(location: location, photoUrl: "", memo: memo, sharedFriends: sharedFriends)
+            self.indicatorView.stopAnimating()
+            sender.isEnabled = true
         }
     }
     

@@ -52,7 +52,6 @@ class LoginView: UIView {
         textField.autocapitalizationType = .none
         
         textField.returnKeyType = .done
-        
         textField.layer.backgroundColor = UIColor.systemGray6.cgColor
         
         return textField

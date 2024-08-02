@@ -13,7 +13,7 @@ final class FriendCell: UICollectionViewCell {
     
     private let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .white
         view.clipsToBounds = true
         view.layer.cornerRadius = 45 / 2
         view.layer.borderWidth = 0.5

@@ -374,7 +374,7 @@ class PostingMomentViewController: UIViewController {
             showAlert(message: "텍스트를 입력해주세요.")
             return
         }
-        let sharedFriends = selectedFriends.isEmpty ? ["나"] : selectedFriends
+        let sharedFriends = selectedFriends
         if self.moment?.photoUrl != self.imageUrl {
             guard let imageData else {
                 self.saveMoment(location: location, photoUrl: "", memo: memo, sharedFriends: sharedFriends)

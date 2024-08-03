@@ -45,21 +45,39 @@ class HomeNaviMapViewController: UIViewController {
     }
     
     private func addPinsToMap() {
+        var annotations: [MKPointAnnotation] = []
+        var minLat = Double.greatestFiniteMagnitude
+        var maxLat = -Double.greatestFiniteMagnitude
+        var minLon = Double.greatestFiniteMagnitude
+        var maxLon = -Double.greatestFiniteMagnitude
+        
         for allOfMoment in moments {
             for moment in allOfMoment.moment {
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: moment.latitude, longitude: moment.longitude)
+                annotation.coordinate = CLLocationCoordinate2D(
+                    latitude: moment.latitude,
+                    longitude: moment.longitude
+                )
                 annotation.title = moment.location
                 homeNaviMapView.mapView.addAnnotation(annotation)
+                
+                minLat = min(minLat, moment.latitude)
+                maxLat = max(maxLat, moment.latitude)
+                minLon = min(minLon, moment.longitude)
+                maxLon = max(maxLon, moment.longitude)
             }
         }
         
-        if let firstAllOfMoment = moments.first, let firstMoment = firstAllOfMoment.moment.first {
-            let region = MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: firstMoment.latitude, longitude: firstMoment.longitude),
-                latitudinalMeters: 10000,
-                longitudinalMeters: 10000
+        if !annotations.isEmpty {
+            let center = CLLocationCoordinate2D(
+                latitude: (minLat + maxLat) / 2,
+                longitude: (minLon + maxLon) / 2
             )
+            let span = MKCoordinateSpan(
+                latitudeDelta: (maxLat - minLat) * 1.1,
+                longitudeDelta: (maxLon - minLon) * 1.1
+            )
+            let region = MKCoordinateRegion(center: center, span: span)
             homeNaviMapView.mapView.setRegion(region, animated: true)
         }
     }

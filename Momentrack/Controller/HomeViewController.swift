@@ -195,7 +195,7 @@ extension HomeViewController: UISheetPresentationControllerDelegate {
 
 extension HomeViewController: AddFriendDelegate {
     func action(indexPath: IndexPath) {
-        let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertHeight: 244)
+        let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", subTitle: "앱을 사용하는 친구만 추가할 수 있습니다.", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertHeight: 244)
         viewController.delegate = self
         viewController.customTextField.becomeFirstResponder()
         viewController.modalTransitionStyle = .crossDissolve

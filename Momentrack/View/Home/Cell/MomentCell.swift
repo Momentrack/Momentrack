@@ -163,6 +163,16 @@ final class MomentCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // NOTE: 셀의 재사용 이슈 - 중복된 데이터가 나타나서 추가해준 코드
+        self.timeLabel.text = nil
+        self.locationLabel.text = nil
+        self.photoImageView.image = nil
+        self.friendList.removeAll()
+        self.collectionView.reloadData()
+    }
+    
     func configure(time: String, location: String, friendList: [String], latitude: Double, longitude: Double ,imageUrl: String? = nil, content: String? = nil) {
         timeLabel.text = time
         locationLabel.text = location
@@ -290,7 +300,7 @@ extension MomentCell: CLLocationManagerDelegate {
         let pLocation = CLLocationCoordinate2DMake(latitudeValue, longitudeValue)
         let spanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
         let pRegion = MKCoordinateRegion(center: pLocation, span: spanValue)
-        mapView.setRegion(pRegion, animated: true)
+        mapView.setRegion(pRegion, animated: false)
         return pLocation
     }
     

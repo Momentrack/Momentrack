@@ -20,7 +20,6 @@ class PostingMomentViewController: UIViewController {
 
     
     weak var textViewDelegate: UITextViewDelegate?
-    var friendDelegate: AddFriendDelegate?
     var selectedFriends: [String] = []
     var friendList: [String] = []
     
@@ -174,9 +173,6 @@ class PostingMomentViewController: UIViewController {
         setupView()
         
         getUserInfo()
-        
-
-        self.friendDelegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -471,24 +467,6 @@ extension PostingMomentViewController: MapViewControllerDelegate {
     }
 }
 
-
-
-extension PostingMomentViewController: AddFriendDelegate {
-    func action(indexPath: IndexPath) {
-        if indexPath.item < friendList.count {
-            let selectedFriend = friendList[indexPath.item]
-            if let index = selectedFriends.firstIndex(of: selectedFriend) {
-                selectedFriends.remove(at: index)
-            } else {
-                selectedFriends.append(selectedFriend)
-                
-            }
-            self.selectedFriends = [selectedFriend]
-            self.collectionView.reloadItems(at: [indexPath])
-        }
-    }
-}
-
 extension Notification.Name {
     static let momentSaved = Notification.Name("momentSaved")
 }
@@ -509,18 +487,15 @@ extension PostingMomentViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
         guard let cell = collectionView.cellForItem(at: indexPath) as? SelectedFriendCell else {
             return
         }
-        let friend = friendList[indexPath.item]
-        if let index = selectedFriends.firstIndex(of: friend) {
-            selectedFriends.remove(at: index)
-            cell.isSelected = false
+        let friend: String = friendList[indexPath.item]
+        if selectedFriends.count >= 1 {
+            selectedFriends.removeAll()
+            selectedFriends.append(friend)
         } else {
             selectedFriends.append(friend)
-            cell.isSelected = true
         }
-
     }
 }

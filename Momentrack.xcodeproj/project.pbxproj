@@ -62,6 +62,7 @@
 		1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB075782C3FF10D00199164 /* LoginViewController.swift */; };
 		1AB0757D2C3FF41700199164 /* HomeNaviMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0757C2C3FF41700199164 /* HomeNaviMapView.swift */; };
 		1AD90FA12C4033E900445D6E /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD90FA02C4033E900445D6E /* AppController.swift */; };
+		1AFAC31C2C5E521F00603239 /* LoginEmailPwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		1AB075782C3FF10D00199164 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1AB0757C2C3FF41700199164 /* HomeNaviMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNaviMapView.swift; sourceTree = "<group>"; };
 		1AD90FA02C4033E900445D6E /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailPwView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB075752C3FE5CB00199164 /* LoginView.swift */,
+				1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				107309E62C522B9F00E37ED1 /* DayCell.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1A9D95F52C59FEBD009BDF9C /* UIColor+Extensions.swift in Sources */,
+				1AFAC31C2C5E521F00603239 /* LoginEmailPwView.swift in Sources */,
 				107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				107309F02C59269B00E37ED1 /* HistoryView.swift in Sources */,

@@ -28,7 +28,7 @@ final class HomeViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
         
-        UserDefaults.standard.setValue("R0FDlmvN9qShS1qvqW8MJ8N1L6d2", forKey: "userId")
+        UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
     }
     
     

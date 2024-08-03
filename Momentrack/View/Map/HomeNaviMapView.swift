@@ -30,9 +30,7 @@ class HomeNaviMapView: UIView {
     
     func makeConstraints() {
         self.addSubview(mapView)
-//        mapView.snp.makeConstraints {
-//            $0.top.left.right.bottom.equalToSuperview()
-//        }
+
         mapView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

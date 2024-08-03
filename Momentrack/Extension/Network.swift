@@ -146,6 +146,25 @@ final class Network {
 //                            , date: Date().yearMonthDayStringFormat
         )
         self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+        if sharedFriends.count > 0 {
+            // NOTE: 8월 3일 현재 친구는 한명만 선택 가능
+            for i in 0..<sharedFriends.count {
+                self.getUsersInfo { snapshot in
+                    for userInfo in snapshot.values {
+                        guard let userInfo = userInfo as? [String: String] else { return }
+                        if userInfo["email"] == sharedFriends[i] {
+                            let friendId = userInfo["uid"]!
+                            self.createMomentAtFriend(friendId: friendId, moment: moment)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // 친구와 공유 시
+    func createMomentAtFriend(friendId: String, moment: Moment) {
+        self.ref.child("users").child(friendId).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
     }
     
     
@@ -294,7 +313,7 @@ final class Network {
     // 사용자의 정보 따로 저장
     func addUserInfo(userID: String, user: User) {
         self.ref.child("usersInfo").observeSingleEvent(of: .value) { snapshot in
-            let userInfo: [String: String] = ["email": user.email, "nickname": user.nickname]
+            let userInfo: [String: String] = ["uid": userID, "email": user.email, "nickname": user.nickname]
             self.ref.child("usersInfo").child(userID).updateChildValues(userInfo)
         }
     }

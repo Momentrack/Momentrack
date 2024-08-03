@@ -362,9 +362,6 @@ class PostingMomentViewController: UIViewController {
     }
     
     @objc func saveButtonTapped(_ sender: UIButton) {
-        self.indicatorView.startAnimating()
-        sender.isEnabled = false
-        
         guard let location = addressLabel.text, !location.isEmpty else {
             showAlert(message: "위치를 선택해주세요.")
             return
@@ -374,6 +371,10 @@ class PostingMomentViewController: UIViewController {
             showAlert(message: "텍스트를 입력해주세요.")
             return
         }
+        
+        self.indicatorView.startAnimating()
+        sender.isEnabled = false
+        
         let sharedFriends = selectedFriends
         if self.moment?.photoUrl != self.imageUrl {
             guard let imageData else {

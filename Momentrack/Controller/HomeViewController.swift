@@ -207,19 +207,34 @@ extension HomeViewController: AddFriendDelegate {
 extension HomeViewController: CustomAlertDelegate {
     func action(data: String) {
         // NOTE: email로 존재하는 사용자인지 확인
-        Network.shared.getUsersEmail { usersEmail in
-            if usersEmail.contains(data) {
-                Network.shared.addFriend(email: data) { result in
-                    switch result {
-                    case .success(_):
-                        self.getUserInfo()
-                    case .failure(let error):
-                        print(error.localizedDescription)
+        Network.shared.getUsersInfo { snapshot in
+            var count = snapshot.values.count
+            for i in snapshot.values {
+                count -= 1
+                guard let userInfo = i as? [String: String] else { return }
+                if userInfo["email"] == data {
+                    Network.shared.getUserInfo { user in
+                        // NOTE: 존재하는 사용자라면 친구 리스트에 등록되어 있는지 확인
+                        if user.friends.contains(data) {
+                            // NOTE: 등록되어 있으면 '등록한 친구입니다.' 알럿
+                        } else {
+                            // 등록되어 있지 않으면 친구 등록하기
+                            Network.shared.addFriend(email: data) { result in
+                                switch result {
+                                case .success(_):
+                                    self.getUserInfo()
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
                     }
+                    break
                 }
-                
-            } else {
-                // 존재하지 않는 사용자입니다.
+                // '존재하지 않는 사용자입니다.' 알럿
+                if count == 0 {
+                    print("친구 노")
+                }
             }
         }
     }

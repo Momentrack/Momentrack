@@ -80,7 +80,7 @@ extension SettingViewController: SettingDelegate {
             showLoginVC()
         case 1:
             // NOTE: 회원탈퇴 후 로그인 화면으로 화면전환
-            //Network.shared.deleteAccount()
+            Network.shared.deleteAccount()
             showLoginVC()
         default:
             fatalError()

@@ -71,7 +71,7 @@ final class SignUpView: UIView {
         textField.leftView = leftInsetView
         textField.leftViewMode = .always
         textField.font = .systemFont(ofSize: 16, weight: .medium)
-        textField.attributedPlaceholder = NSAttributedString(string: "6~8자리, 소문자, 특수문자1개, 숫자1개", attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderText])
+        textField.attributedPlaceholder = NSAttributedString(string: "6~8자리 이하 영소문자, 숫자조합", attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderText])
         
         textField.layer.cornerRadius = 10
         textField.keyboardType = .default

@@ -71,7 +71,7 @@ final class LoginEmailPwView: UIView {
         textField.leftView = leftInsetView
         textField.leftViewMode = .always
         textField.font = .systemFont(ofSize: 16, weight: .medium)
-        textField.attributedPlaceholder = NSAttributedString(string: "6~8자리, 소문자, 특수문자1개, 숫자1개", attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderText])
+        textField.attributedPlaceholder = NSAttributedString(string: "6~8자리 이하 영소문자, 숫자조합", attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderText])
         
         textField.layer.cornerRadius = 10
         textField.keyboardType = .default
@@ -79,7 +79,7 @@ final class LoginEmailPwView: UIView {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.autocapitalizationType = .none
-        
+        textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         textField.layer.backgroundColor = UIColor.systemGray6.cgColor
         textField.tag = 1 
@@ -170,7 +170,6 @@ final class LoginEmailPwView: UIView {
             $0.top.equalTo(loginButton.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
         }
-        
     }
 }
 

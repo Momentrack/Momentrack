@@ -68,7 +68,6 @@
 		1AEBF65E2C5F1E9B00024DE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEBF65D2C5F1E9B00024DE1 /* SignUpViewController.swift */; };
 		1AEBF6602C5F3DCB00024DE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEBF65F2C5F3DCB00024DE1 /* BaseViewController.swift */; };
 		1AFAC31C2C5E521F00603239 /* LoginEmailPwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */; };
-		1AFAC3202C5E726200603239 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAC31F2C5E726200603239 /* SignUpInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +123,6 @@
 		1AEBF65D2C5F1E9B00024DE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1AEBF65F2C5F3DCB00024DE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailPwView.swift; sourceTree = "<group>"; };
-		1AFAC31F2C5E726200603239 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +207,6 @@
 			children = (
 				1A10621C2C50EB29004D0396 /* User.swift */,
 				1A10621E2C50EB34004D0396 /* Moment.swift */,
-				1AFAC31F2C5E726200603239 /* SignUpInfo.swift */,
 			);
 			name = Model;
 			path = Momentrack/Model;
@@ -455,7 +452,6 @@
 				1A69A7232C5692DC00294D6D /* Moment.swift in Sources */,
 				107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
-				1AFAC3202C5E726200603239 /* SignUpInfo.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1A69A7272C578F5F00294D6D /* SharingManager.swift in Sources */,

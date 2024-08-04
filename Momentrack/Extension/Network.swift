@@ -142,19 +142,23 @@ final class Network {
     
     func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
-        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude
+        self.getUserInfo { user in
+            var friends = sharedFriends
+            friends.append(user.email)
+            let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: friends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude
 //                            , date: Date().yearMonthDayStringFormat
-        )
-        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
-        if sharedFriends.count > 0 {
-            // NOTE: 8월 3일 현재 친구는 한명만 선택 가능
-            for i in 0..<sharedFriends.count {
-                self.getUsersInfo { snapshot in
-                    for userInfo in snapshot.values {
-                        guard let userInfo = userInfo as? [String: String] else { return }
-                        if userInfo["email"] == sharedFriends[i] {
-                            let friendId = userInfo["uid"]!
-                            self.createMomentAtFriend(friendId: friendId, moment: moment)
+            )
+            self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+            if sharedFriends.count > 0 {
+                // NOTE: 8월 3일 현재 친구는 한명만 선택 가능
+                for i in 0..<sharedFriends.count {
+                    self.getUsersInfo { snapshot in
+                        for userInfo in snapshot.values {
+                            guard let userInfo = userInfo as? [String: String] else { return }
+                            if userInfo["email"] == sharedFriends[i] {
+                                let friendId = userInfo["uid"]!
+                                self.createMomentAtFriend(friendId: friendId, moment: moment)
+                            }
                         }
                     }
                 }

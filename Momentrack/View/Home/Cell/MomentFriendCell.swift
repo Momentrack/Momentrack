@@ -38,6 +38,11 @@ final class MomentFriendCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.titleLabel.text = nil
+    }
+    
     func configure(nickname: String) {
         titleLabel.text = nickname
     }

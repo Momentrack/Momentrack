@@ -16,6 +16,7 @@ class LoginViewController: BaseViewController {
         view = loginView
         loginView.emailTextField.delegate = self
         loginView.passwordTextField.delegate = self
+        setupTextFields(emailTextField: loginView.emailTextField, passwordTextField: loginView.passwordTextField)
     }
     
     override func viewDidLoad() {
@@ -43,21 +44,16 @@ class LoginViewController: BaseViewController {
         loginView.signUpLabel.addTarget(self, action: #selector(didTappedSignUpBtn), for: .touchUpInside)
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        validateInputs()
-    }
-    
-    func validateInputs() {
-        guard let email = loginView.emailTextField.text,
-              let password = loginView.passwordTextField.text else {
-            return
+    @objc override func textFieldDidChange(_ textField: UITextField) {
+        if textField.tag == 1 {
+            validateInputs(emailTextField: loginView.emailTextField,
+                           passwordTextField: loginView.passwordTextField,
+                           passwordErrorLabel: loginView.passwordErrorLabel,
+                           actionButton: loginView.loginButton)
+        } else {
+            loginView.loginButton.isEnabled = User.isValidEmail(id: loginView.emailTextField.text ?? "") &&
+            User.isValidPassword(pwd: loginView.passwordTextField.text ?? "")
         }
-        
-        let isEmailValid = User.isValidEmail(id: email)
-        let isPasswordValid = User.isValidPassword(pwd: password)
-        
-        loginView.passwordErrorLabel.isHidden = isPasswordValid
-        loginView.loginButton.isEnabled = isEmailValid && isPasswordValid
     }
     
     @objc func didTappedSignUpBtn() {
@@ -75,11 +71,11 @@ class LoginViewController: BaseViewController {
         }
 
         print("Attempting to sign in with email: \(email)") // 디버그 프린트 추가
-        if !User.isValidPassword(pwd: password) {
-            loginView.passwordErrorLabel.isHidden = false
+        let isPasswordValid = User.isValidPassword(pwd: password)
+        loginView.passwordErrorLabel.isHidden = isPasswordValid
+        
+        if !isPasswordValid {
             return
-        } else {
-            loginView.passwordErrorLabel.isHidden = true
         }
         
         Network.shared.signInApp(email: email, password: password) { [weak self] result in
@@ -97,10 +93,3 @@ class LoginViewController: BaseViewController {
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("textFieldShouldReturn called")
-        textField.resignFirstResponder()
-        return true
-    }
-}

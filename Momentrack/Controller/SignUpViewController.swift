@@ -16,6 +16,7 @@ class SignUpViewController: BaseViewController {
         view = signUpView
         signUpView.emailTextField.delegate = self
         signUpView.passwordTextField.delegate = self
+        setupTextFields(emailTextField: signUpView.emailTextField, passwordTextField: signUpView.passwordTextField)
     }
     
     override func viewDidLoad() {
@@ -41,7 +42,6 @@ class SignUpViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // 다시 로그인 화면으로 돌아갈 때 네비게이션 바 숨기기
         if isMovingFromParent {
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
@@ -53,8 +53,16 @@ class SignUpViewController: BaseViewController {
         signUpView.passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        validateInputs()
+    @objc override func textFieldDidChange(_ textField: UITextField) {
+        if textField.tag == 1 {
+            validateInputs(emailTextField: signUpView.emailTextField,
+                           passwordTextField: signUpView.passwordTextField,
+                           passwordErrorLabel: signUpView.passwordErrorLabel,
+                           actionButton: signUpView.signUpButton)
+        } else {
+            signUpView.signUpButton.isEnabled = User.isValidEmail(id: signUpView.emailTextField.text ?? "") &&
+            User.isValidPassword(pwd: signUpView.passwordTextField.text ?? "")
+        }
     }
     
     func validateInputs() {
@@ -108,14 +116,6 @@ class SignUpViewController: BaseViewController {
             }
         }
       
-    }
-}
-
-extension SignUpViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("textFieldShouldReturn called")
-        textField.resignFirstResponder()
-        return true
     }
 }
 

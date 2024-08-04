@@ -52,7 +52,7 @@ final class SignUpView: UIView {
         
         textField.returnKeyType = .done
         textField.layer.backgroundColor = UIColor.systemGray6.cgColor
-        
+        textField.tag = 0
         return textField
     }()
     
@@ -82,13 +82,13 @@ final class SignUpView: UIView {
         
         textField.returnKeyType = .done
         textField.layer.backgroundColor = UIColor.systemGray6.cgColor
-        
+        textField.tag = 1
         return textField
     }()
     
     lazy var passwordErrorLabel: UILabel = {
         let label = UILabel()
-        label.text = "비밀번호 조건은 6~8자리 이하 특수문자 1개, 숫자 1개여야합니다."
+        label.text = "비밀번호 조건은 6~8자리 이하 영소문자, 숫자조합이여야합니다."
         label.font = .systemFont(ofSize: 12)
         label.textColor = .red
         label.isHidden = true

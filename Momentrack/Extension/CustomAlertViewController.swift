@@ -40,6 +40,22 @@ final class CustomAlertViewController: UIViewController {
         return label
     }()
     
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .systemGray
+        label.text = subTitle
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var titleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        return stackView
+    }()
+    
     lazy var customTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = textFieldPlaceholder
@@ -93,14 +109,16 @@ final class CustomAlertViewController: UIViewController {
     }()
     
     private var mainTitle: String
+    private var subTitle: String
     private var textFieldPlaceholder: String
     private var customAlertType: CustomAlertType
     private var height: Int
     
     var delegate: CustomAlertDelegate?
     
-    init(mainTitle: String, textFieldPlaceholder: String, customAlertType: CustomAlertType, alertHeight: Int) {
+    init(mainTitle: String, subTitle: String? = nil, textFieldPlaceholder: String, customAlertType: CustomAlertType, alertHeight: Int) {
         self.mainTitle = mainTitle
+        self.subTitle = subTitle ?? ""
         self.textFieldPlaceholder = textFieldPlaceholder
         self.customAlertType = customAlertType
         self.height = alertHeight
@@ -130,7 +148,7 @@ final class CustomAlertViewController: UIViewController {
     private func setCustomAlertView() {
         self.view.addSubview(backgroudView)
         backgroudView.addSubview(mainView)
-        mainView.addSubview(titleLabel)
+        mainView.addSubview(titleStackView)
         mainView.addSubview(customTextField)
         mainView.addSubview(buttonStackView)
         
@@ -142,8 +160,8 @@ final class CustomAlertViewController: UIViewController {
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(self.height)
         }
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(44)
+        titleStackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(32)
             make.centerX.equalToSuperview()
         }
         customTextField.snp.makeConstraints { make in

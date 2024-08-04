@@ -27,7 +27,6 @@ final class Network {
  
     // MARK: 신규 사용자가 로그인
     func signInApp(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
         firebaseAuth.signIn(withEmail: email, password: password) { authResult, error in
             if let error = error as NSError? {
                 if let errorCode = AuthErrorCode(rawValue: error.code) {
@@ -50,9 +49,7 @@ final class Network {
             } else {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "알 수 없는 오류가 발생했습니다."])))
             }
-        }
-   
-      
+        }   
     }
    
     // MARK: 사용자 재인증
@@ -147,17 +144,39 @@ final class Network {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "알 수 없는 오류가 발생했습니다."])))
             }
         }
-        
     }
 
     // MARK: - 원래 createMoment 메소드 코드
     
     func createMoment(location: String, photoUrl: String, memo: String, sharedFriends: [String], latitude: Double, longitude: Double) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
-        let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: sharedFriends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude
+        self.getUserInfo { user in
+            var friends = sharedFriends
+            friends.append(user.email)
+            let moment = Moment(location: location, photoUrl: photoUrl, memo: memo, sharedFriends: friends, createdAt: Date().stringFormat, time: Date().timeStringFormat, latitude: latitude, longitude: longitude
 //                            , date: Date().yearMonthDayStringFormat
-        )
-        self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+            )
+            self.ref.child("users").child(userID).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
+            if sharedFriends.count > 0 {
+                // NOTE: 8월 3일 현재 친구는 한명만 선택 가능
+                for i in 0..<sharedFriends.count {
+                    self.getUsersInfo { snapshot in
+                        for userInfo in snapshot.values {
+                            guard let userInfo = userInfo as? [String: String] else { return }
+                            if userInfo["email"] == sharedFriends[i] {
+                                let friendId = userInfo["uid"]!
+                                self.createMomentAtFriend(friendId: friendId, moment: moment)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // 친구와 공유 시
+    func createMomentAtFriend(friendId: String, moment: Moment) {
+        self.ref.child("users").child(friendId).child("moment").child(Date().todayStringFormat).child(moment.id).setValue(moment.toDictionary)
     }
     
     
@@ -187,15 +206,15 @@ final class Network {
     }
     
     // 모든 사용자 이메일 가져오기
-    func getUsersEmail(completion: @escaping ([String]) -> Void) {
-        ref.child("usersEmail").getData { error, snapshot in
+    func getUsersInfo(completion: @escaping ([String: Any]) -> Void) {
+        ref.child("usersInfo").getData { error, snapshot in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
             }
             guard let snapshot else { return }
             if snapshot.exists() {
-                guard let snapshot = snapshot.value as? [String] else { return }
+                guard let snapshot = snapshot.value as? [String: Any] else { return }
                 completion(snapshot)
             }
         }
@@ -277,6 +296,15 @@ final class Network {
     func updateNickname(nickname: String) {
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
         self.ref.child("users").child(userID).child("userInfo").updateChildValues(["nickname": nickname])
+        // 사용자 리스트의 닉네임도 수정
+        self.ref.child("usersInfo").observeSingleEvent(of: .value) { snapshot in
+            guard let snapshot = snapshot.value as? [String: Any] else { return }
+            for i in snapshot.keys {
+                if userID == i {
+                    self.ref.child("usersInfo").child(userID).updateChildValues(["nickname": nickname])
+                }
+            }
+        }
     }
     
     // 친구 추가
@@ -294,16 +322,11 @@ final class Network {
         }
     }
     
-    // 사용자 이메일 따로 저장
-    func updateUserEmail(email: String) {
-        self.ref.child("usersEmail").observeSingleEvent(of: .value) { snapshot in
-            var count = "0"
-            if let values = snapshot.value as? [String] {
-                count = String(describing: values.count)
-            }
-            var newUser = [String: String]()
-            newUser[count] = email
-            self.ref.child("usersEmail").updateChildValues(newUser)
+    // 사용자의 정보 따로 저장
+    func addUserInfo(userID: String, user: User) {
+        self.ref.child("usersInfo").observeSingleEvent(of: .value) { snapshot in
+            let userInfo: [String: String] = ["uid": userID, "email": user.email, "nickname": user.nickname]
+            self.ref.child("usersInfo").child(userID).updateChildValues(userInfo)
         }
     }
     

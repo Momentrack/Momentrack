@@ -14,6 +14,8 @@
 		107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */; };
 		107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */; };
 		107309F02C59269B00E37ED1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107309EF2C59269B00E37ED1 /* HistoryView.swift */; };
+		10730A0F2C5CEC8600E37ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB075262C3FC46200199164 /* LaunchScreen.storyboard */; };
+		10730A112C5CF0AA00E37ED1 /* logo_03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10730A102C5CF0A900E37ED1 /* logo_03@3x.png */; };
 		10F7DCD82C45325C00C69573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */; };
 		10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */; };
 		10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DCE12C455D7E00C69573 /* FriendListView.swift */; };
@@ -77,6 +79,7 @@
 		107309E82C522BB300E37ED1 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		107309ED2C57D95D00E37ED1 /* AddFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
 		107309EF2C59269B00E37ED1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		10730A102C5CF0A900E37ED1 /* logo_03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_03@3x.png"; sourceTree = "<group>"; };
 		10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarItemConfiguration.swift; sourceTree = "<group>"; };
 		10F7DCE12C455D7E00C69573 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendListView.swift; path = Momentrack/Extension/FriendListView.swift; sourceTree = SOURCE_ROOT; };
@@ -159,6 +162,7 @@
 			children = (
 				10F7DCF02C479F8300C69573 /* Extensions.swift */,
 				10F7DCDF2C4557E900C69573 /* CustomBarItemConfiguration.swift */,
+				10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */,
 				10F7DCEC2C46649F00C69573 /* ImageCacheManager.swift */,
 				1A10620F2C50CE4C004D0396 /* MomentTextView.swift */,
 				1A1062092C4E4703004D0396 /* UIButton.swift */,
@@ -261,7 +265,6 @@
 				107309E02C522B7900E37ED1 /* CalendarViewController.swift */,
 				107309E22C522B8200E37ED1 /* DetailDayViewController.swift */,
 				10F7DD522C4E1F1200C69573 /* SettingViewController.swift */,
-				10F7DD602C4E408600C69573 /* CustomAlertViewController.swift */,
 				1A151AAB2C5272E7008ACFDA /* MapViewController.swift */,
 				1A9D95F62C5A5A14009BDF9C /* HomeNaviMapViewController.swift */,
 			);
@@ -287,6 +290,7 @@
 				1AB075262C3FC46200199164 /* LaunchScreen.storyboard */,
 				1AB075292C3FC46200199164 /* Info.plist */,
 				10F7DCD72C45325C00C69573 /* GoogleService-Info.plist */,
+				10730A102C5CF0A900E37ED1 /* logo_03@3x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -409,6 +413,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AB075252C3FC46200199164 /* Assets.xcassets in Resources */,
+				10730A112C5CF0AA00E37ED1 /* logo_03@3x.png in Resources */,
+				10730A0F2C5CEC8600E37ED1 /* LaunchScreen.storyboard in Resources */,
 				1AB075282C3FC46200199164 /* Base in Resources */,
 				10F7DCD82C45325C00C69573 /* GoogleService-Info.plist in Resources */,
 			);
@@ -615,7 +621,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2P5FNS3JAJ;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -627,8 +633,8 @@
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "모멘트랙에 여행사진을 등록하려면 사진 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,6 +648,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -657,7 +664,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2P5FNS3JAJ;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -669,8 +676,8 @@
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "모멘트랙에 여행사진을 등록하려면 사진 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -684,6 +691,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

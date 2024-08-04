@@ -15,6 +15,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Vf-Dj-xuf">
+                                <rect key="frame" x="96.666666666666686" y="288.66666666666669" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Vf-Dj-xuf" secondAttribute="height" multiplier="1:1" id="D89-aH-dbQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="XSo-lm-ztJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Vf-Dj-xuf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Rsl-kP-gqC"/>
+                            <constraint firstItem="4Vf-Dj-xuf" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-50" id="aED-sO-XCF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,4 +37,10 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_03.png" width="169" height="52"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

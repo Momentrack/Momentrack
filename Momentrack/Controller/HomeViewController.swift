@@ -27,12 +27,8 @@ final class HomeViewController: UIViewController {
         getMomentList()
 
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
-        
-        //UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
     }
-    
-    
-    
+
     private func setupNavigationBar() {
         let titleConfig = CustomBarItemConfiguration(image: UIImage(named: "homeLogo"),action: {})
         let titleItem = UIBarButtonItem.generate(with: titleConfig)
@@ -199,7 +195,7 @@ extension HomeViewController: UISheetPresentationControllerDelegate {
 
 extension HomeViewController: AddFriendDelegate {
     func action(indexPath: IndexPath) {
-        let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertHeight: 244)
+        let viewController = CustomAlertViewController(mainTitle: "친구 추가하기", subTitle: "앱을 사용하는 친구만 추가할 수 있습니다.", textFieldPlaceholder: "이메일을 입력하세요.", customAlertType: .doneAndCancel, alertHeight: 244)
         viewController.delegate = self
         viewController.customTextField.becomeFirstResponder()
         viewController.modalTransitionStyle = .crossDissolve
@@ -211,19 +207,34 @@ extension HomeViewController: AddFriendDelegate {
 extension HomeViewController: CustomAlertDelegate {
     func action(data: String) {
         // NOTE: email로 존재하는 사용자인지 확인
-        Network.shared.getUsersEmail { usersEmail in
-            if usersEmail.contains(data) {
-                Network.shared.addFriend(email: data) { result in
-                    switch result {
-                    case .success(_):
-                        self.getUserInfo()
-                    case .failure(let error):
-                        print(error.localizedDescription)
+        Network.shared.getUsersInfo { snapshot in
+            var count = snapshot.values.count
+            for i in snapshot.values {
+                count -= 1
+                guard let userInfo = i as? [String: String] else { return }
+                if userInfo["email"] == data {
+                    Network.shared.getUserInfo { user in
+                        // NOTE: 존재하는 사용자라면 친구 리스트에 등록되어 있는지 확인
+                        if user.friends.contains(data) {
+                            // NOTE: 등록되어 있으면 '등록한 친구입니다.' 알럿
+                        } else {
+                            // 등록되어 있지 않으면 친구 등록하기
+                            Network.shared.addFriend(email: data) { result in
+                                switch result {
+                                case .success(_):
+                                    self.getUserInfo()
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
                     }
+                    break
                 }
-                
-            } else {
-                // 존재하지 않는 사용자입니다.
+                // '존재하지 않는 사용자입니다.' 알럿
+                if count == 0 {
+                    print("친구 노")
+                }
             }
         }
     }

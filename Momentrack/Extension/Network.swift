@@ -24,50 +24,48 @@ final class Network {
     private let storage = FirebaseStorage.Storage.storage().reference()
     
     private init() { }
-    
-    // MARK: 신규 사용자가 이메일 인증 링크 전송
-    /*
-    func createNewUser(email: String, completion: @escaping (String) -> Void) {
-        let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "https://momentrack-8ab67.firebaseapp.com/?email=\(email)")
-        actionCodeSettings.handleCodeInApp = true
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        
-        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { error in
-            if let error = error {
-                completion("email not sent \(error.localizedDescription)")
-            } else {
-                completion("email sent")
-            }
-        }
-    }
-    */
-    
+ 
     // MARK: 신규 사용자가 로그인
     func signInApp(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
-      
-        firebaseAuth.signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                completion(.failure(error))
-            } else if let user = result?.user {
+        
+        firebaseAuth.signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error as NSError? {
+                if let errorCode = AuthErrorCode(rawValue: error.code) {
+                    switch errorCode {
+                    case .userNotFound:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "가입된 정보가 없습니다."])))
+                    case .wrongPassword:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "잘못된 비밀번호입니다."])))
+                    case .invalidEmail:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "유효하지 않은 이메일 주소입니다."])))
+                    default:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "로그인에 실패했습니다. 다시 시도해주세요."])))
+                    }
+                } else {
+                    completion(.failure(error))
+                }
+            } else if let user = authResult?.user {
                 UserDefaults.standard.set(user.uid, forKey: "userId")
                 completion(.success("로그인 성공"))
             } else {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "알 수 없는 오류가 발생했습니다."])))
             }
         }
+   
       
     }
    
     // MARK: 사용자 재인증
-    /*
+    
     func reauthenricateUser(completion: @escaping (String) -> Void) {
-        guard let link = UserDefaults.standard.string(forKey: "Link") else { return }
+        //guard let link = UserDefaults.standard.string(forKey: "Link") else { return }
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
+       
         self.getUserInfo { user in
             let email = user.email
+            let password = user.password
             var credential: AuthCredential
-            credential = EmailAuthProvider.credential(withEmail: email, link: link)
+            credential = EmailAuthProvider.credential(withEmail: email, password: password)
             
             self.firebaseAuth.currentUser?.reauthenticate(with: credential, completion: { result, error in
                 if let error = error {
@@ -84,7 +82,7 @@ final class Network {
             })
         }
     }
-    */
+    
     
     // MARK: 로그아웃
     func signOut() {
@@ -98,7 +96,7 @@ final class Network {
     
     // MARK: 사용자 계정 삭제하기 (탈퇴하기)
     // NOTE: 사용자 계정 삭제 시 유저 Info와 친구 리스트에도 삭제
-    /*
+    
     func deleteAccount() {
         // NOTE: 최근 로그인(로그인 후 5분)이 지나면 사용자 재인증 필요
         self.reauthenricateUser() { _ in
@@ -112,24 +110,27 @@ final class Network {
             })
         }
     }
-    */
+    
     
     // MARK: [Create] 데이터 쓰기
     // 사용자 생성
-    
-    /*
-    func createUserInfo(email: String) {
-//        guard let userID = Auth.auth().currentUser?.uid else { return }
-        guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
-        let nickname = email.components(separatedBy: "@")[0]
-        let user = User(email: email, nickname: nickname, friends: [email], createdAt: Date().stringFormat, activite: true)
-        self.ref.child("users").child(userID).child("userInfo").setValue(user.toDictionary)
-    }
-    */
     func createUserInfo(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         firebaseAuth.createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
-                completion(.failure(error))
+            if let error = error as NSError? {
+                if let errorCode = AuthErrorCode(rawValue: error.code) {
+                    switch errorCode {
+                    case .emailAlreadyInUse:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "이미 가입된 이메일 주소입니다. \n다른 이메일을 사용해주세요."])))
+                    case .invalidEmail:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "유효하지 않은 이메일 주소입니다."])))
+                    case .weakPassword:
+                        completion(.failure(NSError(domain: "", code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: "비밀번호가 너무 약합니다. 더 강력한 비밀번호를 사용해주세요."])))
+                    default:
+                        completion(.failure(error))
+                    }
+                } else {
+                    completion(.failure(error))
+                }
             } else if let user = authResult?.user {
                 let nickname = email.components(separatedBy: "@")[0]
                 let newUser = User(email: email, password: password, nickname: nickname, friends: [], createdAt: Date().stringFormat, activite: true)
@@ -139,7 +140,6 @@ final class Network {
                         completion(.failure(error))
                     } else {
                         UserDefaults.standard.set(user.uid, forKey: "userId")
-                        
                         completion(.success("회원가입 성공"))
                     }
                 }
@@ -147,6 +147,7 @@ final class Network {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "알 수 없는 오류가 발생했습니다."])))
             }
         }
+        
     }
 
     // MARK: - 원래 createMoment 메소드 코드
@@ -399,3 +400,4 @@ func signInApp(email: String, completion: @escaping (Result<String, Error>) -> V
     }
 }
 */
+

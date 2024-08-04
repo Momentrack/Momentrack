@@ -106,6 +106,15 @@ final class LoginEmailPwView: UIView {
         button.setTitle("로그인", for: .normal)
         return button
     }()
+    
+    lazy var signUpLabel: UIButton = {
+        let button = UIButton()
+        button.setTitle("회원가입하기", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.setTitleColor(.label, for: .normal)
+        button.setUnderline()
+        return button
+    }()
 
     private func setupUI() {
         self.addSubview(logo)
@@ -115,6 +124,7 @@ final class LoginEmailPwView: UIView {
         self.addSubview(passwordTextField)
         self.addSubview(passwordErrorLabel)
         self.addSubview(loginButton)
+        self.addSubview(signUpLabel)
         
         logo.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(60)
@@ -154,7 +164,11 @@ final class LoginEmailPwView: UIView {
             $0.left.right.equalToSuperview().inset(24)
             $0.height.equalTo(48)
             $0.top.equalTo(passwordTextField).offset(120)
-            
+        }
+        
+        signUpLabel.snp.makeConstraints {
+            $0.top.equalTo(loginButton.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
         }
         
     }

@@ -14,6 +14,7 @@ final class HomeViewController: UIViewController {
     private let todayDateView = TodayDateView()
     private let momentListView = MomentListView()
     
+    private let refreshControl = UIRefreshControl()
     private let locationManger = CLLocationManager()
     
     override func viewDidLoad() {
@@ -156,6 +157,15 @@ final class HomeViewController: UIViewController {
         
         friendListView.delegate = self
         momentListView.momentTableView.separatorStyle = .none
+        
+        refreshControl.addTarget(self, action: #selector(refreshWork), for: .valueChanged)
+        momentListView.momentTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshWork() {
+        refreshControl.beginRefreshing()
+        self.getMomentList()
+        refreshControl.endRefreshing()
     }
     
     private func setupUserLocation() {

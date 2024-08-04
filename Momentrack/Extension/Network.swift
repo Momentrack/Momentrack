@@ -26,6 +26,7 @@ final class Network {
     private init() { }
     
     // MARK: 신규 사용자가 이메일 인증 링크 전송
+    /*
     func createNewUser(email: String, completion: @escaping (String) -> Void) {
         let actionCodeSettings = ActionCodeSettings()
         actionCodeSettings.url = URL(string: "https://momentrack-8ab67.firebaseapp.com/?email=\(email)")
@@ -40,36 +41,26 @@ final class Network {
             }
         }
     }
+    */
     
     // MARK: 신규 사용자가 로그인
-    func signInApp(email: String, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let link = UserDefaults.standard.string(forKey: "Link") else { return }
-        
-        Auth.auth().signIn(withEmail: email, link: link) { result, error in
+    func signInApp(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+      
+        firebaseAuth.signIn(withEmail: email, password: password) { result, error in
             if let error = error {
-                print("✉️ email auth error \"\(error.localizedDescription)\"")
                 completion(.failure(error))
-                return
-            }
-            
-            // NOTE: 사용자 uid UserDefault에 임시 저장 및 데이터베이스에 유저 생성
-            guard let uid = result?.user.uid else { return }
-            UserDefaults.standard.setValue(uid, forKey: "userId")
-            
-            // MARK: 기존 유저와 신규 유저 구분
-            Network.shared.getUsersEmail { emails in
-                if emails.contains(email) {
-                    
-                } else {
-                    Network.shared.createUserInfo(email: email)
-                    Network.shared.updateUserEmail(email: email)
-                }
+            } else if let user = result?.user {
+                UserDefaults.standard.set(user.uid, forKey: "userId")
                 completion(.success("로그인 성공"))
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "알 수 없는 오류가 발생했습니다."])))
             }
         }
+      
     }
-    
+   
     // MARK: 사용자 재인증
+    /*
     func reauthenricateUser(completion: @escaping (String) -> Void) {
         guard let link = UserDefaults.standard.string(forKey: "Link") else { return }
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
@@ -93,6 +84,7 @@ final class Network {
             })
         }
     }
+    */
     
     // MARK: 로그아웃
     func signOut() {
@@ -106,6 +98,7 @@ final class Network {
     
     // MARK: 사용자 계정 삭제하기 (탈퇴하기)
     // NOTE: 사용자 계정 삭제 시 유저 Info와 친구 리스트에도 삭제
+    /*
     func deleteAccount() {
         // NOTE: 최근 로그인(로그인 후 5분)이 지나면 사용자 재인증 필요
         self.reauthenricateUser() { _ in
@@ -119,15 +112,41 @@ final class Network {
             })
         }
     }
+    */
     
     // MARK: [Create] 데이터 쓰기
     // 사용자 생성
+    
+    /*
     func createUserInfo(email: String) {
 //        guard let userID = Auth.auth().currentUser?.uid else { return }
         guard let userID = UserDefaults.standard.string(forKey: "userId") else { return }
         let nickname = email.components(separatedBy: "@")[0]
         let user = User(email: email, nickname: nickname, friends: [email], createdAt: Date().stringFormat, activite: true)
         self.ref.child("users").child(userID).child("userInfo").setValue(user.toDictionary)
+    }
+    */
+    func createUserInfo(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+        firebaseAuth.createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if let user = authResult?.user {
+                let nickname = email.components(separatedBy: "@")[0]
+                let newUser = User(email: email, password: password, nickname: nickname, friends: [], createdAt: Date().stringFormat, activite: true)
+                
+                self?.ref.child("users").child(user.uid).child("userInfo").setValue(newUser.toDictionary) { error, _ in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        UserDefaults.standard.set(user.uid, forKey: "userId")
+                        
+                        completion(.success("회원가입 성공"))
+                    }
+                }
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "알 수 없는 오류가 발생했습니다."])))
+            }
+        }
     }
 
     // MARK: - 원래 createMoment 메소드 코드
@@ -352,3 +371,31 @@ final class Network {
 }
 
 
+/*
+func signInApp(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+    guard let link = UserDefaults.standard.string(forKey: "Link") else { return }
+    
+    Auth.auth().signIn(withEmail: email, link: link) { result, error in
+        if let error = error {
+            print("✉️ email auth error \"\(error.localizedDescription)\"")
+            completion(.failure(error))
+            return
+        }
+        
+        // NOTE: 사용자 uid UserDefault에 임시 저장 및 데이터베이스에 유저 생성
+        guard let uid = result?.user.uid else { return }
+        UserDefaults.standard.setValue(uid, forKey: "userId")
+        
+        // MARK: 기존 유저와 신규 유저 구분
+        Network.shared.getUsersEmail { emails in
+            if emails.contains(email) {
+                
+            } else {
+                //Network.shared.createUserInfo(email: email)
+                Network.shared.updateUserEmail(email: email)
+            }
+            completion(.success("로그인 성공"))
+        }
+    }
+}
+*/

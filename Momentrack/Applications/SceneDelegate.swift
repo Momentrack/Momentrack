@@ -24,13 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        guard let webpageURL = userActivity.webpageURL else { return }
-        let link = webpageURL.absoluteString
-        if Auth.auth().isSignIn(withEmailLink: link) {
-            UserDefaults.standard.set(link, forKey: "Link")
-        }
-    }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

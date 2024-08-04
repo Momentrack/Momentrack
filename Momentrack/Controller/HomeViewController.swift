@@ -27,6 +27,8 @@ final class HomeViewController: UIViewController {
         getMomentList()
 
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
+        
+        UserDefaults.standard.setValue("WALVV7sSxTSxGkQWELEP6ceccLM2", forKey: "userId")
     }
 
     private func setupNavigationBar() {

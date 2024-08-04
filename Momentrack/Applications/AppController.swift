@@ -26,8 +26,13 @@ final class AppController {
         self.window = window
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()
-        
+
         checkLoginStatus()
+
+        if Auth.auth().currentUser == nil {
+            routeToLogin()
+        }
+
     }
     
     private func registerSignUpRequestedEvent() {

@@ -30,7 +30,8 @@ struct User: Codable {
     
     // 비밀번호 형식 검사
     static func isValidPassword(pwd: String) -> Bool {
-        let passwordRegEx = "^(?=.*[a-z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{6,8}"
+        //let passwordRegEx = "^(?=.*[a-z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{6,8}"
+        let passwordRegEx = "^(?=.*[a-z])(?=.*\\d)[a-z\\d]{6,8}$"
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: pwd)
     }

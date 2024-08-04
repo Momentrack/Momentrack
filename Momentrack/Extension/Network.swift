@@ -130,7 +130,7 @@ final class Network {
                 }
             } else if let user = authResult?.user {
                 let nickname = email.components(separatedBy: "@")[0]
-                let newUser = User(email: email, password: password, nickname: nickname, friends: [], createdAt: Date().stringFormat, activite: true)
+                let newUser = User(email: email, password: password, nickname: nickname, friends: [email], createdAt: Date().stringFormat, activite: true)
                 
                 self?.ref.child("users").child(user.uid).child("userInfo").setValue(newUser.toDictionary) { error, _ in
                     if let error = error {
@@ -138,6 +138,7 @@ final class Network {
                     } else {
                         UserDefaults.standard.set(user.uid, forKey: "userId")
                         completion(.success("회원가입 성공"))
+                        self?.addUserInfo(userID: user.uid, user: newUser)
                     }
                 }
             } else {

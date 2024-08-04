@@ -69,14 +69,8 @@ class HomeNaviMapViewController: UIViewController {
         }
         
         if !annotations.isEmpty {
-            let center = CLLocationCoordinate2D(
-                latitude: (minLat + maxLat) / 2,
-                longitude: (minLon + maxLon) / 2
-            )
-            let span = MKCoordinateSpan(
-                latitudeDelta: (maxLat - minLat) * 1.1,
-                longitudeDelta: (maxLon - minLon) * 1.1
-            )
+            let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2, longitude: (minLon + maxLon) / 2)
+            let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.1, longitudeDelta: (maxLon - minLon) * 1.1)
             let region = MKCoordinateRegion(center: center, span: span)
             homeNaviMapView.mapView.setRegion(region, animated: true)
         }

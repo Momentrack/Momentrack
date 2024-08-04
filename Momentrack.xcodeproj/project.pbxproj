@@ -64,6 +64,11 @@
 		1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB075782C3FF10D00199164 /* LoginViewController.swift */; };
 		1AB0757D2C3FF41700199164 /* HomeNaviMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0757C2C3FF41700199164 /* HomeNaviMapView.swift */; };
 		1AD90FA12C4033E900445D6E /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD90FA02C4033E900445D6E /* AppController.swift */; };
+		1AEBF65C2C5F1C6A00024DE1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEBF65B2C5F1C6A00024DE1 /* SignUpView.swift */; };
+		1AEBF65E2C5F1E9B00024DE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEBF65D2C5F1E9B00024DE1 /* SignUpViewController.swift */; };
+		1AEBF6602C5F3DCB00024DE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEBF65F2C5F3DCB00024DE1 /* BaseViewController.swift */; };
+		1AFAC31C2C5E521F00603239 /* LoginEmailPwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */; };
+		1AFAC3202C5E726200603239 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAC31F2C5E726200603239 /* SignUpInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +120,11 @@
 		1AB075782C3FF10D00199164 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1AB0757C2C3FF41700199164 /* HomeNaviMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNaviMapView.swift; sourceTree = "<group>"; };
 		1AD90FA02C4033E900445D6E /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		1AEBF65B2C5F1C6A00024DE1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1AEBF65D2C5F1E9B00024DE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1AEBF65F2C5F3DCB00024DE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailPwView.swift; sourceTree = "<group>"; };
+		1AFAC31F2C5E726200603239 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +170,7 @@
 				1A69A7242C57828C00294D6D /* UIView+Extensions.swift */,
 				1A69A7262C578F5F00294D6D /* SharingManager.swift */,
 				1A9D95F42C59FEBD009BDF9C /* UIColor+Extensions.swift */,
+				1AEBF65F2C5F3DCB00024DE1 /* BaseViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -198,6 +209,7 @@
 			children = (
 				1A10621C2C50EB29004D0396 /* User.swift */,
 				1A10621E2C50EB34004D0396 /* Moment.swift */,
+				1AFAC31F2C5E726200603239 /* SignUpInfo.swift */,
 			);
 			name = Model;
 			path = Momentrack/Model;
@@ -247,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB075782C3FF10D00199164 /* LoginViewController.swift */,
+				1AEBF65D2C5F1E9B00024DE1 /* SignUpViewController.swift */,
 				1AB075372C3FC82100199164 /* HomeViewController.swift */,
 				1A1061F72C4C2304004D0396 /* PostingMomentViewController.swift */,
 				107309E02C522B7900E37ED1 /* CalendarViewController.swift */,
@@ -286,6 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				1AB075752C3FE5CB00199164 /* LoginView.swift */,
+				1AEBF65B2C5F1C6A00024DE1 /* SignUpView.swift */,
+				1AFAC31B2C5E521F00603239 /* LoginEmailPwView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -418,16 +433,19 @@
 				10F7DCED2C46649F00C69573 /* ImageCacheManager.swift in Sources */,
 				1A9D95F72C5A5A14009BDF9C /* HomeNaviMapViewController.swift in Sources */,
 				10F7DCE72C456AA600C69573 /* MomentListView.swift in Sources */,
+				1AEBF65E2C5F1E9B00024DE1 /* SignUpViewController.swift in Sources */,
 				1A9D95F92C5A7568009BDF9C /* CustomAnnotationView.swift in Sources */,
 				1A10621D2C50EB29004D0396 /* User.swift in Sources */,
 				1A1062102C50CE4C004D0396 /* MomentTextView.swift in Sources */,
 				1AB0751C2C3FC46100199164 /* AppDelegate.swift in Sources */,
 				10F7DD532C4E1F1200C69573 /* SettingViewController.swift in Sources */,
+				1AEBF6602C5F3DCB00024DE1 /* BaseViewController.swift in Sources */,
 				107309E12C522B7900E37ED1 /* CalendarViewController.swift in Sources */,
 				1AB0751E2C3FC46100199164 /* SceneDelegate.swift in Sources */,
 				10F7DCE92C456BC200C69573 /* MomentCell.swift in Sources */,
 				10F7DCE22C455D7E00C69573 /* FriendListView.swift in Sources */,
 				10F7DD562C4E1F6000C69573 /* SettingView.swift in Sources */,
+				1AEBF65C2C5F1C6A00024DE1 /* SignUpView.swift in Sources */,
 				10F7DCEF2C47557C00C69573 /* MomentFriendCell.swift in Sources */,
 				1A1061F82C4C2304004D0396 /* PostingMomentViewController.swift in Sources */,
 				10F7DD592C4E287700C69573 /* TitleButtonCell.swift in Sources */,
@@ -437,6 +455,7 @@
 				1A69A7232C5692DC00294D6D /* Moment.swift in Sources */,
 				107309EE2C57D95D00E37ED1 /* AddFriendCell.swift in Sources */,
 				1AD90FA12C4033E900445D6E /* AppController.swift in Sources */,
+				1AFAC3202C5E726200603239 /* SignUpInfo.swift in Sources */,
 				10F7DCEB2C4660E700C69573 /* TodayDateView.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1A69A7272C578F5F00294D6D /* SharingManager.swift in Sources */,
@@ -444,6 +463,7 @@
 				107309E62C522B9F00E37ED1 /* DayCell.swift in Sources */,
 				1AB075792C3FF10D00199164 /* LoginViewController.swift in Sources */,
 				1A9D95F52C59FEBD009BDF9C /* UIColor+Extensions.swift in Sources */,
+				1AFAC31C2C5E521F00603239 /* LoginEmailPwView.swift in Sources */,
 				107309EA2C522BB300E37ED1 /* CalendarHeaderView.swift in Sources */,
 				10F7DCE02C4557E900C69573 /* CustomBarItemConfiguration.swift in Sources */,
 				107309F02C59269B00E37ED1 /* HistoryView.swift in Sources */,

@@ -28,7 +28,7 @@ final class HomeViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(momentSaved), name: .momentSaved, object: nil)
     }
-    
+
     private func setupNavigationBar() {
         let titleConfig = CustomBarItemConfiguration(image: UIImage(named: "homeLogo"),action: {})
         let titleItem = UIBarButtonItem.generate(with: titleConfig)

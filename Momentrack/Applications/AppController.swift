@@ -8,12 +8,11 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 
-
 final class AppController {
     static let shared = AppController()
     private init() {
         FirebaseApp.configure()
-        registerAuthStateDidChangeEvent()
+        //registerAuthStateDidChangeEvent()
     }
     
     private var window: UIWindow!
@@ -28,37 +27,41 @@ final class AppController {
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()
         
-        
-        if Auth.auth().currentUser == nil {
-            routeToLogin()
-        }
+        checkLoginStatus()
     }
     
-    private func registerAuthStateDidChangeEvent() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(checkLogin),
-            name: .AuthStateDidChange,
-            object: nil)
+    private func registerSignUpRequestedEvent() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleSignUpRequest), name: .SignUpRequested, object: nil)
     }
-        
-    @objc private func checkLogin() {
-        if let user = Auth.auth().currentUser { // <- Firebase Auth
-            print("user = \(user)")
+    
+    @objc private func handleSignUpRequest() {
+        routeToSignUp()
+    }
+    
+    @objc private func checkLoginStatus() {
+        if Auth.auth().currentUser != nil {
             setHome()
         } else {
             routeToLogin()
         }
     }
     
-    private func setHome() {
+    func setHome() {
         let homeVC = HomeViewController()
         rootViewController = UINavigationController(rootViewController: homeVC)
     }
 
-    private func routeToLogin() {
-        rootViewController = UINavigationController(rootViewController: LoginViewController())
+    func routeToSignUp() {
+        let signUpVC = SignUpViewController()
+        rootViewController = UINavigationController(rootViewController: signUpVC)
     }
     
+    func routeToLogin() {
+        rootViewController = UINavigationController(rootViewController: LoginViewController())
+    }
+   
 }
 
+extension Notification.Name {
+    static let SignUpRequested = Notification.Name("SignUpRequested")
+}

@@ -128,7 +128,7 @@
 
 ### Developer
 
-[김서현](https://github.com/cestbonciel)|[김혜지](https://github.com/hyeji-K)|
+[김서현](https://playground-coding.tistory.com/)|[김혜지](https://github.com/hyeji-K)|
 |:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/607cff72-f373-4aed-9e3f-8397daea9de2" width=150>|<img src="https://dummyimage.com/150x150/000/fff&text=momentrack" width=150>|
 |`iOS`|`iOS`|

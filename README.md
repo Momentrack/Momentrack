@@ -27,5 +27,8 @@
 
 지도에서, 혹은 추억보관소에서 기록한 순간들을 한눈에 확인할 수 있어요.
 
-![Download_on_the_App_Store_Badge_KR_RGB_blk_100317](https://github.com/user-attachments/assets/28eff781-44ca-4d4e-8c2f-2a4ecd6bc0f7)
-![appDownload_QRimg](https://github.com/user-attachments/assets/87e1037b-bed1-4170-81a9-e6752966323e)
+
+<div align="center" style="display: block; margin: 0 auto; width: 750px;">
+  <img src="https://github.com/user-attachments/assets/87e1037b-bed1-4170-81a9-e6752966323e" alt="App Store에서 다운로드" style="display: block; margin: 0 auto;">
+  <img src="https://github.com/user-attachments/assets/28eff781-44ca-4d4e-8c2f-2a4ecd6bc0f7" alt="QR 코드" style="display: block; margin: 0 auto;">
+</div>

@@ -1,34 +1,148 @@
 ### Momentrack
 
-일상 속에서 즐거웠던 순간들을 Momentrack에 담아보세요!
+# 2024 한국방송통신대 총장배 소프트웨어경진대회
+
+## 서비스 소개
 
 그때 그 감정 그대로 다시 한번 느낄 수 있게…
 혼자 혹은 사랑하는 사람들과의 추억을 공유하고
 시간이 지나도 기록을 보며 생생하게 추억할 수 있도록 만들어진 앱입니다.
 
+<br>
 
-**- 즐거운 지금 이 순간을 기록하기**
+## 📑 목차
 
-혼자든 다른 사람과 함께든, 지금 느끼고 있는 감정 그대로 앱에 담아봐요!
+- [🖥️ 개발환경](## 🖥️ 개발 환경)
+- [🔑 핵심기술](## 🔑 핵심 기술 )
+- [🔭 프로젝트 구조](## 🔭 프로젝트 구조)
+- [🧑🏻‍💻 팀원 소개](## 🧑🏻‍💻 팀원 소개)
 
-사진과 글로 자유롭게 표현할 수 있어요.
+<br>
+
+## 🖥️ 개발 환경
+
+- Xcode: 15+
+- Swift: 5.9+
+- 배포타겟: iOS 16+
+- 의존성 관리: SPM
+- 작업 일정관리: Slack, FigJam
+
+<br>
+
+## 🔑 핵심 기술 
+
+### 🗃️ 프레임워크
+- UI: UIKit
+- 서버: firebase
 
 
-**- 나만의 장소를 다른 사람과 공유하기**
 
-내가 방문한 장소에서 느낀 감정을 다른 사람들과도 공유해봐요!
+<br>
 
-기록한 순간은 ‘공유하기’를 통해서 다른 사람에게 공유할 수 있어요.
+## 🔭 프로젝트 구조
+```
+├── 📦 Momentrack
+│   ├── 🗂️Applications
+│   │   ├── AppController.swift
+│   │   ├── AppDelegate.swift
+│   │   └── SceneDelegate.swift
+│   ├── 🗂️Controller
+│   │   ├── CalendarViewController.swift
+│   │   ├── DetailDayViewController.swift
+│   │   ├── HomeNaviMapViewController.swift
+│   │   ├── HomeViewController.swift
+│   │   ├── LoginViewController.swift
+│   │   ├── MapViewController.swift
+│   │   ├── PostingMomentViewController.swift
+│   │   ├── SettingViewController.swift
+│   │   └── SignUpViewController.swift
+│   ├── 🗂️Extension
+│   │   ├── BaseViewController.swift
+│   │   ├── CustomAlertViewController.swift
+│   │   ├── CustomBarItemConfiguration.swift
+│   │   ├── Extensions.swift
+│   │   ├── FriendListView.swift
+│   │   ├── ImageCacheManager.swift
+│   │   ├── MomentTextView.swift
+│   │   ├── Network.swift
+│   │   ├── SharingManager.swift
+│   │   ├── UIButton.swift
+│   │   ├── UIColor+Extensions.swift
+│   │   └── UIView+Extensions.swift
+│   ├── 🗂️Model
+│   │   ├── Moment.swift
+│   │   └── User.swift
+│   ├── Momentrack.entitlements
+│   ├── Resources
+│   │   ├── Assets.xcassets
+│   │   ├── Base.lproj
+│   │   │   └── LaunchScreen.storyboard
+│   │   ├── GoogleService-Info.plist
+│   │   ├── Info.plist
+│   │   └── logo_03@3x.png
+│   └── 🗂️View
+│       ├── Calendar
+│       │   ├── CalendarHeaderView.swift
+│       │   ├── CalendarView.swift
+│       │   ├── Cell
+│       │   │   └── DayCell.swift
+│       │   └── HistoryView.swift
+│       ├── Home
+│       │   ├── Cell
+│       │   │   ├── AddFriendCell.swift
+│       │   │   ├── FriendCell.swift
+│       │   │   ├── MomentCell.swift
+│       │   │   ├── MomentFriendCell.swift
+│       │   │   └── SelectedFriendCell.swift
+│       │   ├── MomentListView.swift
+│       │   ├── PostingMomentView.swift
+│       │   └── TodayDateView.swift
+│       ├── Login
+│       │   ├── LoginEmailPwView.swift
+│       │   ├── LoginView.swift
+│       │   └── SignUpView.swift
+│       ├── Map
+│       │   ├── CustomAnnotationView.swift
+│       │   └── HomeNaviMapView.swift
+│       ├── Setting
+│       │   ├── Cell
+│       │   │   └── TitleButtonCell.swift
+│       │   └── SettingView.swift
+│       └── Settings
+├── Momentrack.xcodeproj
+│   ├── project.pbxproj
+│   ├── project.xcworkspace
+│   │   ├── contents.xcworkspacedata
+│   │   ├── xcshareddata
+│   │   │   ├── IDEWorkspaceChecks.plist
+│   │   │   └── swiftpm
+│   │   │       ├── Package.resolved
+│   │   │       └── configuration
+│   │   └── xcuserdata
+│   │       └── seohyunkim.xcuserdatad
+│   │           └── UserInterfaceState.xcuserstate
+│   └── xcuserdata
+│       └── seohyunkim.xcuserdatad
+│           ├── xcdebugger
+│           │   └── Breakpoints_v2.xcbkptlist
+│           └── xcschemes
+│               └── xcschememanagement.plist
+└── README.md
 
+```
 
-**- 즐거웠던 추억을 다시 보기**
+<br>
 
-지난 순간들을 다시 보고 싶다면
+## 👩🏻‍💻 팀원 소개
 
-지도에서, 혹은 추억보관소에서 기록한 순간들을 한눈에 확인할 수 있어요.
+### Developer
 
+[김서현](https://github.com/cestbonciel)|[김혜지](https://github.com/hyeji-K)|
+|:---:|:---:|
+|<img src="https://github.com/user-attachments/assets/607cff72-f373-4aed-9e3f-8397daea9de2" width=150>|<img src="https://dummyimage.com/150x150/000/fff&text=momentrack" width=150>|
+|`iOS`|`iOS`|
 
+##  앱스토어 다운로드
 <div align="center" style="display: block; margin: 0 auto; width: 750px;">
-  <img src="https://github.com/user-attachments/assets/87e1037b-bed1-4170-81a9-e6752966323e" alt="App Store에서 다운로드" style="display: block; margin: 0 auto;">
-  <img src="https://github.com/user-attachments/assets/28eff781-44ca-4d4e-8c2f-2a4ecd6bc0f7" alt="QR 코드" style="display: block; margin: 0 auto;">
+  <img src="https://github.com/user-attachments/assets/87e1037b-bed1-4170-81a9-e6752966323e" alt="QR 코드" style="display: block; margin: 0 auto;">
 </div>

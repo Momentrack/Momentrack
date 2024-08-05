@@ -16,7 +16,7 @@
 - Swift: 5.9+
 - 배포타겟: iOS 16+
 - 의존성 관리: SPM
-- 작업 일정관리: Slack, FigJam
+- 작업 일정관리: Slack, FigJam
 
 <br>
 

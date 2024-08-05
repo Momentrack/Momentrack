@@ -110,14 +110,7 @@
 │   │   │       ├── Package.resolved
 │   │   │       └── configuration
 │   │   └── xcuserdata
-│   │       └── seohyunkim.xcuserdatad
-│   │           └── UserInterfaceState.xcuserstate
 │   └── xcuserdata
-│       └── seohyunkim.xcuserdatad
-│           ├── xcdebugger
-│           │   └── Breakpoints_v2.xcbkptlist
-│           └── xcschemes
-│               └── xcschememanagement.plist
 └── README.md
 
 ```
